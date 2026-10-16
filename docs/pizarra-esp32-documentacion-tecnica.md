@@ -1,8 +1,8 @@
 # Pizarra táctil sincronizada con ESP32 — Documentación técnica
 
-Fecha: 2026-10-16 · Estado: borrador para aprobación (no se ha construido nada)
+Fecha: 2026-10-16 · Estado: borrador v2 (objetivo ~20 € por aparato) · No se ha construido nada
 
-> Los precios son capturas de octubre de 2026 de buscadores/tiendas. **Cambian a menudo**; confirma en la tienda antes de comprar. Lo marcado como *(mi decisión)* o *(estimación)* es mío, no tuyo ni de una fuente.
+> Los precios son capturas de octubre de 2026 de buscadores y tiendas. **Cambian a menudo**; confirma en la tienda antes de comprar. Lo marcado como *(mi decisión)* o *(estimación)* es mío, no tuyo ni de una fuente.
 
 ---
 
@@ -10,18 +10,18 @@ Fecha: 2026-10-16 · Estado: borrador para aprobación (no se ha construido nada
 
 Dos aparatos independientes, uno en cada casa, con pantalla táctil entre móvil y iPad. Cada persona dibuja con colores y borra, y la otra lo ve casi al instante. Nada más.
 
-**Requisitos (los tuyos):**
-
 | Requisito | Consecuencia técnica |
 |---|---|
 | Cada uno en su casa | Sincronización por internet, no por radio local |
-| Persona poco técnica | Se enciende y funciona; nada de configurar a mano más allá de elegir wifi la primera vez |
-| Portátil, también en coche | Batería pequeña o USB; el wifi cambia (casa, oficina, hotspot del móvil) |
-| Sin entornos agresivos | No hace falta carcasa IP; basta una caja normal |
-| Barato y adaptado a lo pedido | ESP32 con pantalla integrada, sin Linux ni tablet |
+| Persona poco técnica | Se enciende y funciona; solo hay que elegir el wifi la primera vez |
+| Portátil, también en coche | Alimentación por USB/powerbank; wifi cambiante (casa, oficina, hotspot del móvil) |
+| ~20 € por aparato, "un poco más" | Placa de pantalla integrada de ~10–28 €; sin batería propia; caja impresa en 3D |
+| Todo integrado en uno | Placa ESP32 con pantalla, táctil y wifi en un solo módulo |
 | Sin software que pueda empezar a cobrar | Todo MIT/Apache/BSD o código propio; servidor intercambiable |
+| Lápiz para dibujar | Módulo independiente, comprable por separado (ver 5) |
 
-**Fuera de alcance (non-goals):** vídeo/voz, cuentas de usuario, historial de dibujos, más de 2 pantallas, imágenes importadas, resistencia al agua.
+**Fuera de alcance:** vídeo/voz, cuentas de usuario, historial, más de 2 pantallas, imágenes importadas, resistencia al agua, batería integrada.
+**Dentro de alcance:** diseño de la caja/soporte para impresora 3D (tienes impresora).
 
 ---
 
@@ -29,189 +29,206 @@ Dos aparatos independientes, uno en cada casa, con pantalla táctil entre móvil
 
 | Decisión | Elección | Por qué |
 |---|---|---|
-| Hardware | ESP32-S3 (o P4) con pantalla táctil RGB de 7" integrada | Decidido por ti. Placa única, wifi, conector de batería, unos 35–60 € |
-| Sincronización | Un **relay** pequeño por WebSocket seguro (wss) en internet; los dos aparatos se conectan a él *(mi decisión)* | P2P directo falla tras NAT/CGNAT de datos móviles y necesitaría un servidor TURN (que suele costar). El relay es ~150 líneas y se puede mover de sitio |
-| Orden de eventos | El relay numera los eventos; no hay CRDT *(mi decisión)* | Con 2 personas y un servidor central basta orden total. Mucho más simple que Yjs/Automerge |
-| Borrar | Goma = trazo con el color del fondo; "borrar todo" vacía el registro *(mi decisión)* | Sin recalcular el lienzo ni detectar colisiones; el resultado es idéntico en ambos lados |
-| Lienzo | Lógico fijo de 1600×1000 (16:10), coordenadas enviadas escaladas *(mi decisión)* | Así dos pantallas con resolución distinta ven lo mismo |
-| Wifi | Portal cautivo la primera vez (el aparato crea su propia red, eliges tu wifi desde el móvil); guarda varias redes *(mi decisión)* | Persona no técnica; casa/oficina/coche |
-| Licencias | Evitar tldraw | Su SDK exige licencia comercial de pago (sin marca de agua) en producción: [licencia tldraw](https://tldraw.dev/sdk-features/license-key). Justo el riesgo que quieres evitar |
-
-### Esquema
+| Hardware | Placa ESP32-S3 con pantalla táctil capacitiva integrada | Decidido por ti. Las dos opciones elegidas incluyen todo |
+| Sincronización | Un **relay** pequeño por WebSocket seguro (wss) en internet *(mi decisión)* | P2P directo falla tras NAT/CGNAT de datos móviles y necesitaría un servidor TURN. El relay son ~150 líneas y se puede mover de sitio |
+| Orden de eventos | El relay numera los eventos; sin CRDT *(mi decisión)* | Con 2 personas y un servidor central basta el orden total |
+| Borrar | Goma = trazo con el color del fondo; "borrar todo" vacía el registro *(mi decisión)* | Sin recalcular el lienzo; resultado idéntico en ambos lados |
+| Lienzo | Lógico fijo, con bandas negras si las proporciones difieren *(mi decisión)* | Lo ideal es que ambos aparatos sean del mismo modelo |
+| Wifi | Portal cautivo la primera vez, varias redes guardadas *(mi decisión)* | Persona no técnica; casa/oficina/coche |
+| Licencias | Evitar tldraw | Su SDK exige licencia comercial de pago en producción: [licencia tldraw](https://tldraw.dev/sdk-features/license-key) |
 
 ```
   Casa A                                   Casa B
  ┌────────────┐      wss (TLS)       ┌────────────┐
- │ ESP32 7"   │◄────────────────────►│ ESP32 7"   │
+ │ ESP32 + LCD│◄────────────────────►│ ESP32 + LCD│
  │ LVGL canvas│        ▲     ▲       │ LVGL canvas│
  └────────────┘        │     │       └────────────┘
                    ┌───┴─────┴───┐
                    │   RELAY     │  sala = código; guarda el registro
-                   │ (Node, ~150 │  de trazos para quien se reconecta
+                   │ (Node ~150  │  de trazos para quien se reconecta
                    │  líneas)    │
                    └─────────────┘
 ```
 
 ---
 
-## 3. Hardware: dos modelos
+## 3. Hardware: dos candidatos
 
-Ambos son placas "todo en uno" (MCU + pantalla + táctil + wifi). No hace falta diseñar ni fabricar PCB: ya se venden.
+Ambos son placas "todo en uno" de la familia de módulos chinos tipo Sunton/Guition. Se venden ya montadas; no hace falta diseñar PCB.
 
-### Modelo BARATO — Waveshare ESP32-S3-Touch-LCD-7
-
-| Dato | Valor |
-|---|---|
-| SoC | ESP32-S3N16R8 (2 núcleos, 240 MHz), 16 MB flash, 8 MB PSRAM |
-| Pantalla | 7", 800×480, 65K colores, táctil capacitivo GT911 de 5 puntos |
-| Conectividad | Wifi 2,4 GHz, BLE 5 |
-| Batería | Conector PH2.0 para LiPo 3,7 V de 1 celda, con cargador y LED de carga |
-| USB | Type-C (más otro Type-C para UART) |
-| Caja | No incluida |
-| Precio | US$31,99–36,99 en tienda oficial; £35,60 en The Pi Hut; ~US$44 + ~US$12 envío en eBay |
-
-Enlaces: [Waveshare (oficial)](https://www.waveshare.com/esp32-s3-touch-lcd-7.htm) · [The Pi Hut](https://thepihut.com/collections/waveshare/products/esp32-s3-development-board-with-7-capacitive-touch-display-800-x-480) · [wiki/documentación Waveshare](https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-7)
-
-Al comprar, elige la variante **"with Touch"** (hay una sin táctil) y antena integrada.
-
-### Modelo MODERADO — Waveshare ESP32-P4-WIFI6-Touch-LCD-7B
+### Candidato A — Guition JC4827W543C, 4,3" (el más barato)
 
 | Dato | Valor |
 |---|---|
-| SoC | ESP32-P4 (más potente) con wifi 6 por coprocesador |
-| Pantalla | 7", 1024×600, táctil de 5 puntos |
-| Precio | US$46,99–55,99 (Waveshare) |
+| Pantalla | 4,3" IPS, 480×272, controlador NV3041A por QSPI |
+| Táctil | Capacitivo GT911 (variante **C**; existen R = resistiva y N = sin táctil) |
+| SoC | ESP32-S3 (N4R8): 4 MB flash, 8 MB PSRAM |
+| Conectividad | Wifi, BLE 5, USB-C, ranura SD |
+| Batería | **No tiene conector** |
+| Precio | ~US$10–14 de calle (Atomic14); un anuncio genérico similar en eBay.de a 20,99 € sin confirmar modelo |
 
-Enlace: [catálogo ESP32-P4 de Waveshare](https://www.waveshare.com/product/esp32-related/boards-kits/esp32-p4.htm) · [cobertura de CNX Software](https://www.cnx-software.com/2026/01/17/tablet-like-esp32-p4-based-7-8-and-10-1-inch-hmi-displays-integrate-wi-fi-6-connectivity/)
+Pegas confirmadas en [Atomic14](https://www.atomic14.com/esp32/boards/guition-jc4827w543/): solo 4 MB de flash (firmware ajustado), solo rotaciones 0° y 180°, hace falta invertir colores y byte-swap, y en Arduino_GFX el táctil y la SD pueden fallar justo tras refrescar si no se cuida el orden. Resolución gruesa, pero válida para dibujar.
 
-⚠ Datos de esta placa salen de un solo resultado de búsqueda; verifica pantalla, batería y precio en la ficha antes de comprar. El P4 es más reciente: **peor documentado y con wifi vía coprocesador**, así que el firmware cuesta más.
+### Candidato B — Sunton ESP32-8048S070C, 7"
 
-### Alternativa intermedia — Elecrow CrowPanel Advance 7"
+| Dato | Valor |
+|---|---|
+| Pantalla | 7" IPS RGB, 800×480 |
+| Táctil | Capacitivo GT911 |
+| SoC | ESP32-S3: 16 MB flash, 8 MB PSRAM |
+| Conectividad | Wifi, BLE 5, USB-C, ranura SD, altavoz |
+| Batería | **No tiene** |
+| Precio | ~US$21–28 de calle (Atomic14). En tiendas UE: 37,25 € en Tinytronics (ya no disponible) y 52,95 € en Hobbyelectronica |
 
-ESP32-S3, 16 MB flash, 8 MB PSRAM, 800×480 IPS, alimentación 5 V/2 A. Unos 50–53 € en [Openelab](https://openelab.io/a/s/products/elecrow-crowpanel-advance-7-hmi-esp32-s3-ai-touch-screen) y [Bits & Parts](https://www.bitsandparts.nl/en/esp32-s3-display-crowpanel-advance-7-inch-ips-touch-screen-elecrow-p1933868). Las fuentes se contradicen sobre la batería: confirmarlo antes. La versión [CrowPanel 7" con caja acrílica](https://uk.robotshop.com/products/elecrow-crowpanel-70-hmi-esp32-display-800x480-rgb-tft-lcd-touchscreen-w-case) ronda £44.
+Pegas en [Atomic14](https://www.atomic14.com/esp32/boards/sunton-esp32-8048s070/): las revisiones v1.1 y v1.3 necesitan código de inicio distinto, el framebuffer vive en PSRAM y con wifi activo puede aparecer parpadeo si no se ajusta LVGL, y quedan unos 2 GPIO libres. No me consta el consumo ni la alimentación exacta de esta placa; asume 5 V / 2 A por USB y compruébalo.
 
-### Lista de compra por aparato (×2)
+### Comparativa real de precios
 
-| Pieza | Barato | Moderado |
+| | A: 4,3" Guition | B: 7" Sunton |
 |---|---|---|
-| Placa | ~35–45 € | ~50–65 € |
-| LiPo 3,7 V PH2.0 (2000–3000 mAh) | ~6–10 € *(estimación)* | igual |
-| Caja/soporte (impresa en 3D o pegatinas+marco) | 0–10 € *(estimación)* | igual |
+| Precio calle (AliExpress/eBay) | ~10–14 € | ~21–28 € |
+| Precio tiendas UE | ~21 € (anuncio genérico, sin confirmar) | ~37–53 € |
+| Pantalla | 480×272 | 800×480 |
+| Flash / PSRAM | 4 MB / 8 MB | 16 MB / 8 MB |
+| Dentro de ~20 € | Sí, con margen | Roza o supera, según envío/IVA |
+
+El precio de AliExpress no incluye envío ni IVA/aduanas, y desde esas tiendas tarda 2–4 semanas *(estimación)*.
+
+### Dónde comprar (ambas fuentes)
+
+- **AliExpress / eBay:** busca el código exacto, `JC4827W543C` o `ESP32-8048S070C`. Comprueba el sufijo **C** (capacitivo) y la revisión de la placa, y elige vendedor con buena reputación.
+- **Tiendas UE:** más rápido y con garantía, pero ~2× el precio. Ejemplos con la placa de 7": [Tinytronics](https://www.tinytronics.nl/nl/development-boards/microcontroller-boards/met-wi-fi/jingcai-esp32-8048s070c-7-inch-tft-lcd-display-800*480-pixels-met-touchscreen-esp32-s3) y [Hobbyelectronica](https://www.hobbyelectronica.nl/en/product-categorie/platformen/esp32-display/). Para la de 4,3" no he localizado una tienda UE fiable.
+- Comparativa de 7" de varios fabricantes: [Atomic14](https://www.atomic14.com/esp32/boards/7-inch-displays/).
+
+### Presupuesto por aparato
+
+| Pieza | A: 4,3" | B: 7" |
+|---|---|---|
+| Placa | ~10–14 € | ~21–28 € |
+| Caja/soporte impreso en 3D | ~1–2 € de filamento *(estimación)* | ~2–3 € *(estimación)* |
 | Cable USB-C + cargador | ya lo tienes | igual |
-| **Total por aparato** | **~45–65 €** | **~65–85 €** |
-| **Total dos aparatos** | **~90–130 €** | **~130–170 €** |
+| Lápiz capacitivo (módulo aparte) | ~1–5 € *(estimación)* | igual |
+| **Total** | **~12–21 €** | **~24–36 €** |
 
-**Cuidado con la batería:** la polaridad de los conectores PH2.0 varía entre fabricantes; comprueba + / − con el esquema de la placa antes de enchufar (un invertido quema la placa).
-Autonomía *(estimación, sin medir)*: pantalla de 7" encendida ≈ 1–1,5 W → 3000 mAh dan ~6–8 h. Se puede bajar con brillo y apagando la pantalla tras inactividad.
-
-### Coche
-Adaptador 12 V→USB-C y wifi del hotspot del móvil. No hay 4G en el aparato: **sin datos del móvil no hay sincronización**. Añadir módem 4G subiría coste y complejidad; no se contempla.
+Sin batería propia, en el coche va con adaptador 12 V→USB o powerbank.
 
 ---
 
-## 4. Servidor relay: coste y riesgo
+## 4. Servidor relay
 
-Es lo único que corre "en internet". Programa propio en Node.js con la librería [`ws`](https://github.com/websockets/ws) (MIT). Un solo archivo, portable a cualquier sitio.
+Programa propio en Node.js con la librería [`ws`](https://github.com/websockets/ws) (MIT). Un solo archivo, portable a cualquier sitio.
 
 | Opción | Coste | Comentario |
 |---|---|---|
-| **Un PC/Raspberry en casa + túnel** (p. ej. Cloudflare Tunnel) | ~0 € (dominio opcional) | Sin verificar aquí condiciones actuales del túnel gratuito. Depende de que ese equipo esté encendido |
-| **VPS pequeño** | [Hetzner CAX11](https://www.vpsbenchmarks.com/hosters/hetzner/plans/cax11) ≈ 5,99 €/mes más IPv4 *(subió dos veces en 2026)* | Lo más estable y sencillo. Cabe en cualquier VPS de 3–5 €/mes |
-| Cloudflare Workers + Durable Objects (gratis) | 0 € hasta los límites | [Límites y precios](https://developers.cloudflare.com/durable-objects/platform/pricing): 100.000 peticiones/día, cada 20 mensajes WebSocket cuentan como 1. Con este uso casi seguro cabe, pero te ata a su API |
-| Oracle Cloud "Always Free" | 0 € | **No recomendado**: en junio de 2026 [redujo el tier gratuito a la mitad](https://linuxiac.com/oracle-quietly-cuts-free-tier-ampere-a1-resources-in-half/) sin avisar. Ejemplo de lo que quieres evitar |
-| Brokers MQTT públicos | 0 € | Sin autenticación ni garantías ni historial para reconexión. No recomendado |
+| **PC/Raspberry en casa + túnel** (p. ej. Cloudflare Tunnel) | ~0 € | Condiciones del túnel gratuito sin verificar aquí. Depende de que ese equipo esté encendido |
+| **VPS pequeño** | [Hetzner CAX11](https://www.vpsbenchmarks.com/hosters/hetzner/plans/cax11) ≈ 5,99 €/mes más IPv4 *(subió en 2026)* | Lo más estable. Cabe en cualquier VPS de 3–6 €/mes |
+| Cloudflare Workers + Durable Objects (gratis) | 0 € hasta los límites | [Límites](https://developers.cloudflare.com/durable-objects/platform/pricing): 100.000 peticiones/día; te ata a su API |
+| Oracle Cloud "Always Free" | 0 € | **No recomendado**: en junio de 2026 [recortó el tier gratuito a la mitad](https://linuxiac.com/oracle-quietly-cuts-free-tier-ampere-a1-resources-in-half/) sin avisar |
 
-**Recomendación *(mi decisión)*:** empezar en tu PC/Raspberry con túnel (coste 0) y, si quieres que funcione siempre, mover el mismo archivo a un VPS de ~4–6 €/mes. Ninguna opción te encierra porque el relay no usa nada propietario.
-
-Coste de red: los puntos se agrupan a ~30 Hz y caben en pocos kB/s, de sobra para 4G.
+**Recomendación *(mi decisión)*:** empezar en tu PC o Raspberry con túnel, y mover el mismo archivo a un VPS si quieres disponibilidad continua.
 
 ---
 
-## 5. Protocolo (borrador)
+## 5. Lápiz (módulo independiente)
 
-JSON por WebSocket para empezar (legible y depurable); se puede pasar a binario si hace falta.
+No forma parte del desarrollo: se compra aparte y se puede ignorar.
+
+- Los dos candidatos usan el controlador GT911, **capacitivo**. Sirve cualquier **lápiz capacitivo pasivo de punta fina** (punta de disco o malla, ~1,5–2 mm). Los lápices activos (Apple Pencil, Wacom/AES, S-Pen) **no** funcionan.
+- Precio *(estimación)*: ~1–5 € por lápiz. No he podido verificar un modelo concreto; busca "capacitive stylus fine tip disc" y compra uno barato para probar.
+- Cuidado: las puntas muy finas pueden registrarse débil o errática en un táctil afinado para dedos. **Prueba un lápiz antes de comprar varios**, y suaviza las coordenadas en el firmware (media móvil simple).
+- Quedan fuera: lápiz con presión, rechazo de palma y botones del lápiz.
+
+---
+
+## 6. Protocolo (borrador)
+
+JSON por WebSocket para empezar; se puede pasar a binario si hace falta.
 
 ```
 Cliente → relay
   {"t":"join","room":"ABC123","key":"<secreto>"}
   {"t":"b","id":17,"c":"#e53935","w":6}        // empieza trazo (color, grosor; goma = color del fondo)
-  {"t":"p","id":17,"pts":[[x,y],[x,y],...]}   // puntos del trazo, 0..1599 × 0..999
+  {"t":"p","id":17,"pts":[[x,y],[x,y],...]}   // puntos en coordenadas lógicas
   {"t":"e","id":17}                             // fin de trazo
   {"t":"clear"}                                 // borrar todo
 Relay → cliente
-  {"t":"snap","log":[...]}                      // al entrar: registro completo desde el último clear
+  {"t":"snap","log":[...]}                      // al entrar: registro desde el último clear
   (reenvía b/p/e/clear del otro cliente en orden)
 ```
 
-- Sala = código de 6 caracteres + clave secreta; así nadie ajeno entra. Sin cuentas.
-- El relay guarda el registro en memoria (y en disco, opcional). Si un aparato se desconecta y vuelve, recibe `snap` y queda igual.
-- Límite del registro (p. ej. 50.000 puntos); al superarlo, aviso en pantalla o `clear` sugerido *(mi decisión)*.
-- Cada aparato dibuja en local al instante y envía; el otro dibuja al recibir.
+Sala = código de 6 caracteres + clave secreta. Sin cuentas. El relay guarda el registro y lo reenvía a quien se reconecta. Límite de registro (p. ej. 50.000 puntos) *(mi decisión)*. Cada aparato dibuja en local al instante.
 
 ---
 
-## 6. Firmware
+## 7. Firmware
 
 | Pieza | Elección | Licencia |
 |---|---|---|
-| Entorno | Arduino-ESP32 *(mi decisión; ESP-IDF si hace falta rendimiento)* | LGPL 2.1 / Apache 2.0 |
-| Gráficos y táctil | [LVGL 9](https://lvgl.io) (canvas) + driver de panel de Waveshare | MIT |
-| WebSocket cliente | `esp_websocket_client` (ESP-IDF) o [arduinoWebSockets](https://github.com/Links2004/arduinoWebSockets) | Apache 2.0 / LGPL 2.1 |
+| Entorno | PlatformIO + Arduino-ESP32 *(mi decisión)* | Apache 2.0 / LGPL 2.1 |
+| Gráficos y táctil | [LVGL 9](https://lvgl.io) (canvas) | MIT |
+| WebSocket cliente | `esp_websocket_client` o [arduinoWebSockets](https://github.com/Links2004/arduinoWebSockets) | Apache 2.0 / LGPL 2.1 |
 | Provisión wifi | Portal cautivo propio o [WiFiManager](https://github.com/tzapu/WiFiManager) | MIT |
-| TLS | mbedTLS incluido (wss) | Apache 2.0 |
+| TLS | mbedTLS incluido | Apache 2.0 |
 
-Notas de diseño:
-- Lienzo en PSRAM: 800×480×2 B ≈ 750 KB de los 8 MB. Sobra.
-- La tinta se pinta por segmentos sobre el canvas al recibir cada punto; no se redibuja todo.
-- UI mínima: paleta de ~8 colores, 2–3 grosores, goma, "borrar todo" con confirmación, indicador de conexión.
-- Reconexión automática con espera creciente; guarda varias redes wifi.
-- Apagado de pantalla tras inactividad para ahorrar batería.
-
-Verifica licencias exactas de los drivers/ejemplos que descargues de Waveshare antes de reutilizar su código.
+- **Memoria A:** framebuffer 480×272×2 B ≈ 255 KB en PSRAM; el firmware debe caber en 4 MB de flash.
+- **Memoria B:** 800×480×2 B ≈ 750 KB en PSRAM; ajustar bounce buffers de LVGL contra el parpadeo con wifi.
+- Se pinta solo el segmento nuevo, no todo el lienzo.
+- UI mínima: ~8 colores, 3 grosores, goma, "borrar todo" con confirmación, indicador de conexión.
+- Reconexión automática y varias redes wifi.
+- Verifica la licencia de cualquier driver o ejemplo del fabricante antes de reutilizar su código.
 
 ---
 
-## 7. Plan por fases
+## 8. Caja y soporte (impresión 3D, dentro de alcance)
 
-1. **Relay + cliente web de prueba** (sin hardware, coste 0): dos pestañas dibujando. → verifica protocolo, reconexión y `clear`.
-2. **Comprar 2× placa barata + 2 baterías.** → verifica que enciende, táctil y wifi.
-3. **Firmware v1**: dibujar y borrar en local → luego sincronizar con el relay → luego portal wifi.
-4. **Caja y batería** (impresión 3D o soporte comprado).
-5. **Prueba real** en dos casas y con hotspot en el coche.
-6. Si la resolución o la fluidez no basta, pasar al modelo moderado (el relay y el protocolo no cambian).
+- Un soporte inclinado con hueco para el USB-C y marco que sujete la placa; sin batería, así que es más simple.
+- Diseño paramétrico (p. ej. OpenSCAD o CadQuery) en el repo, para ajustar al modelo A o B y publicar los STL. *(mi decisión)*
+- Pendiente: medidas exactas de placa y posición de tornillos/conectores del lote que compres, porque varían por revisión.
 
 ---
 
-## 8. Riesgos
+## 9. Plan por fases
+
+1. **Relay + cliente web de prueba** (coste 0): dos pestañas dibujando. → valida protocolo, reconexión y `clear`.
+2. **Una sola placa barata (A)**, ~10–14 €, para probar táctil, lápiz y wifi. → decide si 4,3" basta o hace falta 7".
+3. **Firmware v1:** dibujar y borrar en local → sincronizar → portal wifi.
+4. **Caja impresa** y prueba con lápiz.
+5. **Segunda unidad** y prueba real en dos casas y con hotspot.
+
+---
+
+## 10. Riesgos
 
 | Riesgo | Mitigación |
 |---|---|
-| Latencia visible con dos aparatos lejanos | Dibujo local inmediato; lotes de puntos a ~30 Hz; relay cercano |
-| Fluidez del trazo en ESP32 | Pintar solo segmentos nuevos; PSRAM; si falla, modelo P4 |
-| Wifi cambiante/portal cautivo de hoteles | Guardar varias redes; hotspot de móvil como plan B; **los portales de login de hotel no se soportan** |
-| Placa o batería con polaridad distinta | Revisar esquema; comprar batería con el conector correcto |
-| Precios e disponibilidad cambian | Dos fuentes por modelo; confirmar antes de pedir |
-| El relay cae | Registro en disco; aparatos reintentan; relay fácil de reubicar |
+| 4,3" demasiado pequeña o gruesa | Prototipar primero con una sola placa; plan B = placa de 7" |
+| Placa 7" ajusta mal el precio tras envío/IVA | Calcular total con envío antes de pedir |
+| Revisiones de placa con init distinto | Anotar revisión al comprar; probar con una unidad |
+| 4 MB de flash en la de 4,3" | Firmware ligero, sin ESPHome ni librerías pesadas |
+| Parpadeo de la 7" con wifi | Ajustes de LVGL (bounce buffers) |
+| Lápiz poco fiable | Probar uno antes; suavizado de coordenadas |
+| Portales de login de hoteles | No soportados; usar hotspot del móvil |
+| Cambian precios o stock | Dos fuentes de compra; confirmar antes de pedir |
 
 ---
 
-## 9. Pendiente de decidir contigo
+## 11. Pendiente de decidir
 
-- ¿País y moneda de compra (envío y aduanas desde China/EE. UU. cambian el precio)?
-- ¿Quieres seguir con el modelo barato para el prototipo o ir directo al moderado?
-- ¿Quién hospedará el relay: equipo en casa o VPS de pago pequeño?
-- ¿Con qué herramienta prefieres desarrollar el firmware (Arduino IDE, PlatformIO, ESP-IDF)?
-- ¿Impresora 3D disponible para la caja?
+- ¿Empezamos con una sola placa A de ~12 € como prototipo?
+- ¿Relay en casa (túnel gratuito) o servidor de pago?
+- ¿Mismo modelo en ambas casas o pueden ser distintos?
+- ¿8 colores, 3 grosores y sin deshacer en v1?
 
 ---
 
-## Fuentes consultadas (octubre de 2026)
+## Fuentes (octubre de 2026)
 
-- [Waveshare ESP32-S3-Touch-LCD-7](https://www.waveshare.com/esp32-s3-touch-lcd-7.htm)
-- [The Pi Hut — ESP32-S3 7" Touch](https://thepihut.com/collections/waveshare/products/esp32-s3-development-board-with-7-capacitive-touch-display-800-x-480)
-- [Waveshare ESP32-P4](https://www.waveshare.com/product/esp32-related/boards-kits/esp32-p4.htm) · [CNX Software](https://www.cnx-software.com/2026/01/17/tablet-like-esp32-p4-based-7-8-and-10-1-inch-hmi-displays-integrate-wi-fi-6-connectivity/)
-- [Elecrow CrowPanel Advance 7" (Openelab)](https://openelab.io/a/s/products/elecrow-crowpanel-advance-7-hmi-esp32-s3-ai-touch-screen) · [Bits & Parts](https://www.bitsandparts.nl/en/esp32-s3-display-crowpanel-advance-7-inch-ips-touch-screen-elecrow-p1933868)
-- [Hetzner CAX11 (vpsbenchmarks)](https://www.vpsbenchmarks.com/hosters/hetzner/plans/cax11) · [subida de precios jun-2026](https://wz-it.com/en/blog/hetzner-price-increase-june-2026-cpx-ccx-alternatives/)
+- [Atomic14 — Guition JC4827W543](https://www.atomic14.com/esp32/boards/guition-jc4827w543/)
+- [Atomic14 — Sunton ESP32-8048S070](https://www.atomic14.com/esp32/boards/sunton-esp32-8048s070/)
+- [Atomic14 — comparativa de pantallas 7"](https://www.atomic14.com/esp32/boards/7-inch-displays/)
+- [Tinytronics — 8048S070C](https://www.tinytronics.nl/nl/development-boards/microcontroller-boards/met-wi-fi/jingcai-esp32-8048s070c-7-inch-tft-lcd-display-800*480-pixels-met-touchscreen-esp32-s3) · [Hobbyelectronica](https://www.hobbyelectronica.nl/en/product-categorie/platformen/esp32-display/)
+- [Espressif — driver esp_lcd_touch_gt911](https://components.espressif.com/components/espressif/esp_lcd_touch_gt911/versions/1.2.1/readme)
+- [Hetzner CAX11](https://www.vpsbenchmarks.com/hosters/hetzner/plans/cax11) · [subida de precios jun-2026](https://wz-it.com/en/blog/hetzner-price-increase-june-2026-cpx-ccx-alternatives/)
 - [Oracle Always Free recortado](https://linuxiac.com/oracle-quietly-cuts-free-tier-ampere-a1-resources-in-half/)
 - [Cloudflare Durable Objects: precios](https://developers.cloudflare.com/durable-objects/platform/pricing)
 - [tldraw: clave de licencia](https://tldraw.dev/sdk-features/license-key)
