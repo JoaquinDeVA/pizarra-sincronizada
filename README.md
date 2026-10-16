@@ -23,7 +23,8 @@ Fase de diseño. Todavía no hay código.
 
 ## Documentación
 
-- [Documentación técnica](docs/pizarra-esp32-documentacion-tecnica.md): requisitos, arquitectura, hardware con precios y enlaces, servidor, protocolo, firmware, plan y riesgos.
+- [Decisiones de diseño](docs/decisiones-de-diseno.md): estrategia, qué queremos y por qué.
+- [Documentación técnica](docs/documentacion-tecnica.md): táctica, cómo se materializan esas decisiones (hardware con precios y enlaces, servidor, protocolo, firmware, plan y riesgos).
 
 ## Licencia
 
