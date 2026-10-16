@@ -20,8 +20,8 @@ Dos aparatos, cada uno en una casa. Una persona dibuja o borra y la otra lo ve a
 |---|---|---|
 | D1 | **Uso remoto:** cada aparato en una casa distinta, conectados por internet | Es el caso de uso |
 | D2 | **Para personas poco técnicas:** se enciende y funciona; lo único que se configura es el wifi | El usuario final no es técnico |
-| D3 | **Portátil pero no robusto:** se mueve de sitio, se usa en casa/oficina y en el coche; sin resistencia al agua ni entornos agresivos | Uso doméstico |
-| D4 | **Conexión modificable:** la red cambia (casa, oficina, hotspot del móvil) y **no se precarga el wifi** de ninguna casa | No se sabe dónde estará en el futuro |
+| D3 | **Portátil pero no robusto:** se mueve de sitio, se usa en casa u oficina; sin resistencia al agua ni entornos agresivos | Uso doméstico |
+| D4 | **Conexión modificable:** la red cambia (casa, oficina) y **no se precarga el wifi** de ninguna casa | No se sabe dónde estará en el futuro |
 | D5 | **Alimentación solo por USB o powerbank, sin batería propia** | Ahorra coste y complejidad |
 | D6 | **Manda el montaje propio sobre el presupuesto de ~20 €.** La alternativa integrada (pantalla + ESP32 en una placa) queda documentada y visible | El usuario prefiere controlar el diseño; saber el coste real decide si merece la pena |
 | D7 | **Plataforma ESP32.** El montaje propio es: ESP32 + pantalla suelta, conectados entre sí, dentro de una carcasa impresa en 3D | Barato y suficiente |

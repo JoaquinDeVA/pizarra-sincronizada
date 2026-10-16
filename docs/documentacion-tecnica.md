@@ -95,7 +95,7 @@ Cables USB-C (datos), cargadores/powerbank ≥2 A y, posiblemente, soldador si l
 
 ## 3. Alimentación (D5, D3)
 
-USB-C a 5 V, cargador de ≥2 A. En el coche, adaptador 12 V→USB-C; fuera de casa, powerbank. Sin batería: no hay cargador LiPo ni polaridades que cuidar. Sin datos del móvil no hay sincronización: el aparato no lleva 4G.
+USB-C a 5 V, cargador de ≥2 A; fuera de casa, powerbank. Sin batería: no hay cargador LiPo ni polaridades que cuidar. El aparato no lleva 4G: necesita una red wifi.
 
 ---
 
@@ -207,7 +207,7 @@ Dos pasos sin coste que se pueden hacer ya: cliente web de prueba con servidor i
 | A2 sin guías públicas | Empezar por A1; A2 solo con datasheet del panel concreto |
 | Servidor de casa inaccesible (CGNAT) | Túnel o VPS pequeño |
 | Cambian precios o stock | Dos fuentes de compra; confirmar antes de pedir |
-| Portales con login (hoteles) | No soportados; hotspot del móvil |
+| Portales con login (hoteles) | No soportados |
 | El montaje propio no baja de ~26 € | Está asumido en D6; la ruta B queda como referencia |
 
 ---

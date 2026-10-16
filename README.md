@@ -15,7 +15,7 @@
 
 ## Qué es
 
-Un aparato todo en uno (placa ESP32 con pantalla táctil integrada) pensado para personas poco técnicas: se enciende, se conecta al wifi y funciona. Se puede mover de sitio y usar en el coche con el hotspot del móvil.
+Un aparato basado en ESP32 con pantalla táctil, pensado para personas poco técnicas: se enciende, se conecta al wifi y funciona. Se puede mover de un sitio a otro.
 
 ## Estado
 
