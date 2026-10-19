@@ -2,9 +2,9 @@
 
 Táctica: **cómo** se materializan las decisiones de [decisiones-de-diseno.md](decisiones-de-diseno.md) (se citan como D1…, A1…). Aquí no se discute el porqué.
 
-Fecha: 2026-10-29
+Fecha: 2026-10-30
 
-> Precios y plazos de la [guía de compra](compra/README.md). *(estimación)* = cifra mía, sin fuente.
+> *(estimación)* = cifra mía, sin fuente.
 
 ---
 
@@ -39,17 +39,19 @@ El servidor nunca empuja al cuadro: espera a que despierte (D5, D33).
 |---|---|---|
 | Placa | Seeed **XIAO ePaper Display Board EE04** (SKU 100075670) | XIAO ESP32-S3 Plus; conector de batería JST 2,0 mm con interruptor de encendido y cargador integrado (carga por USB-C); 1 botón de reset y 3 de usuario (KEY0 GPIO2, KEY1 GPIO3, KEY2 GPIO5, activos en bajo); USB-C para alimentar y flashear (el cable debe llevar datos); conectores FPC de 24 y 50 pines de 0,5 mm, elegidos con un puente |
 | Panel | Seeed **7,3" Spectra 6** (SKU 100064541) | 800×480, seis colores, FPC de 50 pines |
-| Antena | FPC 2,4 GHz de 2,9 dBi | Incluida con la placa (hoja de datos de Seeed), junto con adaptadores y cables FFC de 24 y 50 pines |
+| Antena | FPC 2,4 GHz de 2,9 dBi | Incluida con la placa, junto con adaptadores y cables FFC de 24 y 50 pines (el panel trae además un adaptador y un cable de 50 pines) |
 | Batería | LiPo de 1S (3,7 V), JST-PH 2,0 mm, con protección | No incluida; ver §10 y D39 |
 | Caja | Impresa en 3D (D12) | Ver §8 |
 
-Fuentes: [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04) · [Openelab: placa](https://openelab.io/products/seeed-studio-xiao-epaper-ee04) · [kit DIY](https://openelab.io/products/seeed-studio-xiao-epaper-7-3-inch-diy-kit).
+Fichas técnicas: [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04) · [hoja de datos de la placa](https://www.mouser.es/datasheet/3/1361/1/100075670.pdf) · [hoja de datos del panel](https://www.mouser.es/datasheet/3/1361/1/100064541.pdf).
 
 | Requisito del cuadro | Valor |
 |---|---|
 | Imagen | 800×480 a seis colores: negro, blanco, rojo, amarillo, verde y azul |
 | Refresco | 12–25 s, sin parcial; ≥180 s entre refrescos y uno completo cada 24 h como mínimo ([manual Waveshare](https://www.waveshare.com/wiki/7.3inch_e-Paper_HAT_%28E%29_Manual)) |
 | Memoria | Imagen a 4 bits = 192 KB; PSRAM del XIAO ESP32-S3 Plus (hay que activarla en el Arduino) |
+
+**Cuidados del panel (hoja de datos de Seeed):** refrescar al menos una vez al día, no dejar la misma imagen más de un día (retención de imagen), limpiar la pantalla si lleva mucho tiempo parada y evitar refrescos rápidos y prolongados, que acortan su vida.
 
 **Software de la placa (según la wiki):** Arduino con la biblioteca Seeed GFX2 y la placa "XIAO ESP32S3 Plus"; SenseCraft HMI, ESPHome, Home Assistant, PlatformIO y EEZ Studio. No hay ejemplo de 7,3" en la ruta que cita la wiki (sí de 7,5" monocromo). El firmware abierto `esp32-photoframe` soporta la EE04 ([software existente](software-existente.md)).
 
@@ -60,7 +62,7 @@ Fuentes: [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04) · [Openela
 El cuadro duerme y despierta cada X minutos: conecta al wifi, consulta al servidor, y solo si la imagen cambió refresca la pantalla; después vuelve a dormir. El servidor no puede empujar nada: espera a que el cuadro despierte.
 
 - Requisito: una carga a la semana (D35). Intervalo mínimo de 3 min (D34), que se mide y se adapta.
-- Autonomía: el firmware existente afirma ~10 µA durmiendo; la wiki de Waveshare dice ≤1 mA. Con ≥3 min entre consultas y refresco solo si cambia la imagen, una semana es viable incluso a 1 mA *(estimación, ver [requisitos](compra/01-requisitos.md))*. **Hay que medirlo** en la placa elegida.
+- Autonomía: el firmware existente afirma ~10 µA durmiendo; la wiki de Waveshare dice ≤1 mA. Con ≥3 min entre consultas y refresco solo si cambia la imagen, una semana es viable incluso a 1 mA. Con una batería de 1500 mAh son ≤214 mAh/día: dormir a 1 mA gasta 24 mAh y quedan ~190 mAh para despertares, a ~0,14 mAh por consulta y ~0,45 mAh si además refresca *(estimaciones mías, sin medir)*. **Hay que medirlo** en la placa elegida.
 - Siempre encendido gasta ~40–80 mA (según `esp32-photoframe`).
 - El intervalo (A6) y el mínimo de 180 s entre refrescos limitan cada cuánto se ve un cambio.
 
@@ -84,7 +86,7 @@ La pantalla del cuadro puede mostrar el nombre de red y un código (o QR). Se gu
 
 ## 5. Servidor (D14, D20–D22, A3)
 
-Programa en Node.js en el servidor de casa del usuario. Coste 0 €.
+Programa en Node.js en el servidor de casa del usuario.
 
 **Estructura:** un módulo escucha en un puerto de forma pasiva; cada conexión nueva se entrega a un módulo de sesión y el listener vuelve a escuchar (D21).
 
@@ -126,7 +128,7 @@ Opciones de partida (A7):
 - Partir de él y modificarlo.
 - Escribir uno propio mínimo sobre ESP-IDF.
 
-Datos de cada uno en [04-software-existente.md](software-existente.md). Verificar la licencia de cualquier código de ejemplo del fabricante antes de reutilizarlo.
+Datos de cada uno en [software-existente.md](software-existente.md). Verificar la licencia de cualquier código de ejemplo del fabricante antes de reutilizarlo.
 
 ---
 
@@ -150,11 +152,8 @@ Soporte impreso en 3D con ventana para el panel, alojamiento para la placa y la 
 | Retención de imagen si la misma imagen dura más de un día | Refrescar al menos una vez al día, aunque no cambie (datasheet de Seeed) |
 | Refresco lento y límite de ≥180 s entre refrescos | Intervalo ≥ 3 min; actualizar solo si cambió la imagen |
 | Falta de ejemplo de código para el 7,3" en la wiki | Partir de `esp32-photoframe`, que soporta la EE04, o de los ejemplos de Seeed GFX2 |
-| Batería con la polaridad invertida respecto a la placa (reportado por un comprador) | Comprobar la polaridad con la placa antes de conectar |
+| Batería con la polaridad invertida respecto a la placa (reportado por un usuario) | Comprobar la polaridad con la placa antes de conectar |
 | Servidor de casa inaccesible (CGNAT) | Túnel |
-| Cambian precios o stock | Dos fuentes de compra; confirmar antes de pedir |
-
----
 
 ---
 
@@ -162,18 +161,18 @@ Soporte impreso en 3D con ventana para el panel, alojamiento para la placa y la 
 
 | Pieza | Estado | Qué hace falta |
 |---|---|---|
-| Batería | No incluida (D39) | Cualquier LiPo de 1S (3,7 V) con protección y JST-PH 2,0 mm, de dron o similar; comprobar la polaridad con la serigrafía de la placa; se compra fuera de Mouser; se resuelve más adelante |
+| Batería | No incluida (D39) | Cualquier LiPo de 1S (3,7 V) con protección y JST-PH 2,0 mm, de dron o similar; comprobar la polaridad con la serigrafía de la placa; se resuelve más adelante |
 | Caja | No incluida | Diseño 3D propio (D12) |
 | Cable y cargador USB-C | Los tienes | Cable con datos |
 | Firmware | No escrito (D18) | Partir de `esp32-photoframe` o de Seeed GFX2 |
 | Wifi sin táctil | Abierto (A1) | Tres botones de usuario, portal cautivo, BLE |
-| Servidor y fuentes | Plan 4 en pausa | Se retoma después de la compra |
+| Servidor y fuentes | Plan 4 en pausa | Se retoma después |
 
 ---
 
 ## Fuentes (octubre de 2026)
 
-- [Guía de compra](compra/README.md) y sus registros.
+- [Wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04) y hojas de datos de Seeed de la placa y del panel (enlaces en §2).
 - [Espressif — Unified Provisioning](https://docs.espressif.com/projects/esp-idf/en/v5.2.1/esp32s3/api-reference/provisioning/provisioning.html)
 - [Waveshare — manual 7,3" HAT (E)](https://www.waveshare.com/wiki/7.3inch_e-Paper_HAT_%28E%29_Manual)
 

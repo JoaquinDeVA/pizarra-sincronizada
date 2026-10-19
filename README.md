@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img alt="Estado: diseño y compra" src="https://img.shields.io/badge/estado-dise%C3%B1o%20y%20compra-orange">
+  <img alt="Estado: diseño" src="https://img.shields.io/badge/estado-dise%C3%B1o-orange">
   <img alt="Licencia: MIT" src="https://img.shields.io/badge/licencia-MIT-blue">
   <img alt="Hardware: ESP32-S3" src="https://img.shields.io/badge/hardware-ESP32--S3-red">
 </p>
@@ -19,17 +19,16 @@ Un cuadro de 7,3" a color (e-ink Spectra 6, seis tintas) sin táctil, pensado pa
 
 ## Hardware
 
-Placa Seeed XIAO ePaper Display Board EE04 (ESP32-S3) y panel Seeed de 7,3" Spectra 6, 800×480; batería LiPo de una celda y caja impresa en 3D. Coste estimado de ~66–79 €.
+Placa Seeed XIAO ePaper Display Board EE04 (ESP32-S3) y panel Seeed de 7,3" Spectra 6, 800×480; batería LiPo de una celda y caja impresa en 3D.
 
 ## Estado
 
-Fase de diseño y compra. Todavía no hay código; el software irá después.
+Fase de diseño. Todavía no hay código; el software irá después.
 
 ## Documentación
 
 - [Decisiones de diseño](docs/decisiones-de-diseno.md): estrategia, qué queremos y por qué.
 - [Documentación técnica](docs/documentacion-tecnica.md): cómo se materializan esas decisiones.
-- [Guía de compra](docs/compra/README.md): solo hardware, con precios, vendedores y requisitos.
 - [Software existente](docs/software-existente.md): firmware abierto que se podría reutilizar.
 
 ## Licencia

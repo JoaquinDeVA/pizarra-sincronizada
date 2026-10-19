@@ -1,8 +1,8 @@
 # Decisiones de diseño — Cuadro e-ink
 
-Estrategia: **qué** queremos y **por qué**. Cómo se lleva a la realidad vive en [documentacion-tecnica.md](documentacion-tecnica.md) y la guía de compra en [compra/](compra/README.md). Se citan por código (D1, A1…).
+Estrategia: **qué** queremos y **por qué**. Cómo se lleva a la realidad vive en [documentacion-tecnica.md](documentacion-tecnica.md). Se citan por código (D1, A1…).
 
-Fecha: 2026-10-29
+Fecha: 2026-10-30
 
 Estados: **Decidida** (la tomó el usuario; absoluta salvo que se argumente un error) · **Abierta** (sin decidir; se listan opciones, sin recomendar).
 
@@ -21,7 +21,6 @@ Una pantalla e-ink a color sobre el escritorio que solo muestra lo que ocurre en
 | D3 | **El cuadro se mueve de sitio pero no es robusto:** uso en casa u oficina, sin resistencia al agua ni entornos agresivos | Uso doméstico |
 | D4 | **Conexión wifi modificable:** el cuadro se conecta al wifi del sitio donde esté, sin precargar ninguna red | No se sabe dónde estará en el futuro |
 | D5 | **Con batería:** el cuadro duerme y despierta cada X minutos para pedir la imagen al servidor; el servidor no empuja | Autonomía de semanas o meses |
-| D6 | **Presupuesto: hasta ~100 €** por la pantalla y el hardware necesario | El e-ink de color cuesta más que el objetivo inicial |
 | D7 | **Plataforma ESP32.** Se compra la pantalla más el hardware necesario para que funcione, sea un kit montado o piezas sueltas, **sin que sea un producto terminado cerrado:** tiene que dar acceso a programadores terceros | Se quiere programarlo |
 | D8 | **Sin software de pago ni que pueda pasar a serlo.** El firmware lo escribimos nosotros, sencillo, pudiendo partir de código ya existente | Evitar licencias o cuotas futuras |
 | D9 | **Proyecto compartible:** repositorio en GitHub, licencia MIT | El usuario quiere compartirlo |
@@ -41,7 +40,7 @@ Una pantalla e-ink a color sobre el escritorio que solo muestra lo que ocurre en
 | D35 | **Autonomía: una carga a la semana basta;** más es mejor | Es el uso previsto |
 | D36 | **Se acepta el color de seis tintas** (negro, blanco, rojo, amarillo, verde y azul), con imágenes tramadas | Es lo que ofrece el e-ink de color |
 | D37 | **Criterio principal: la mejor pantalla posible** | El software puede adaptarse después |
-| D38 | **Hardware: placa Seeed XIAO ePaper Display Board EE04** (SKU 100075670, XIAO ESP32-S3 Plus) **más panel Seeed de 7,3" Spectra 6, 800×480** (SKU 100064541), comprados por separado o como el kit DIY, por precio. Se completa con una batería y una caja | Es la opción que cumple color, 7,3", ESP32, apertura de desarrollo y presupuesto (D6) |
+| D38 | **Hardware: placa Seeed XIAO ePaper Display Board EE04** (SKU 100075670, XIAO ESP32-S3 Plus) **más panel Seeed de 7,3" Spectra 6, 800×480** (SKU 100064541). Se completa con una batería y una caja | Es la opción que cumple color, 7,3", ESP32 y apertura de desarrollo |
 | D39 | **Batería: cualquier LiPo de una celda (3,7 V) con protección y conector JST-PH 2,0 mm,** de dron o similar; se resuelve más adelante. Las de dron suelen ser de varias celdas (7,4 V o más) y con conector XT60: no sirven sin ser de 1S y sin cambiar el conector | Cualquiera vale si cumple 3,7 V y el conector |
 
 ## 3. Fuera de alcance (por ahora)
@@ -56,11 +55,10 @@ Vídeo o voz, cuentas de usuario, historial de dibujos, imágenes en tiempo real
 
 ## 5. Decisiones abiertas
 
-Cada una lista opciones, sin recomendar una; los datos están en la documentación técnica y en la guía de compra.
+Cada una lista opciones, sin recomendar una; los datos están en la documentación técnica.
 
 | Cód. | Pregunta | Opciones |
 |---|---|---|
 | A1 | **Cómo se da el wifi al cuadro sin táctil** (D4, D30) | (a) Portal cautivo: el cuadro crea su red y el menú se abre en el móvil; (b) Bluetooth con cifrado; (c) fichero `wifi.txt` en la tarjeta SD; (d) botones de la placa |
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
-| A5 | **Dónde comprar la placa y el panel de D38** | Mouser (sin stock; plazo por presupuesto), Openelab (UE, preventa), o el kit DIY de Openelab |
 | A7 | **Firmware** (D8) | (a) Usar tal cual el firmware abierto existente (`esp32-photoframe`, MIT); (b) partir de él y modificarlo; (c) escribir uno propio mínimo |

@@ -1,6 +1,6 @@
 # Software existente para el cuadro (registro)
 
-Consultado: 2026-10-24. Registro de software existente que se podría reutilizar para el firmware (D8). No forma parte de la guía de compra; hardware en [compra/](compra/README.md).
+Consultado: 2026-10-24. Registro de software existente que se podría reutilizar para el firmware (D8).
 
 ## esp32-photoframe
 
