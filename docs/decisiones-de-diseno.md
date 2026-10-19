@@ -2,7 +2,7 @@
 
 Estrategia: **qué** queremos y **por qué**. Cómo se lleva a la realidad vive en [documentacion-tecnica.md](documentacion-tecnica.md) y la guía de compra en [compra/](compra/README.md). Se citan por código (D1, A1…).
 
-Fecha: 2026-10-24
+Fecha: 2026-10-25
 
 Estados: **Decidida** (la tomó el usuario; absoluta salvo que se argumente un error) · **Abierta** (sin decidir; se listan opciones, sin recomendar).
 
@@ -29,8 +29,7 @@ Una pantalla e-ink a color sobre el escritorio que solo muestra lo que ocurre en
 | D13 | **Compra desde dos fuentes:** AliExpress/eBay (barato, lento) y tiendas UE (rápido, más caro) | Elegir según precio y plazo |
 | D14 | **Servidor en el servidor de casa del usuario,** que recibe el contenido y lo entrega al cuadro | Evita servidor de pago |
 | D16 | **El repo tiene partes en directorios distintos:** `server/`, `firmware/` y, para el primer cliente, `web/` (app de dibujo para el móvil). `server/` y `firmware/` llevan su `.env` fuera del repo | Son programas distintos |
-| D18 | **Se empieza por el software, sin hardware** | Medir antes de comprar |
-| D19 | **El cuadro se compra cuando el software esté medido** | Evita comprar con datos a medias |
+| D18 | **Primero la pantalla:** el software se desarrolla después y no hace falta medir capacidades antes de comprar | Ahora el foco es el hardware |
 | D20 | **Servidor en Node.js** | Un archivo pequeño y librerías maduras |
 | D21 | **El servidor escucha de forma pasiva en un puerto;** al llegar una conexión la delega a otro módulo y vuelve a escuchar | Separa la recepción de la gestión |
 | D22 | **Solo entra quien tiene la contraseña:** el servidor guarda su hash en su `.env`; el cuadro y los clientes llevan el mismo secreto. Los `.env` quedan sin subir al repo | Solo nuestro software opera ahí |
@@ -43,6 +42,7 @@ Una pantalla e-ink a color sobre el escritorio que solo muestra lo que ocurre en
 | D34 | **El intervalo de consulta no baja de 3 minutos;** se mide y se adapta | Menos sería innecesario |
 | D35 | **Autonomía: una carga a la semana basta;** más es mejor | Es el uso previsto |
 | D36 | **Se acepta el color de seis tintas** (negro, blanco, rojo, amarillo, verde y azul), con imágenes tramadas | Es lo que ofrece el e-ink de color |
+| D37 | **Criterio principal: la mejor pantalla posible** | El software puede adaptarse después |
 
 ## 3. Fuera de alcance (por ahora)
 
@@ -64,7 +64,6 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 | A2 | **Cliente de dibujo en el móvil** | (a) Web (PWA) servida por el servidor; (b) app nativa |
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
 | A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, paleta de colores, texto |
-| A5 | **Modelo de hardware** (D6, D7, D32) | Kit montado con marco (Waveshare PhotoPainter); kit de desarrollo sin caja (Seeed XIAO EE04); producto con caja y firmware abierto (Seeed reTerminal E1002); otros. Detalle en [compra/](compra/README.md) |
+| A5 | **Modelo de hardware** (D6, D7, D32, D37) | Seeed reTerminal E1002 (7,3"); Seeed reTerminal E1004 (13,3"); Waveshare PhotoPainter (7,3", con marco); Seeed XIAO EE04 (7,3", sin caja ni batería). Detalle en [compra/](compra/README.md). El presupuesto de D6 (~100 €) puede cambiar con D37 |
 | A7 | **Firmware** (D8) | (a) Usar tal cual el firmware abierto existente (`esp32-photoframe`, MIT); (b) partir de él y modificarlo; (c) escribir uno propio mínimo |
 | A8 | **Paleta de la app de dibujo con 6 tintas** (D26, D36) | Paleta de la app limitada a negro, blanco, rojo, amarillo, verde y azul; o libre, con el servidor reduciendo cada color al más cercano |
-| A9 | **Criterio principal para elegir** | Calidad de imagen, simplicidad del firmware, coste, autonomía, caja incluida |

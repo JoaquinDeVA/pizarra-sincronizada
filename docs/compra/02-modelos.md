@@ -11,8 +11,8 @@ Criterios: e-ink a color, ≥5", ESP32, batería, acceso de desarrollo (D5, D7, 
 | [A. Waveshare ESP32-S3-PhotoPainter](#a-waveshare-esp32-s3-photopainter-73) | 7,3" 6 colores 800×480 | Opcional (1500 mAh) | Marco de madera con soporte | Abierta: ESP-IDF, GitHub, esquema | US$82,99–83,99 |
 | [B. Seeed XIAO ePaper 7,3" DIY Kit (EE04)](#b-seeed-xiao-epaper-73-diy-kit-ee04) | 7,3" 6 colores 800×480 | Conector con cargador, **sin batería incluida** | **Sin caja** | Abierta: kit de desarrollo; ESPHome, soporte de terceros | 67,15 € |
 | [C. Seeed reTerminal E1002](#c-seeed-reterminal-e1002) | 7,3" 6 colores 800×480 | 2000 mAh incluida | Caja con soporte | Abierta: Arduino, ESP-IDF, PlatformIO, ESPHome | US$99 |
-| [D. Seeed reTerminal E1004](#d-otras-fuera-de-presupuesto-o-sin-evaluar) | 13,3" 6 colores 1200×1600 | 5000 mAh | Caja | Igual que la C | US$279,90 |
-| [E. Soldered Inkplate 6COLOR](#d-otras-fuera-de-presupuesto-o-sin-evaluar) | 5,8" 7 colores 600×448 | Sí | — | Arduino | 209,95 € |
+| [D. Seeed reTerminal E1004](#d-seeed-reterminal-e1004-133) | 13,3" 6 colores 1200×1600 | 5000 mAh | Caja y soporte (376×311×40 mm) | Igual que la C | 304,45 € (Openelab, preventa) · US$279,90 |
+| [E. Soldered Inkplate 6COLOR](#e-otras-fuera-de-presupuesto-o-sin-evaluar) | 5,8" 7 colores 600×448 | Sí | — | Arduino | 209,95 € |
 
 ## A. Waveshare ESP32-S3-PhotoPainter 7,3"
 
@@ -69,14 +69,40 @@ Criterios: e-ink a color, ≥5", ESP32, batería, acceso de desarrollo (D5, D7, 
 
 **Apertura (visto en la wiki):** firmware de serie SenseCraft Seeedash; soporta ESPHome/Home Assistant, Arduino, PlatformIO, ESP-IDF y TRMNL. Soportado por esp32-photoframe.
 
-## D. Otras, fuera de presupuesto o sin evaluar
+## D. Seeed reTerminal E1004 13,3"
+
+| Dato | Valor |
+|---|---|
+| Pantalla | 13,3" Spectra 6, 1200×1600 (≈203×270 mm, vertical; calculado), sin parcial, ~20 s |
+| Batería | 5000 mAh, ~6 meses con un refresco cada 6 h según la wiki; otro texto de Seeed habla de un año a un refresco al día |
+| Tamaño del producto | 376 × 311 × 40 mm |
+| Incluye | Pantalla, cable USB-C, soporte con tornillo, destornillador y 2 ganchos para colgar |
+| Precio | 304,45 € con IVA en [Openelab](https://openelab.io/products/seeed-studio-reterminal-e1004-epaper) (preventa, despacho 10–20 días, reposición estimada 30-nov-2026, DDP en la UE, envío gratis por encima de 100 €); 410,66 € con IVA en RS (sin stock, envío en diciembre de 2026); US$279,90 de MSRP |
+| Resto | Igual que la E1002 (ESP32-S3, 8 MB PSRAM, 32 MB de flash, microSD, 3 botones; abierta con Arduino, ESP-IDF, PlatformIO y ESPHome; ESPHome 2026.7.0 o superior para esta serie) |
+| Fuentes | [Wiki](https://wiki.seeedstudio.com/reterminal_e10xx_main_page/) · [Openelab](https://openelab.io/products/seeed-studio-reterminal-e1004-epaper) · [Hackster](https://www.hackster.io/news/seeed-packs-its-13-3-color-epaper-display-an-espressif-esp32-and-battery-into-the-reterminal-e1004-dcc5ed526bfb) |
+
+No encontré una reseña independiente de su calidad de imagen; lo que hay es lenguaje de Seeed.
+
+## E. Otras, fuera de presupuesto o sin evaluar
 
 | Producto | Datos | Motivo |
 |---|---|---|
-| Seeed reTerminal E1004 | 13,3" 6 colores 1200×1600, 5000 mAh, ~6 meses, US$279,90 | Presupuesto |
+| Waveshare 13,3" E6 con placa ESP32-S3 | 13,3" Spectra 6; US$253,87–259,99 | Sin evaluar a fondo |
+| M5Stack PaperColor | 4" Spectra 6 con ESP32 | Menos de 5" |
 | Soldered Inkplate 6COLOR | 5,8" 7 colores 600×448, ~12 s, sin parcial, ESP32 WROVER, 209,95 €, plazo ~6 semanas ([Soldered](https://soldered.com/products/inkplate-6color)) | Presupuesto |
 | Waveshare 5,65" ACeP (en bruto) | £69,10 en The Pi Hut; necesita una placa ESP32 aparte (~US$14–15), compatibilidad sin confirmar | Dos piezas |
 | Waveshare 7,3" HAT (E) | Versión para Raspberry Pi, AU$139,95 | No es ESP32 |
 | Good Display GDEP073E01 | Panel de 7,3" Spectra 6; precio y placa no localizados | Sin datos |
 | Seeed reTerminal E1001/E1003 | Monocromo | No es color |
 | Tricolor negro/blanco/rojo | Waveshare 7,5" (B), 46,95–50,57 € más placa ESP32 | Se asume que "a color" excluye los tricolor |
+
+## Otras tecnologías de color (por qué Spectra 6)
+
+| Tecnología | Lo que dicen las fuentes | ¿Placa ESP32 lista? |
+|---|---|---|
+| **Spectra 6** | Color más cercano al papel; refresco de decenas de segundos (~12 s); recomendable para pantallas estáticas ([liseuses.net](https://www.liseuses.net/e-ink-spectra-6/), [The eBook Reader](https://blog.the-ebook-reader.com/?p=25028)) | Sí (los kits de esta guía) |
+| Gallery 3 | Color mejor que Kaleido 3, pero blancos más oscuros y texto más irregular; refresco <1 s | No encontré ninguna |
+| Kaleido 3 | Filtro de color sobre B/N, 150 ppi de color; el color más flojo y más rápido; pensado para lectores | No encontré ninguna ([CNX Software](https://www.cnx-software.com/news/e-ink/page/5/?amp=1)) |
+
+Conclusión: para una pantalla estática de la mejor calidad con placa ESP32 disponible, la opción es Spectra 6.
+

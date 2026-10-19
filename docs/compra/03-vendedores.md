@@ -1,6 +1,6 @@
 # Vendedores, impuestos y coste total (registro)
 
-Consultado: 2026-10-24. Resumen en [README.md](README.md). Modelos en [02-modelos.md](02-modelos.md).
+Consultado: 2026-10-25. Resumen en [README.md](README.md). Modelos en [02-modelos.md](02-modelos.md).
 
 Entrega en España peninsular. "Visto" = ficha abierta; "sin verificar" = fragmento de búsqueda. *(estimación)* = mía. Conversión: 1 US$ ≈ 0,87–0,92 € *(estimación, sin cotización verificada)*.
 
@@ -12,6 +12,11 @@ Entrega en España peninsular. "Visto" = ficha abierta; "sin verificar" = fragme
 | A. PhotoPainter | [Waveshare](https://www.waveshare.com/esp32-s3-photopainter.htm) | China | US$82,99–83,99 | No visible | Envío, IVA y aduana solo en el carrito | Visto |
 | A. PhotoPainter | [Little Bird (AU)](https://littlebirdelectronics.com.au/products/esp32-s3-photopainter-7-3-e-paper-display-wood-frame-800x480-optional-battery-ws-32408) | Australia | No consultado | — | No es UE | Sin verificar |
 | C. E1002 | Seeed Studio (tienda oficial) | No consta | US$99 (MSRP según la wiki) | No consultado | No consultado | Wiki |
+| C. E1002 | [RobotShop (US)](https://www.robotshop.com/products/seeedstudio-reterminal-e1002-full-color-epaper-display) | EE. UU. | US$127,25 con aranceles de EE. UU. | Bajo pedido | Envío al pagar | Búsqueda |
+| C. E1002 | [Pakronics (AU)](https://www.pakronics.com.au/products/reterminal-e1002-full-color-epaper-display-ss100017057) | Australia | A$193,60 con GST | 59 unidades, 7–10 días | No es UE | Búsqueda |
+| C. E1002 | AliExpress (oferta de agosto de 2026, [Slickdeals](https://slickdeals.net/f/19897203-seeed-studio-reterminal-e1002-7-3-full-color-e-ink-display-91-free-shipping-91-27)) | Almacén de EE. UU. | ~US$91 con cupón | Promoción; sin confirmar que siga | — | Búsqueda |
+| D. E1004 | [Openelab](https://openelab.io/products/seeed-studio-reterminal-e1004-epaper) | UE (Múnich) | 304,45 € con IVA | **Preventa**; reposición est. 30-nov-2026; despacho 10–20 días | DDP en la UE; FedEx 7,95 € por debajo de 100 €, gratis por encima | Visto |
+| D. E1004 | [RS Components DE](https://de.rs-online.com/web/p/hmi-s/0830748) | Alemania | 410,66 € con IVA | Sin stock; envío en diciembre de 2026 | — | Búsqueda |
 | E1001 (monocromo, referencia) | Switch Science | Japón | ¥14.425 | En stock | — | Búsqueda |
 
 No pude consultar Amazon.es ni eBay (mis herramientas reciben error 403 y 503). Búsquedas a mano, sin verificar que coincidan: [eBay.es: PhotoPainter](https://www.ebay.es/sch/i.html?_nkw=ESP32-S3-PhotoPainter) · [Amazon.es: e-paper 7.3 Spectra 6 ESP32](https://www.amazon.es/s?k=ESP32+e-paper+7.3+Spectra+6).
@@ -24,7 +29,9 @@ Fórmula: `precio + envío + IVA (21 %, si no incluido) + 3 € (derecho aduaner
 |---|---|---|
 | **B. EE04 en Openelab** | 67,15 € + 7,95 € de envío = 75,10 €; + batería LiPo con conector JST 2,0 mm (~5–10 € *(estimación)*) + 1–3 € de filamento para la caja | **~82–88 €** |
 | A. PhotoPainter en Waveshare | US$83 ≈ 72–77 € ; ×1,21 de IVA = 87–94 €; + 3 €; + envío 10–25 € *(estimación)* | **~100–120 €** (la variante con batería puede costar más; sin verificar) |
-| C. E1002 en Seeed | US$99 ≈ 86–91 €; ×1,21 = 104–110 €; + 3 €; + envío | **~115–140 €** |
+| C. E1002 en Seeed (MSRP US$99) | US$99 ≈ 86–91 €; ×1,21 = 104–110 €; + 3 €; + envío | **~115–140 €** |
+| C. E1002 en RobotShop | US$127,25 ya incluye aranceles de EE. UU., no IVA ni derecho de la UE | **~150 € o más** |
+| D. E1004 en Openelab | 304,45 € con IVA, envío gratis por encima de 100 €, sin aduana | **~304 €** |
 
 **Lectura:** la EE04 es la única que entra claramente en ~100 € (D6), pero es preventa, no trae batería ni caja, y no tiene ejemplo oficial para el panel de 7,3". La PhotoPainter roza el límite y trae marco y ejemplos; la E1002 lo supera.
 
