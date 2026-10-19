@@ -11,14 +11,23 @@ Fecha: 2026-10-29
 ## 1. Visión general
 
 ```
- Fuentes de contenido            SERVIDOR (casa del usuario)          Cuadro e-ink
- ┌───────────────────┐  HTTPS   ┌────────────────────────┐  HTTPS   ┌──────────────┐
- │ App de dibujo     │─────────►│ recibe contenido       │◄─────────│ despierta    │
- │ (móvil, web)      │          │ compone la imagen      │  GET     │ cada X min,  │
- │ Programas         │          │ (800×480, 6 colores)   │─────────►│ descarga,    │
- │ (tiempo, etc.)    │          │ la sirve al cuadro     │  imagen  │ pinta y duerme│
- └───────────────────┘          └────────────────────────┘          └──────────────┘
+FUENTES                                SERVIDOR                               CUADRO E-INK
+quienes hacen cosas                    casa del usuario                       escritorio, con batería
+
+┌───────────────────────┐              ┌───────────────────────┐              ┌───────────────────────┐
+│ Imágenes              │              │ Recibe el contenido   │              │ Duerme y despierta    │
+│ Widgets (el tiempo)   │──── POST ───►│ Lo reduce a 800×480   │◄──── GET ────│ cada X min (≥ 3)      │
+│ Programas             │              │ y a seis colores      │              │ Pregunta si hay       │
+│ App de dibujo         │              │ Guarda la última      │─── imagen ──►│ imagen nueva; si la   │
+│ (opcional)            │              │ imagen en memoria     │              │ hay, la pinta         │
+└───────────────────────┘              └───────────────────────┘              └───────────────────────┘
 ```
+
+1. Las fuentes envían el contenido al servidor con el secreto (`POST`).
+2. El servidor lo reduce a 800×480 y seis colores y se queda con la última imagen.
+3. El cuadro despierta, pregunta al servidor con la versión que ya tiene (`GET`) y solo repinta si hay una imagen nueva. Después duerme.
+
+El servidor nunca empuja al cuadro: espera a que despierte (D5, D33).
 
 **Repo (D16):** `server/` (Node.js) y `firmware/` (cuadro), cada uno con su `.env` fuera del repo.
 
