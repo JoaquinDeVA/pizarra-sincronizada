@@ -16,7 +16,7 @@ El cuadro ya no necesita táctil ni se compran dos (D28, D30): una persona dibuj
 
 - **Vigente:** requisitos de memoria, consumo, impuestos y envío, tecnologías de pantalla (e-paper pasa a ser viable al solo mirar).
 - **Desfasado:** el precio de ~75–120 € (era para dos) y la opción A/B (placas táctiles). Una placa de 7" sin táctil cuesta como mucho unos 5 US$ menos *(estimación)*.
-- **Investigado:** e-paper de 5" o más (7 opciones) en [03](03-tecnologias-de-pantalla.md). **Pendiente:** LCD sin táctil para ESP32 y precio de una unidad entregada en España.
+- **Investigado:** e-paper de 5" o más (7 opciones, más 5 de color o tricolor con D31) en [03](03-tecnologias-de-pantalla.md). **Pendiente:** LCD sin táctil para ESP32 y precio de una unidad entregada en España.
 
 ## La realidad
 

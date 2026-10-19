@@ -132,7 +132,7 @@ Recibe y pinta; no lee táctil ni tiene menús. Pasos: conectar al wifi guardado
 | Wifi | Según A1 | — |
 | TLS | mbedTLS incluido | Apache 2.0 |
 
-- Si el cuadro es e-paper, el parcial tarda 0,4–1,5 s y deja imagen residual; una guía recomienda un refresco completo cada 5–10 parciales *(fuente secundaria, ver [tecnologías](compra/03-tecnologias-de-pantalla.md))*. Para solo mirar es aceptable; hay que agrupar trazos en cada refresco.
+- Si el cuadro es e-paper (D31): B/N con parcial de 0,4–1,5 s y refresco completo periódico para la imagen residual; de color (Spectra 6) sin parcial y 12–25 s por refresco, con un mínimo recomendado de ≥180 s entre refrescos *(ver [tecnologías](compra/03-tecnologias-de-pantalla.md))*. Cuándo y cómo se actualiza queda en A8; la paleta con color, en A9.
 - Reconexión automática con espera creciente.
 - Verificar la licencia de cualquier driver o ejemplo del fabricante antes de reutilizarlo.
 
@@ -149,7 +149,7 @@ Soporte para escritorio con hueco para el USB-C. Diseño paramétrico (OpenSCAD 
 | Riesgo | Mitigación |
 |---|---|
 | Dibujo en el móvil con retraso o a saltos | Medir antes de comprar; pintado local, suavizado |
-| E-paper con imagen residual o lag | Refresco completo periódico; solo se mira, no se dibuja |
+| E-paper con imagen residual o refresco lento | Refresco completo periódico; solo se mira (D31); cadencia por A8 |
 | Servidor de casa inaccesible (CGNAT) | Túnel |
 | Revisión de placa distinta a la esperada | Anotar revisión al comprar |
 | Cambian precios o stock | Dos fuentes de compra; confirmar antes de pedir |

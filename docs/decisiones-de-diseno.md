@@ -28,7 +28,7 @@ Una persona dibuja desde su móvil y la otra lo ve al instante en un cuadro dedi
 | D12 | **Caja o soporte impreso en 3D, dentro del alcance** (el usuario tiene impresora) | Es el objeto de escritorio |
 | D13 | **Compra desde dos fuentes:** AliExpress/eBay (barato, lento) y tiendas UE (rápido, más caro) | Elegir según precio y plazo |
 | D14 | **Servidor intermedio entre el móvil y el cuadro, en el servidor de casa del usuario** | Evita servidor de pago y conexión directa |
-| D15 | **Criterio principal: la calidad de la experiencia de dibujo** en el móvil y la fluidez con que se ve en el cuadro | Es la única función del proyecto |
+| D15 | **Criterio principal: la calidad de la experiencia de dibujo en el móvil** | Es la única función del proyecto |
 | D16 | **El repo tiene tres partes en directorios distintos:** `server/`, `web/` (cliente de dibujo para el móvil) y `firmware/` (cuadro). `server/` y `firmware/` llevan su `.env` fuera del repo | Son programas distintos |
 | D18 | **Se empieza por el software, sin hardware** | Medir antes de comprar |
 | D19 | **El cuadro se compra cuando el software esté medido** | Evita comprar con datos a medias |
@@ -41,6 +41,7 @@ Una persona dibuja desde su móvil y la otra lo ve al instante en un cuadro dedi
 | D28 | **Roles fijos:** una persona solo dibuja y la otra solo mira. Se compra **un solo cuadro** | Es el uso previsto |
 | D29 | **El cuadro es un objeto nuevo y dedicado,** no un dispositivo ya existente (tablet, tele, Raspberry) | Separación mental entre el móvil y estas notas |
 | D30 | **El cuadro no tiene táctil ni menús:** solo muestra. Sus ajustes (wifi, brillo, apagado) se hacen desde el móvil | El dibujo ocurre en el móvil |
+| D31 | **El refresco lento del cuadro es aceptable:** no hace falta tiempo real, porque son dibujos y se dibuja en el móvil. Se vuelven a valorar los e-paper lentos, incluidos los de color | El cuadro no es donde se dibuja |
 
 ## 3. Fuera de alcance
 
@@ -62,6 +63,8 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 | A2 | **Cliente de dibujo en el móvil** | (a) Web (PWA) servida por el servidor, sin tienda de apps; (b) app nativa |
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
 | A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, paleta de colores, texto |
-| A5 | **Tecnología y tamaño del cuadro** (D7, D15, D30) | LCD sin táctil (brillante, refresco rápido); e-paper (sin luz, casi sin consumo, refresco de 0,4–1,5 s: aceptable al solo mirar); tamaño por decidir. Detalle en [compra/](compra/README.md) |
+| A5 | **Tecnología y tamaño del cuadro** (D7, D30, D31) | LCD sin táctil (brillante, refresco rápido); e-paper B/N (parcial 0,4–1,5 s); e-paper de color de 6 colores (refresco de 12–25 s, sin parcial); tamaño por decidir. Detalle en [compra/](compra/README.md) |
+| A8 | **Cuándo y cómo se actualiza el cuadro** (D31) | (a) En cuanto llegan trazos, con un mínimo entre refrescos; (b) cuando quien dibuja termina o pulsa enviar; (c) cada cierto tiempo fijo. Y quién compone la imagen: el servidor (envía un bitmap ya reducido a los colores del panel) o el cuadro (recibe trazos y los pinta) |
+| A9 | **Colores con un e-paper de color** (D26) | Paleta del cliente limitada a los colores del panel (Spectra 6: negro, blanco, rojo, amarillo, verde y azul); o libre, con el servidor reduciendo cada color al más cercano |
 | A6 | **Fondo:** ¿lo elige quien dibuja y se ve igual en el cuadro, o es un ajuste del cuadro desde el móvil? (D26) | Compartido; propio del cuadro |
 | A7 | **Forma del lienzo** | Misma proporción que la pantalla del cuadro, con bandas si el móvil difiere; o lienzo mayor que se ve entero escalado |
