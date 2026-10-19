@@ -21,6 +21,14 @@ Entrega en España peninsular. "Visto" = ficha abierta; "sin verificar" = fragme
 
 No pude consultar Amazon.es ni eBay (mis herramientas reciben error 403 y 503). Búsquedas a mano, sin verificar que coincidan: [eBay.es: PhotoPainter](https://www.ebay.es/sch/i.html?_nkw=ESP32-S3-PhotoPainter) · [Amazon.es: e-paper 7.3 Spectra 6 ESP32](https://www.amazon.es/s?k=ESP32+e-paper+7.3+Spectra+6).
 
+### Otras opciones de color (consultado 2026-10-26)
+
+| Opción | Vendedor | Precio | Notas |
+|---|---|---|---|
+| Seeed XIAO ePaper DIY Kit EE02, 13,3" | [Openelab](https://openelab.io/products/seeed-studio-xiao-epaper-diy) | 219,95 € con IVA (regular 236,50 €) | Otra captura de la tienda global: US$259,00, preventa, agotado |
+| Waveshare 13,3" E6 con placa ESP32-S3 | Waveshare | US$253,87–259,99 | Sin consultar envío ni impuestos |
+| M5Stack PaperColor 4" | [The Pi Hut](https://thepihut.com/products/m5stack-paper-colour) | £81,60 | Solo se envía dentro del Reino Unido |
+
 ### Opciones de 5–6" (consultado 2026-10-25)
 
 | Opción | Vendedor | Precio | Notas |
