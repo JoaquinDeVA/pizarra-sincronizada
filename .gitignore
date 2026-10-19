@@ -1,0 +1,24 @@
+# Plan e instrucciones personales de Claude Code
+PLAN.md
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Secretos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Registros y temporales
+*.log
+*.tmp
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
