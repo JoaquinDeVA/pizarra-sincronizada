@@ -44,7 +44,8 @@ El servidor puede entregar la imagen ya reducida a los colores del panel para qu
 | Seeed reTerminal E1002 | ~3 meses con batería de 2000 mAh a un refresco cada 6 h | [Seeed](https://wiki.seeedstudio.com/reterminal_e10xx_main_page/) |
 
 - Los 10 µA y el ≤1 mA se contradicen por 100×: dormir a 1 mA gasta una batería de 1500 mAh en unos 62 días sin contar los despertares. **Hay que medir el consumo real de la placa elegida.**
-- Un despertar (wifi + descarga + refresco) cuesta *(estimación)* del orden de 0,3–0,6 mAh; a una consulta por hora son ~7–15 mAh/día.
+- **Requisito (D35):** una carga a la semana. Con una batería de 1500 mAh son ≤214 mAh/día. Dormir a 1 mA gasta 24 mAh/día; quedan ~190 mAh/día para despertares.
+- Coste por despertar *(estimación mía, sin medir)*: ~0,14 mAh si solo consulta (wifi + petición) y ~0,45 mAh si además refresca la pantalla. Con ~190 mAh/día caben ~1.350 consultas sin refresco (una cada ~64 s) o ~420 con refresco (una cada ~3,4 min). Con el mínimo de D34 (3 min) y refresco solo si cambia la imagen, **una semana es viable incluso con el sueño de 1 mA**.
 
 ## Wifi sin táctil: lo que ofrece cada vía
 

@@ -41,7 +41,8 @@ Pantalla e-ink a color de 7,3" (Spectra 6, 800×480), ESP32-S3, con batería, si
 
 El cuadro duerme y despierta cada X minutos: conecta al wifi, consulta al servidor, y solo si la imagen cambió refresca la pantalla; después vuelve a dormir. El servidor no puede empujar nada: espera a que el cuadro despierte.
 
-- Autonomía: el firmware existente afirma ~10 µA durmiendo; la wiki de Waveshare dice ≤1 mA. **Hay que medirlo** en la placa elegida ([requisitos](compra/01-requisitos.md)).
+- Requisito: una carga a la semana (D35). Intervalo mínimo de 3 min (D34), que se mide y se adapta.
+- Autonomía: el firmware existente afirma ~10 µA durmiendo; la wiki de Waveshare dice ≤1 mA. Con ≥3 min entre consultas y refresco solo si cambia la imagen, una semana es viable incluso a 1 mA *(estimación, ver [requisitos](compra/01-requisitos.md))*. **Hay que medirlo** en la placa elegida.
 - Siempre encendido gasta ~40–80 mA (según `esp32-photoframe`).
 - El intervalo (A6) y el mínimo de 180 s entre refrescos limitan cada cuánto se ve un cambio.
 
@@ -90,7 +91,7 @@ El ESP32 necesita un certificado válido en el servidor para validar TLS (Let's 
 
 ## 6. Fuentes de contenido
 
-**App de dibujo (`web/`) (D26, A2, A4, A8):** web en el móvil que dibuja en un lienzo con eventos de puntero, con menú desplegable de colores y fondo blanco, cuadrícula o negro. Envía los trazos al servidor, que los rasteriza. Con seis tintas, la paleta se limita a ellas o el servidor reduce cada color al más cercano.
+**App de dibujo (`web/`) (D26, A2, A4, A8):** web en el móvil que dibuja en un lienzo con eventos de puntero, con menú desplegable de colores y fondo blanco, cuadrícula o negro. Como el cuadro tarda minutos en actualizarse (D31, D34), la app puede **enviar la imagen ya rasterizada** (PNG) cuando se termina, en lugar de trazos en directo; el servidor la reduce a los seis colores. Con seis tintas, la paleta se limita a ellas o el servidor reduce cada color al más cercano.
 
 **Programas / widgets:** scripts en el servidor (por ejemplo el tiempo) que producen una imagen o un texto y lo entregan al servidor de contenido. El formato exacto del contenido está por definir.
 

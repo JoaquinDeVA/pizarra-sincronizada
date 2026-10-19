@@ -17,7 +17,7 @@ Una pantalla e-ink a color sobre el escritorio que solo muestra lo que ocurre en
 | Cód. | Decisión | Por qué |
 |---|---|---|
 | D1 | **Hay una sola pantalla,** que solo representa lo que ocurre en otro lado. El otro extremo puede ser una app para dibujar en el móvil o programas que muestran cosas | El cuadro es un visor |
-| D2 | **El cuadro es para una persona poco técnica:** se enciende y funciona; lo único que se configura es el wifi | El usuario final no es técnico |
+| D2 | **Quien tiene el cuadro es poco técnico** (puede tener ayuda puntual): se enciende y funciona; lo único que se configura es el wifi. **Quien está al otro extremo es muy técnico** (informático, desarrolla con Claude) y hace las cosas desde el servidor | La complejidad vive en el servidor, no en el cuadro |
 | D3 | **El cuadro se mueve de sitio pero no es robusto:** uso en casa u oficina, sin resistencia al agua ni entornos agresivos | Uso doméstico |
 | D4 | **Conexión wifi modificable:** el cuadro se conecta al wifi del sitio donde esté, sin precargar ninguna red | No se sabe dónde estará en el futuro |
 | D5 | **Con batería:** el cuadro duerme y despierta cada X minutos para pedir la imagen al servidor; el servidor no empuja | Autonomía de semanas o meses |
@@ -40,6 +40,9 @@ Una pantalla e-ink a color sobre el escritorio que solo muestra lo que ocurre en
 | D31 | **El refresco lento del cuadro es aceptable:** no hace falta tiempo real | El cuadro no es donde se dibuja |
 | D32 | **La pantalla es e-ink y a color** (brillo sano, batería, calidad de imagen) | Preferencia del usuario |
 | D33 | **El cuadro consulta al servidor cada X tiempo,** o se registra en el servidor y se conecta después; el servidor manda actualizaciones | Encaja con dormir entre consultas |
+| D34 | **El intervalo de consulta no baja de 3 minutos;** se mide y se adapta | Menos sería innecesario |
+| D35 | **Autonomía: una carga a la semana basta;** más es mejor | Es el uso previsto |
+| D36 | **Se acepta el color de seis tintas** (negro, blanco, rojo, amarillo, verde y azul), con imágenes tramadas | Es lo que ofrece el e-ink de color |
 
 ## 3. Fuera de alcance (por ahora)
 
@@ -62,7 +65,6 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
 | A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, paleta de colores, texto |
 | A5 | **Modelo de hardware** (D6, D7, D32) | Kit montado con marco (Waveshare PhotoPainter); kit de desarrollo sin caja (Seeed XIAO EE04); producto con caja y firmware abierto (Seeed reTerminal E1002); otros. Detalle en [compra/](compra/README.md) |
-| A6 | **Cada cuánto consulta el cuadro** (D5, D33) | Intervalo fijo (minutos u horas), o variable según lo que indique el servidor |
 | A7 | **Firmware** (D8) | (a) Usar tal cual el firmware abierto existente (`esp32-photoframe`, MIT); (b) partir de él y modificarlo; (c) escribir uno propio mínimo |
-| A8 | **Colores con 6 tintas** (D26, D32) | Paleta de la app limitada a negro, blanco, rojo, amarillo, verde y azul; o libre, con el servidor reduciendo cada color al más cercano |
+| A8 | **Paleta de la app de dibujo con 6 tintas** (D26, D36) | Paleta de la app limitada a negro, blanco, rojo, amarillo, verde y azul; o libre, con el servidor reduciendo cada color al más cercano |
 | A9 | **Criterio principal para elegir** | Calidad de imagen, simplicidad del firmware, coste, autonomía, caja incluida |
