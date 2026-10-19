@@ -1,0 +1,95 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Length 1337 >>
+stream
+BT /F1 8 Tf 28.35 578.27 Td (Plantilla a tamaño real - imprime al 100% \(sin 'ajustar a la página'\). Comprueba: el cuadrado de calibración mide 50 mm.) Tj ET
+0.5 w
+[3 2] 0 d
+28.35 247.29 546.97 313.97 re S
+BT /F1 7 Tf 34.02 547.09 Td (Placa Waveshare 7" con táctil: 192,96 x 110,76 mm \(contorno discontinuo\)) Tj ET
+1.2 w
+[] 0 d
+85.74 268.95 432.18 259.31 re S
+BT /F1 10 Tf 91.41 294.47 Td (7" 800x480) Tj ET
+BT /F1 7.5 Tf 91.41 280.29 Td (152 x 91 mm \(pantalla, aprox.\)) Tj ET
+0.6 w
+[3 2] 0 d
+586.77 408.25 242.65 153.01 re S
+BT /F1 10 Tf 592.44 433.76 Td (Tarjeta de crédito) Tj ET
+BT /F1 7.5 Tf 592.44 419.58 Td (85,6 x 54 mm \(referencia\)) Tj ET
+1.2 w
+[] 0 d
+586.77 251.40 209.68 139.78 re S
+BT /F1 10 Tf 592.44 276.91 Td (3,5" 480x320) Tj ET
+BT /F1 7.5 Tf 592.44 262.74 Td (74 x 49 mm) Tj ET
+1.2 w
+[] 0 d
+28.35 59.96 269.36 152.64 re S
+BT /F1 10 Tf 34.02 85.47 Td (4,3" 480x272) Tj ET
+BT /F1 7.5 Tf 34.02 71.30 Td (95 x 54 mm) Tj ET
+1.2 w
+[] 0 d
+317.48 27.38 308.70 185.22 re S
+BT /F1 10 Tf 323.15 52.89 Td (5" 800x480) Tj ET
+BT /F1 7.5 Tf 323.15 38.72 Td (109 x 65 mm) Tj ET
+0.8 w
+[] 0 d
+680.31 28.35 141.73 141.73 re S
+BT /F1 8 Tf 685.98 99.21 Td (Calibración: 50 x 50 mm) Tj ET
+BT /F1 7 Tf 28.35 14.17 Td (Tamaños calculados con píxeles cuadrados \(±5 %\); la pantalla real de cada placa se mide con su hoja de datos.) Tj ET
+endstream
+endobj
+3 0 obj
+<< /Length 636 >>
+stream
+BT /F1 8 Tf 28.35 578.27 Td (Referencias: teléfono y tableta \(tamaño real\). Imprime al 100%.) Tj ET
+1.2 w
+[] 0 d
+28.35 377.21 398.78 184.05 re S
+BT /F1 10 Tf 34.02 402.72 Td (Teléfono 6,1" \(tumbado\)) Tj ET
+BT /F1 7.5 Tf 34.02 388.55 Td (141 x 65 mm) Tj ET
+1.2 w
+[] 0 d
+28.35 20.84 499.53 328.02 re S
+BT /F1 10 Tf 34.02 46.35 Td (iPad mini 8,3") Tj ET
+BT /F1 7.5 Tf 34.02 32.18 Td (176 x 116 mm) Tj ET
+0.8 w
+[3 2] 0 d
+28.35 89.56 432.18 259.31 re S
+BT /F1 7 Tf 34.02 331.86 Td (7" 800x480 \(discontinuo, misma esquina\)) Tj ET
+0.8 w
+[] 0 d
+510.24 419.53 141.73 141.73 re S
+BT /F1 8 Tf 515.91 487.56 Td (Calibración: 50 x 50 mm) Tj ET
+endstream
+endobj
+4 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 841.89 595.28] /Contents 2 0 R /Resources << /Font << /F1 1 0 R >> >> >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 841.89 595.28] /Contents 3 0 R /Resources << /Font << /F1 1 0 R >> >> >>
+endobj
+6 0 obj
+<< /Type /Pages /Kids [4 0 R 5 0 R] /Count 2 >>
+endobj
+7 0 obj
+<< /Type /Catalog /Pages 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000106 00000 n 
+0000001495 00000 n 
+0000002182 00000 n 
+0000002314 00000 n 
+0000002446 00000 n 
+0000002509 00000 n 
+trailer
+<< /Size 8 /Root 7 0 R >>
+startxref
+2558
+%%EOF

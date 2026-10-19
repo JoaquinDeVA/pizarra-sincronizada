@@ -66,4 +66,6 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
 | A5 | **Tecnología de pantalla** (D10, D15, D17) | LCD 7" con brillo bajo y apagado automático (actual); o e-paper (sin brillo, menos consumo, pero refresco de 0,4–1,5 s y sin 7" táctil verificado). Detalle en [compra/](compra/README.md) |
 | A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, y qué paleta de colores |
+| A7 | **Lienzo en pantallas pequeñas** | (a) Lienzo fijo del tamaño de la pantalla; (b) lienzo virtual mayor con desplazamiento con dos dedos y zoom (pellizco), indicador de trazos fuera de la vista; (c) varias páginas |
+| A8 | **Texto en la pizarra** | (a) Sin texto, solo dibujo; (b) herramienta de texto con el teclado en pantalla (el de D25), color y tamaño, enviado al otro como objeto; (c) letrero escrito a mano |
 | A6 | **Mismo modelo en ambas casas o modelos distintos** | Mismo modelo; distintos con bandas negras |

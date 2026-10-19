@@ -8,6 +8,7 @@ Actualizado: 2026-10-22. Este fichero es el resumen; los demás son el registro 
 | [01-modelos.md](01-modelos.md) | Fichas de placas LCD de 7": especificaciones, hojas de datos, problemas |
 | [02-vendedores.md](02-vendedores.md) | Ofertas por tienda, coste total en España, impuestos y envío, lista de comprobación |
 | [03-tecnologias-de-pantalla.md](03-tecnologias-de-pantalla.md) | LCD frente a e-paper y otras, con consumo y refresco |
+| [plantilla-tamanos.pdf](plantilla-tamanos.pdf) | Tamaños reales para imprimir al 100 %: 3,5", 4,3", 5", 7", teléfono, iPad mini y tarjeta |
 
 ## La realidad
 
