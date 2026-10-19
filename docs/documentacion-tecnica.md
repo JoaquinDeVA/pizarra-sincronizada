@@ -2,7 +2,7 @@
 
 Táctica: **cómo** se materializan las decisiones de [decisiones-de-diseno.md](decisiones-de-diseno.md) (se citan como D1…, A1…). Aquí no se discute el porqué.
 
-Fecha: 2026-10-27
+Fecha: 2026-10-29
 
 > Precios y plazos de la [guía de compra](compra/README.md). *(estimación)* = cifra mía, sin fuente.
 
@@ -20,7 +20,7 @@ Fecha: 2026-10-27
  └───────────────────┘          └────────────────────────┘          └──────────────┘
 ```
 
-**Repo (D16):** `server/` (Node.js), `firmware/` (cuadro) y `web/` (app de dibujo para el móvil, primer cliente). `server/` y `firmware/` con su `.env` fuera del repo.
+**Repo (D16):** `server/` (Node.js) y `firmware/` (cuadro), cada uno con su `.env` fuera del repo.
 
 ---
 
@@ -100,7 +100,7 @@ El ESP32 necesita un certificado válido en el servidor para validar TLS (Let's 
 
 ## 6. Fuentes de contenido
 
-**App de dibujo (`web/`) (D26, A2, A4, A8):** web en el móvil que dibuja en un lienzo con eventos de puntero, con menú desplegable de colores y fondo blanco, cuadrícula o negro. Como el cuadro tarda minutos en actualizarse (D31, D34), la app puede **enviar la imagen ya rasterizada** (PNG) cuando se termina, en lugar de trazos en directo; el servidor la reduce a los seis colores. Con seis tintas, la paleta se limita a ellas o el servidor reduce cada color al más cercano.
+**App de dibujo (opcional, sin decidir):** web en el móvil que dibuja en un lienzo con eventos de puntero, con menú desplegable de colores y fondo blanco, cuadrícula o negro. Como el cuadro tarda minutos en actualizarse (D31, D34), la app puede **enviar la imagen ya rasterizada** (PNG) cuando se termina, en lugar de trazos en directo; el servidor la reduce a los seis colores. Con seis tintas, la paleta se limita a ellas o el servidor reduce cada color al más cercano.
 
 **Programas / widgets:** scripts en el servidor (por ejemplo el tiempo) que producen una imagen o un texto y lo entregan al servidor de contenido. El formato exacto del contenido está por definir.
 

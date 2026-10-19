@@ -1,30 +1,36 @@
-<h1 align="center">Pizarra sincronizada</h1>
+<h1 align="center">Cuadro e-ink</h1>
 
 <p align="center">
-  Pizarra táctil de bajo coste basada en ESP32.<br>
-  Dos aparatos, cada uno en una casa: uno dibuja o borra y el otro lo ve al instante.
+  Pantalla e-ink a color sobre el escritorio que muestra lo que le manda un servidor propio.<br>
+  Duerme y consulta cada pocos minutos; funciona con batería.
 </p>
 
 <p align="center">
-  <img alt="Estado: diseño" src="https://img.shields.io/badge/estado-dise%C3%B1o-orange">
+  <img alt="Estado: diseño y compra" src="https://img.shields.io/badge/estado-dise%C3%B1o%20y%20compra-orange">
   <img alt="Licencia: MIT" src="https://img.shields.io/badge/licencia-MIT-blue">
-  <img alt="Hardware: ESP32" src="https://img.shields.io/badge/hardware-ESP32-red">
+  <img alt="Hardware: ESP32-S3" src="https://img.shields.io/badge/hardware-ESP32--S3-red">
 </p>
 
 ---
 
 ## Qué es
 
-Un aparato basado en ESP32 con pantalla táctil, pensado para personas poco técnicas: se enciende, se conecta al wifi y funciona. Se puede mover de un sitio a otro.
+Un cuadro de 7,3" a color (e-ink Spectra 6, seis tintas) sin táctil, pensado para una persona poco técnica: se enciende, se conecta al wifi y muestra lo que el servidor le envía. Quien está al otro extremo, con más nivel técnico, hace las cosas desde el servidor: imágenes, widgets o programas.
+
+## Hardware
+
+Placa Seeed XIAO ePaper Display Board EE04 (ESP32-S3) y panel Seeed de 7,3" Spectra 6, 800×480; batería LiPo de una celda y caja impresa en 3D. Coste estimado de ~66–79 €.
 
 ## Estado
 
-Fase de diseño. Todavía no hay código.
+Fase de diseño y compra. Todavía no hay código; el software irá después.
 
 ## Documentación
 
 - [Decisiones de diseño](docs/decisiones-de-diseno.md): estrategia, qué queremos y por qué.
-- [Documentación técnica](docs/documentacion-tecnica.md): táctica, cómo se materializan esas decisiones (hardware con precios y enlaces, servidor, protocolo, firmware, plan y riesgos).
+- [Documentación técnica](docs/documentacion-tecnica.md): cómo se materializan esas decisiones.
+- [Guía de compra](docs/compra/README.md): solo hardware, con precios, vendedores y requisitos.
+- [Software existente](docs/software-existente.md): firmware abierto que se podría reutilizar.
 
 ## Licencia
 
