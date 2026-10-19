@@ -1,54 +1,35 @@
-# Guía de compra: placa ESP32 con pantalla de 7,0"
+# Guía de compra — resumen
 
-Consultado: 2026-10-20. Apoya la decisión A5 de [decisiones-de-diseno.md](../decisiones-de-diseno.md). Esta guía describe opciones y trade-offs; **no decide**.
+Actualizado: 2026-10-22. Este fichero es el resumen; los demás son el registro de datos. Apoya A5 (tecnología de pantalla) y la elección de modelo ([decisiones](../decisiones-de-diseno.md)).
 
-| Fichero | Contenido |
+| Registro | Contenido |
 |---|---|
-| [00-requisitos.md](00-requisitos.md) | Dimensionamiento: cuánta memoria, flash y procesador necesita el programa |
-| [01-modelos.md](01-modelos.md) | Seis modelos de 7": especificaciones, hojas de datos, encaje con el proyecto, problemas de rendimiento |
-| [02-vendedores.md](02-vendedores.md) | Ofertas por tienda: precio, país de envío, stock, y coste total estimado en España |
-| [03-envio-y-aduanas.md](03-envio-y-aduanas.md) | IVA, derecho aduanero de 3 € y plazos por país de origen |
+| [00-requisitos.md](00-requisitos.md) | Cuánta memoria, flash y procesador necesita el programa |
+| [01-modelos.md](01-modelos.md) | Fichas de placas LCD de 7": especificaciones, hojas de datos, problemas |
+| [02-vendedores.md](02-vendedores.md) | Ofertas por tienda, coste total en España, impuestos y envío, lista de comprobación |
+| [03-tecnologias-de-pantalla.md](03-tecnologias-de-pantalla.md) | LCD frente a e-paper y otras, con consumo y refresco |
 
-## Lo que debes saber antes de comprar
+## La realidad
 
-1. **Los ~50 € para dos placas de 7" no se alcanzan hoy con producto nuevo.** Los precios de referencia de las guías (~US$21–28 la unidad) no aparecen en las tiendas consultadas: en AliExpress hoy los anuncios del 8048S070C van de 40 € a 76 €. Entregadas en España, dos placas cuestan **~75–120 €** (detalle y fórmula en [02-vendedores.md](02-vendedores.md)).
-2. **Desde el 1 de julio de 2026 hay un derecho de 3 € por código arancelario** en importaciones de hasta 150 € (un solo derecho por las dos placas iguales en un pedido), además del IVA. Quien compre fuera de la UE paga más de lo que muestra el anuncio.
-3. **Los datos de envío casi nunca salen en la ficha.** Hay que llegar al carrito para ver plazo, coste e impuestos.
-4. **La misma placa tiene revisiones distintas** (v0.1, v1.1, v1.3, v1.4) con código de inicio y táctil distintos. Confirmar sufijo **C** (capacitivo) y revisión con el vendedor.
-5. **La memoria no limita:** con ~2 MB de PSRAM basta y las placas de 7" traen 8 MB. Lo que acota es la interfaz de pantalla y la RAM interna (ver [00-requisitos.md](00-requisitos.md)).
-6. **eBay y Amazon no se han podido consultar** desde aquí; hay búsquedas y una lista de comprobación en [02-vendedores.md](02-vendedores.md).
-7. **Orden de trabajo (A7):** parte del programa se puede escribir antes de comprar. Si se decide así, la compra se retrasa hasta saber qué mide la aplicación real.
+- **Precio:** dos placas LCD de 7" nuevas cuestan **~75–120 € entregadas en España**, no los ~50 € del objetivo. Las guías citan ~US$21–28 por unidad; hoy no aparecen en las tiendas consultadas.
+- **Impuestos:** desde el 1-jul-2026 hay un derecho de 3 € por código arancelario, además del IVA, en importaciones de fuera de la UE.
+- **Memoria:** no limita. Bastan ~2 MB de PSRAM y las placas traen 8 MB.
+- **Consumo de la LCD:** 2,25 W ≈ 3–5 €/año por aparato encendido 24 h *(estimación)*. No es un problema de coste.
+- **Brillo:** una LCD encendida llama la atención. Se mitiga con brillo bajo y apagado por inactividad (D25); el fondo negro no apaga un panel IPS.
+- **e-paper:** sin brillo y casi sin consumo, pero cada actualización parcial tarda 0,4–1,5 s y deja imagen residual. Choca con D15 (calidad táctil), y no hay panel de 7" con táctil verificado (los táctiles son de 4,7" y 6"). Su ventaja de batería no cuenta con D5 (USB-C constante).
+- **eBay y Amazon** no se pueden consultar desde aquí; hay búsquedas a mano en [02](02-vendedores.md).
 
-## Modelos de un vistazo
+## Opciones
 
-| Modelo | Pantalla | Precio de referencia | Encaje | Riesgo principal |
+| Opción | Pantalla | Precio de referencia | Cambia | Principal riesgo |
 |---|---|---|---|---|
-| A. Sunton/Jingcai 8048S070C | 800×480 | ~37–53 € por unidad (UE), 40–76 € (AliExpress) | Encaja con ajustes | Revisiones distintas; pin INT del táctil sin conectar; listados con N4R8 y panel TN |
-| B. Waveshare ESP32-S3-Touch-LCD-7 | 800×480 | US$32–37 (oficial) | Encaja, mejor documentación | Jitter si hay escrituras en flash (ver modelos) |
-| C. Elecrow CrowPanel Advance 7" | 800×480 | 49,95 € (agotada) | Encaja; sobran funciones | Poco stock en la UE |
-| D. Guition JC1060P470C (P4) | 1024×600 | US$34,9 (descatalogada en SpotPear) | Sobra potencia | Software inmaduro, wifi vía coprocesador |
-| E. Waveshare 7B | 1024×600 | 65,84 € | Fuera de presupuesto | Precio |
-| F. Makerfabs MaTouch 7" | 800×480 / 1024×600 | 59,95 € (Elektor) | Fuera de presupuesto | Precio; sin hoja de datos enlazada |
+| **A. Waveshare ESP32-S3-Touch-LCD-7** (D17 actual) | LCD 7" 800×480 | ~28–32 € por unidad *(sin verificar)* · ~80–107 € las dos entregadas | Nada | Precio sobre el objetivo; jitter si se escribe en flash |
+| **B. Sunton/Jingcai 8048S070C** | LCD 7" 800×480 | 37,25 € (Tinytronics V0.1) · 40–76 € (AliExpress) | Nada | Revisiones distintas; INT del táctil sin conectar (puente en R17) |
+| **C. LilyGo T5-4.7-S3** | e-paper 4,7" 960×540 | 35–45 US$ · 55 € (Openelab) | **D10** (7") y **D15** | Latencia por refresco; imagen residual; agotada en LilyGo |
+| **D. LCD con brillo mitigado** | LCD 7" (A o B) | igual | Nada, solo configuración | Sigue siendo una pantalla luminosa |
 
-## Opciones por escenario (sin decidir por ti)
+Detalle en [01-modelos.md](01-modelos.md) y [03-tecnologias-de-pantalla.md](03-tecnologias-de-pantalla.md).
 
-| Escenario | Qué encaja | Trade-offs |
-|---|---|---|
-| **Gastar lo mínimo** | **A**, en Tinytronics V0.1 (37,25 € con IVA, 50+ en stock en NL, sin aduana) o el anuncio mejor valorado de AliExpress | Hay que aceptar la revisión V0.1 (otro chip de audio) o revisión desconocida; trabajo extra en el pin INT del táctil |
-| **Menos fricción de software** | **B**, en Waveshare oficial o Grobotronics | Más caro; Waveshare envía desde China con IVA y derecho al llegar |
-| **Máxima calidad táctil potencial** | **D** | Mayor riesgo y esfuerzo; descatalogada; wifi vía coprocesador. *Hipótesis mía: la potencia extra da más margen para suavidad, sin medir* |
+## Qué decidir (A5)
 
-## Si hay que acercarse a ~50 € en total
-
-Con los datos de hoy no se logra con producto nuevo de 7". Opciones que no he verificado y conviene investigar si interesa:
-- Esperar a ofertas de AliExpress (suelen rebajar en el 11.11 *(conocimiento general, sin verificar)*).
-- Buscar segunda mano.
-- Comprar solo una placa para empezar a medir la latencia táctil real (A2) y decidir la segunda después.
-
-## Antes de pulsar comprar
-
-- [ ] Sufijo **C** (capacitivo) en el título y pin de interrupción del táctil conectado (en la Waveshare está en GPIO4; en la Sunton hay que puentear R17).
-- [ ] Revisión, flash (16 MB) y tipo de panel (IPS, no TN) confirmados por escrito con el vendedor.
-- [ ] Coste de envío, plazo e impuestos vistos en el carrito.
-- [ ] Vendedor con IOSS o almacén en la UE.
-- [ ] Anotada la revisión recibida; documentarla en `docs/documentacion-tecnica.md`.
+Si el brillo y el consumo pesan más que la calidad táctil y los 7", el camino es e-paper (opción C) y habría que cambiar D10 y D15. Si no, se mantiene LCD 7" con brillo bajo y apagado automático (opción D sobre la A o la B). Hoy los datos no sostienen un e-paper de 7" táctil.
