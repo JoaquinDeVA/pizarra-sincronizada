@@ -20,6 +20,7 @@ Actualizado: 2026-10-25. Este fichero es el resumen; los demás son el registro 
 - **Para "la mejor pantalla", la tecnología es Spectra 6:** es el color e-ink más cercano al papel con placas ESP32 disponibles. Gallery 3 y Kaleido 3 tienen peor color o blancos más oscuros, y no encontré placas ESP32 con ellos.
 - **El precio real de la E1002 supera su MSRP de US$99:** RobotShop la vende a US$127,25 y Pakronics a A$193,60; una oferta de AliExpress de agosto de 2026 la daba a ~US$91 y no sé si sigue.
 - **La E1004 de 13,3" cuesta 304,45 € en Openelab** (preventa, reposición estimada el 30-nov-2026, envío y aduana incluidos en la UE): es el "mejor posible" en tamaño y nitidez, pero ~3× el precio.
+- **De 5 a 6" no hay kit ESP32 de color asequible.** Lo que ronda 70–80 € es el panel 5,65" ACeP en bruto (69,95 € en Elektor; más ~19 € de placa ESP32 de compatibilidad sin confirmar) o la Pimoroni Inky Frame 5,7" (£67,83–79,80), que no es ESP32 (Pico W). Es una tecnología de color anterior (7 colores, ~30 s) y 600×448. La EE04 de 7,3" Spectra 6 sale más barata (~82–88 €).
 - **No pude consultar Amazon.es ni eBay** desde aquí.
 
 ## Opciones

@@ -90,7 +90,8 @@ No encontré una reseña independiente de su calidad de imagen; lo que hay es le
 | Waveshare 13,3" E6 con placa ESP32-S3 | 13,3" Spectra 6; US$253,87–259,99 | Sin evaluar a fondo |
 | M5Stack PaperColor | 4" Spectra 6 con ESP32 | Menos de 5" |
 | Soldered Inkplate 6COLOR | 5,8" 7 colores 600×448, ~12 s, sin parcial, ESP32 WROVER, 209,95 €, plazo ~6 semanas ([Soldered](https://soldered.com/products/inkplate-6color)) | Presupuesto |
-| Waveshare 5,65" ACeP (en bruto) | £69,10 en The Pi Hut; necesita una placa ESP32 aparte (~US$14–15), compatibilidad sin confirmar | Dos piezas |
+| Waveshare 5,65" ACeP 7 colores 600×448 (en bruto) | 69,95 € en [Elektor](https://elektor.com/products/waveshare-5-65-acep-7-color-e-paper-e-ink-display-module-600x448); £69,10 en The Pi Hut (agotada). Necesita una placa ESP32 aparte (~19 €); la tabla de paneles de la placa universal de Waveshare **no lista** el 5,65" ni el 7,3"; hay un controlador comunitario ESP-IDF ([WS565F](https://components.espressif.com/components/codewitch-honey-crisis/htcw_ws565f/versions/0.3.1/readme)) | Dos piezas, compatibilidad sin confirmar; sin ejemplo oficial |
+| Pimoroni Inky Frame 5,7" | 5,7" 7 colores ACeP 600×448; ~30 s de refresco; ya montada, con conector de batería, ranura SD y RTC; £79,80 (o £67,83 con descuento) en [The Pi Hut](https://thepihut.com/products/inky-frame-5-7-pico-w-aboard); kit con patas, 3 pilas AA y SD de 16 GB: £105,41 ([RobotShop UK](https://uk.robotshop.com/products/inky-frame-57-inch-pico-w-aboard-inky-frame-accessory-kit), agotado) | **No es ESP32** (Raspberry Pi Pico W, RP2040): choca con D7 |
 | Waveshare 7,3" HAT (E) | Versión para Raspberry Pi, AU$139,95 | No es ESP32 |
 | Good Display GDEP073E01 | Panel de 7,3" Spectra 6; precio y placa no localizados | Sin datos |
 | Seeed reTerminal E1001/E1003 | Monocromo | No es color |

@@ -21,6 +21,14 @@ Entrega en España peninsular. "Visto" = ficha abierta; "sin verificar" = fragme
 
 No pude consultar Amazon.es ni eBay (mis herramientas reciben error 403 y 503). Búsquedas a mano, sin verificar que coincidan: [eBay.es: PhotoPainter](https://www.ebay.es/sch/i.html?_nkw=ESP32-S3-PhotoPainter) · [Amazon.es: e-paper 7.3 Spectra 6 ESP32](https://www.amazon.es/s?k=ESP32+e-paper+7.3+Spectra+6).
 
+### Opciones de 5–6" (consultado 2026-10-25)
+
+| Opción | Vendedor | Precio | Notas |
+|---|---|---|---|
+| Waveshare 5,65" ACeP (en bruto) | [Elektor](https://elektor.com/products/waveshare-5-65-acep-7-color-e-paper-e-ink-display-module-600x448) | 69,95 € con IVA | Más placa ESP32 aparte (~18,5–19 €): ~89 € sin envío |
+| Pimoroni Inky Frame 5,7" | [The Pi Hut (UK)](https://thepihut.com/products/inky-frame-5-7-pico-w-aboard) | £79,80 (otra captura: £67,83) | Reino Unido: fuera de la UE. Pimoroni también tiene [tienda para la UE](https://shop.pimoroni.com/en-eu/products/inky-frame-5-7) (precio no consultado) |
+| Soldered Inkplate 6COLOR | [Soldered](https://soldered.com/products/inkplate-6color) | 209,95 € | Plazo ~6 semanas |
+
 ## Coste total estimado de una unidad entregada en España
 
 Fórmula: `precio + envío + IVA (21 %, si no incluido) + 3 € (derecho aduanero, solo importaciones de fuera de la UE)`.
