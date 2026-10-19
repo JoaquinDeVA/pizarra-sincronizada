@@ -97,17 +97,18 @@ JSON por WebSocket (wss). Coordenadas en un lienzo lógico fijo; el aparato esca
 
 ```
 Cliente → servidor
-  {"t":"join","room":"ABC123","key":"<secreto>"}
+  {"t":"auth","secret":"<secreto del .env>"}   // primer mensaje obligatorio
   {"t":"b","id":17,"c":"#e53935","w":6}        // empieza trazo
   {"t":"p","id":17,"pts":[[x,y],[x,y],...]}   // puntos del trazo
   {"t":"e","id":17}                             // fin de trazo
   {"t":"clear"}                                 // borrar todo
 Servidor → cliente
+  {"t":"ok"} | {"t":"peer","on":true|false}    // autenticado / la otra pantalla entra o sale
   {"t":"snap","log":[...]}                      // al entrar: registro desde el último clear
   (reenvía b/p/e/clear del otro cliente en orden)
 ```
 
-Sala = código de 6 caracteres + clave secreta, sin cuentas. El servidor numera los eventos y guarda el registro, así que quien se reconecta recibe `snap`. Cada aparato pinta en local al instante y luego envía, con puntos agrupados a ~30 Hz. Colores, goma y deshacer dependen de A4.
+Una sola sala fija, sin cuentas. El servidor numera los eventos y guarda el registro, así que quien se reconecta recibe `snap`. Cada aparato pinta en local al instante y luego envía, con puntos agrupados a ~30 Hz. Colores, goma y deshacer dependen de A4.
 
 ---
 
