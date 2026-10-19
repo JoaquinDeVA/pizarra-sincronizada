@@ -2,7 +2,7 @@
 
 Táctica: **cómo** se materializan las decisiones de [decisiones-de-diseno.md](decisiones-de-diseno.md) (se citan como D1…, A1…). Aquí no se discute el porqué.
 
-Fecha: 2026-10-19
+Fecha: 2026-10-20
 
 > Precios: capturas de octubre de 2026. Cambian a menudo; confirma antes de comprar. *(estimación)* = cifra mía, sin fuente.
 
@@ -27,39 +27,34 @@ Fecha: 2026-10-19
 
 ## 2. Hardware (D7, D10)
 
-Placas con ESP32-S3, pantalla táctil capacitiva y wifi ya montados, compradas hechas. Dos candidatos:
+Placa con ESP32-S3, pantalla táctil capacitiva de 7,0" y wifi, ya montada y comprada hecha. Candidato conocido: **Sunton ESP32-8048S070C**.
 
-| | 4,3" Guition JC4827W543C | 7" Sunton ESP32-8048S070C |
-|---|---|---|
-| Pantalla | 480×272 IPS (NV3041A por QSPI), GT911 capacitivo | 800×480 IPS RGB, GT911 capacitivo |
-| SoC | ESP32-S3: 4 MB flash, 8 MB PSRAM | ESP32-S3: 16 MB flash, 8 MB PSRAM |
-| Conectividad | Wifi, BLE 5, USB-C, ranura SD | Wifi, BLE 5, USB-C, ranura SD, altavoz |
-| Batería | Sin conector (coherente con D5) | Sin conector (coherente con D5) |
-| Precio calle (AliExpress/eBay) | ~US$10–14 | ~US$21–28 |
-| Precio tienda UE | ~21 € (anuncio genérico sin confirmar) | 37,25 € (Tinytronics, agotado) · 52,95 € (Hobbyelectronica) |
-| Pegas | 4 MB de flash; solo rotaciones 0°/180°; el táctil y la SD pueden fallar tras refrescar si no se cuida el orden en Arduino_GFX | Revisiones v1.1 y v1.3 con init distinto; puede parpadear con wifi activo; el pin INT del GT911 viene sin conectar |
-| Referencia | [Atomic14](https://www.atomic14.com/esp32/boards/guition-jc4827w543/) | [Atomic14](https://www.atomic14.com/esp32/boards/sunton-esp32-8048s070/) · [ESP3D](https://esp3d.io/esp3d-tft/version_1x/hardware/esp32-s3/sunton-70-8048/) |
+| | 7" Sunton ESP32-8048S070C |
+|---|---|
+| Pantalla | 800×480 IPS RGB, GT911 capacitivo |
+| SoC | ESP32-S3: 16 MB flash, 8 MB PSRAM |
+| Conectividad | Wifi, BLE 5, USB-C, ranura SD, altavoz |
+| Batería | Sin conector (coherente con D5) |
+| Precio calle (AliExpress/eBay) | ~US$21–28 |
+| Precio tienda UE | 37,25 € (Tinytronics, agotado) · 52,95 € (Hobbyelectronica) |
+| Pegas | Revisiones v1.1 y v1.3 con init distinto; puede parpadear con wifi activo; el pin INT del GT911 viene sin conectar |
+| Referencia | [Atomic14](https://www.atomic14.com/esp32/boards/sunton-esp32-8048s070/) · [ESP3D](https://esp3d.io/esp3d-tft/version_1x/hardware/esp32-s3/sunton-70-8048/) |
 
-Tiendas UE de la 7": [Tinytronics](https://www.tinytronics.nl/nl/development-boards/microcontroller-boards/met-wi-fi/jingcai-esp32-8048s070c-7-inch-tft-lcd-display-800*480-pixels-met-touchscreen-esp32-s3), [Hobbyelectronica](https://www.hobbyelectronica.nl/en/product-categorie/platformen/esp32-display/). Para la de 4,3" no he localizado una tienda UE fiable.
+Tiendas UE: [Tinytronics](https://www.tinytronics.nl/nl/development-boards/microcontroller-boards/met-wi-fi/jingcai-esp32-8048s070c-7-inch-tft-lcd-display-800*480-pixels-met-touchscreen-esp32-s3), [Hobbyelectronica](https://www.hobbyelectronica.nl/en/product-categorie/platformen/esp32-display/).
 
 Notas para D15 (calidad táctil):
-- En la 7", el pin INT del GT911 no llega a ningún GPIO por defecto; sin él el procesador pasa del 80 % de uso al sondear el táctil. Se arregla con un puente en R17 (0 Ω) que lo une a GPIO18 ([ESP3D](https://esp3d.io/esp3d-tft/version_1x/hardware/esp32-s3/sunton-70-8048/)). Hay que confirmarlo en la revisión que llegue.
+- El pin INT del GT911 no llega a ningún GPIO por defecto; sin él el procesador pasa del 80 % de uso al sondear el táctil. Se arregla con un puente en R17 (0 Ω) que lo une a GPIO18 ([ESP3D](https://esp3d.io/esp3d-tft/version_1x/hardware/esp32-s3/sunton-70-8048/)). Hay que confirmarlo en la revisión que llegue.
 - A 800×480, Espressif da ~23 fps medios de LVGL en RGB, con framebuffers en PSRAM ([FAQ de Espressif](https://docs.espressif.com/projects/esp-faq/en/latest/software-framework/peripherals/lcd.html)).
 
 ### Compra (D13)
 
-- **AliExpress/eBay:** buscar el código exacto (`JC4827W543C`, `ESP32-8048S070C`). Comprobar el sufijo **C** (capacitivo) y la revisión. 2–4 semanas *(estimación)*; el precio no incluye envío ni IVA.
+- **AliExpress/eBay:** buscar el código exacto (`ESP32-8048S070C`). Comprobar el sufijo **C** (capacitivo) y la revisión. 2–4 semanas *(estimación)*; el precio no incluye envío ni IVA.
 - **Tienda UE:** más rápida y con garantía, ~2×.
+- La guía de compra con todas las opciones vive en `docs/compra/`.
 
 ### Coste (D6)
 
-| Opción (A5) | Dos aparatos |
-|---|---|
-| 2× 4,3" | ~20–28 € |
-| 2× 7" | ~42–56 € |
-| 1× de cada (comparar) | ~31–42 € |
-
-Más ~1–3 € de filamento por caja *(estimación)*. Cable USB-C y cargador ≥2 A ya los tienes.
+Dos aparatos: ~42–56 € en AliExpress/eBay; ~75–106 € en tienda UE. Más ~1–3 € de filamento por caja *(estimación)*. Cable USB-C y cargador ≥2 A ya los tienes.
 
 ---
 
@@ -127,7 +122,7 @@ Lo que determina que dibujar se sienta bien:
 | Envío a pantalla | Solo el rectángulo modificado |
 | Forma del trazo | Interpolar entre puntos (curva suave) |
 | Temblor de pulso | Filtro de suavizado que añada poca latencia (p. ej. [filtro 1€](https://gery.casiez.net/1euro/)) |
-| Lienzo persistente | En PSRAM (4,3": 480×272×2 B ≈ 255 KB; 7": 800×480×2 B ≈ 750 KB) |
+| Lienzo persistente | En PSRAM (800×480×2 B ≈ 750 KB) |
 
 **Librerías gráficas (A2).**
 - **LovyanGFX:** dibuja directo sobre un lienzo y trae soporte de táctil y DMA. Menos capas entre el dedo y el píxel; la interfaz (botones, menús) hay que escribirla a mano.
@@ -156,8 +151,7 @@ Módulo aparte, ignorable en el desarrollo. Los táctiles capacitivos aceptan cu
 | Riesgo | Mitigación |
 |---|---|
 | Latencia táctil visible | Medir antes de elegir librería; interrupción, interpolación |
-| 4,3": solo 4 MB de flash | Firmware ligero |
-| 7": parpadeo con wifi y INT del táctil sin conectar | Ajustes de LVGL/LovyanGFX; puente R17 |
+| Parpadeo con wifi y INT del táctil sin conectar | Ajustes de LVGL/LovyanGFX; puente R17 |
 | Revisión de placa distinta a la esperada | Anotar revisión al comprar; probar una unidad primero |
 | Servidor de casa inaccesible desde fuera (CGNAT) | Túnel |
 | Cambian precios o stock | Dos fuentes de compra; confirmar antes de pedir |
@@ -166,7 +160,7 @@ Módulo aparte, ignorable en el desarrollo. Los táctiles capacitivos aceptan cu
 
 ## Fuentes (octubre de 2026)
 
-- [Atomic14 — Guition JC4827W543](https://www.atomic14.com/esp32/boards/guition-jc4827w543/) · [Sunton 8048S070](https://www.atomic14.com/esp32/boards/sunton-esp32-8048s070/)
+- [Atomic14 — Sunton 8048S070](https://www.atomic14.com/esp32/boards/sunton-esp32-8048s070/)
 - [ESP3D — nota sobre el INT del GT911](https://esp3d.io/esp3d-tft/version_1x/hardware/esp32-s3/sunton-70-8048/)
 - [Espressif — FAQ de interfaces LCD](https://docs.espressif.com/projects/esp-faq/en/latest/software-framework/peripherals/lcd.html) · [Unified Provisioning](https://docs.espressif.com/projects/esp-idf/en/v5.2.1/esp32s3/api-reference/provisioning/provisioning.html)
 - [Tinytronics](https://www.tinytronics.nl/nl/development-boards/microcontroller-boards/met-wi-fi/jingcai-esp32-8048s070c-7-inch-tft-lcd-display-800*480-pixels-met-touchscreen-esp32-s3) · [Hobbyelectronica](https://www.hobbyelectronica.nl/en/product-categorie/platformen/esp32-display/)
