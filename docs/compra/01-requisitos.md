@@ -9,7 +9,7 @@ Consultado: 2026-10-24. Resumen en [README.md](README.md). Derivados de las deci
 | Pantalla | e-ink a color, sin táctil, ≥5" | D30, D32 |
 | Procesador | ESP32 con wifi | D7 |
 | Energía | Conector de batería con cargador integrado; sueño profundo con despertar por temporizador (RTC) | D5 |
-| Entrada de datos | Wifi: consulta cada X tiempo a un servidor propio | D33 |
+| Conectividad | Wifi 2,4 GHz | D33 |
 | Programación | Puerto USB-C de programación, flasheo documentado, firmware y esquema abiertos | D7, D8 |
 | Wifi sin táctil | Algún medio físico o de radio para dar la red: botones, tarjeta SD o Bluetooth | D4, A1 |
 | Caja | Marco o soporte incluido, o espacio para una caja impresa en 3D | D12 |
@@ -38,15 +38,12 @@ Consultado: 2026-10-24. Resumen en [README.md](README.md). Derivados de las deci
 | Imagen 800×480 en RGB888 | 1,15 MB | cálculo |
 | PNG/BMP descargado y decodificado | del orden de los anteriores | las placas candidatas traen 8 MB de PSRAM |
 
-El servidor puede entregar la imagen ya reducida a los colores del panel para que el cuadro solo la descargue y la pinte (A8 del diseño: cómo se compone la imagen). Así la memoria deja de ser un límite.
 
 ## Energía y autonomía
 
 | Dato | Valor | Fuente |
 |---|---|---|
-| Sueño del firmware existente | ~10 µA (afirmado); meses de batería | [esp32-photoframe](https://github.com/aitjcize/esp32-photoframe) |
 | Sueño según la wiki de Waveshare (PhotoPainter) | ≤1 mA | [Wiki](https://www.waveshare.com/wiki/ESP32-S3-PhotoPainter) |
-| Siempre encendido (wifi conectado) | ~40–80 mA | esp32-photoframe |
 | Reposo de la pantalla | <0,01 µA | [Waveshare](https://www.waveshare.com/7.3inch-e-paper-hat-e.htm?sku=27863) |
 | Seeed reTerminal E1002 | ~3 meses con batería de 2000 mAh a un refresco cada 6 h | [Seeed](https://wiki.seeedstudio.com/reterminal_e10xx_main_page/) |
 
@@ -54,14 +51,9 @@ El servidor puede entregar la imagen ya reducida a los colores del panel para qu
 - **Requisito (D35):** una carga a la semana. Con una batería de 1500 mAh son ≤214 mAh/día. Dormir a 1 mA gasta 24 mAh/día; quedan ~190 mAh/día para despertares.
 - Coste por despertar *(estimación mía, sin medir)*: ~0,14 mAh si solo consulta (wifi + petición) y ~0,45 mAh si además refresca la pantalla. Con ~190 mAh/día caben ~1.350 consultas sin refresco (una cada ~64 s) o ~420 con refresco (una cada ~3,4 min). Con el mínimo de D34 (3 min) y refresco solo si cambia la imagen, **una semana es viable incluso con el sueño de 1 mA**.
 
-## Wifi sin táctil: lo que ofrece cada vía
+## Wifi sin táctil
 
-| Vía | Qué hace falta | Visto en |
-|---|---|---|
-| Portal cautivo | El cuadro crea su propia red; se abre un menú en el navegador del móvil, normalmente en 192.168.4.1 | esp32-photoframe; firmware de serie de PhotoPainter |
-| Fichero `wifi.txt` en tarjeta SD | Ranura microSD | esp32-photoframe |
-| Bluetooth | Provisión cifrada de Espressif (*Unified Provisioning*) y una app o web con BLE | [Espressif](https://docs.espressif.com/projects/esp-idf/en/v5.2.1/esp32s3/api-reference/provisioning/provisioning.html) |
-| Botones | Botones de la placa para elegir entre redes guardadas | EE04 y E1002: 3 botones de usuario |
+Hace falta algún medio físico o de radio para dar la red: botones, tarjeta SD o Bluetooth. La EE04 tiene 3 botones de usuario y Bluetooth 5 (ESP32-S3). Las vías de configuración están en la [documentación técnica](../documentacion-tecnica.md).
 
 ## Qué se mira en un producto para saber si es abierto
 

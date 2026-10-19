@@ -31,7 +31,7 @@ Fecha: 2026-10-27
 | Placa | Seeed **XIAO ePaper Display Board EE04** (SKU 100075670) | XIAO ESP32-S3 Plus; conector de batería JST 2,0 mm con interruptor de encendido y cargador integrado (carga por USB-C); 1 botón de reset y 3 de usuario (KEY0 GPIO2, KEY1 GPIO3, KEY2 GPIO5, activos en bajo); USB-C para alimentar y flashear (el cable debe llevar datos); conectores FPC de 24 y 50 pines de 0,5 mm, elegidos con un puente |
 | Panel | Seeed **7,3" Spectra 6** (SKU 100064541) | 800×480, seis colores, FPC de 50 pines |
 | Antena | FPC 2,4 GHz de 2,9 dBi | Incluida con la placa (hoja de datos de Seeed), junto con adaptadores y cables FFC de 24 y 50 pines |
-| Batería | LiPo de 3,7 V, JST-PH 2,0 mm, con protección | No incluida; Mouser no la vende en España; ver §10 |
+| Batería | LiPo de 1S (3,7 V), JST-PH 2,0 mm, con protección | No incluida; ver §10 y D39 |
 | Caja | Impresa en 3D (D12) | Ver §8 |
 
 Fuentes: [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04) · [Openelab: placa](https://openelab.io/products/seeed-studio-xiao-epaper-ee04) · [kit DIY](https://openelab.io/products/seeed-studio-xiao-epaper-7-3-inch-diy-kit).
@@ -42,7 +42,7 @@ Fuentes: [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04) · [Openela
 | Refresco | 12–25 s, sin parcial; ≥180 s entre refrescos y uno completo cada 24 h como mínimo ([manual Waveshare](https://www.waveshare.com/wiki/7.3inch_e-Paper_HAT_%28E%29_Manual)) |
 | Memoria | Imagen a 4 bits = 192 KB; PSRAM del XIAO ESP32-S3 Plus (hay que activarla en el Arduino) |
 
-**Software de la placa (según la wiki):** Arduino con la biblioteca Seeed GFX2 y la placa "XIAO ESP32S3 Plus"; SenseCraft HMI, ESPHome, Home Assistant, PlatformIO y EEZ Studio. No hay ejemplo de 7,3" en la ruta que cita la wiki (sí de 7,5" monocromo). El firmware abierto `esp32-photoframe` soporta la EE04 ([software existente](compra/04-software-existente.md)).
+**Software de la placa (según la wiki):** Arduino con la biblioteca Seeed GFX2 y la placa "XIAO ESP32S3 Plus"; SenseCraft HMI, ESPHome, Home Assistant, PlatformIO y EEZ Studio. No hay ejemplo de 7,3" en la ruta que cita la wiki (sí de 7,5" monocromo). El firmware abierto `esp32-photoframe` soporta la EE04 ([software existente](software-existente.md)).
 
 ---
 
@@ -86,7 +86,7 @@ Programa en Node.js en el servidor de casa del usuario. Coste 0 €.
 
 **Acceso (D22):** el cuadro y las fuentes envían el secreto; el servidor compara el hash del secreto con el de su `.env` (tiempo constante). Los `.env` quedan fuera del repo y el repo lleva un `.env.example` sin valores.
 
-**Interfaz con el cuadro:** una URL que devuelve la imagen actual y un identificador de versión (por ejemplo, ETag). Si el cuadro ya tiene esa versión, no se refresca la pantalla. `esp32-photoframe` ya consulta una URL con una programación, pero hay que comprobar cómo pasa una contraseña ([software existente](compra/04-software-existente.md)).
+**Interfaz con el cuadro:** una URL que devuelve la imagen actual y un identificador de versión (por ejemplo, ETag). Si el cuadro ya tiene esa versión, no se refresca la pantalla. `esp32-photoframe` ya consulta una URL con una programación, pero hay que comprobar cómo pasa una contraseña ([software existente](software-existente.md)).
 
 **Cómo llega internet al servidor de casa (A3), pendiente de verificar:**
 - Redirección de puertos + DNS dinámico + proxy con TLS (p. ej. Caddy). Falla si el proveedor usa CGNAT.
@@ -117,7 +117,7 @@ Opciones de partida (A7):
 - Partir de él y modificarlo.
 - Escribir uno propio mínimo sobre ESP-IDF.
 
-Datos de cada uno en [04-software-existente.md](compra/04-software-existente.md). Verificar la licencia de cualquier código de ejemplo del fabricante antes de reutilizarlo.
+Datos de cada uno en [04-software-existente.md](software-existente.md). Verificar la licencia de cualquier código de ejemplo del fabricante antes de reutilizarlo.
 
 ---
 
@@ -153,8 +153,7 @@ Soporte impreso en 3D con ventana para el panel, alojamiento para la placa y la 
 
 | Pieza | Estado | Qué hace falta |
 |---|---|---|
-| Batería | No incluida | LiPo de 3,7 V, JST-PH 2,0 mm, con protección; capacidad: Seeed anuncia ~3 meses sin decir cuál y los kits similares llevan 2000 mAh; hay que comprobar la polaridad con la serigrafía de la placa (el pinout no está en la hoja de datos); comprarla fuera de Mouser |
-| Antena | Incluida con la placa | Nada |
+| Batería | No incluida (D39) | Cualquier LiPo de 1S (3,7 V) con protección y JST-PH 2,0 mm, de dron o similar; comprobar la polaridad con la serigrafía de la placa; se compra fuera de Mouser; se resuelve más adelante |
 | Caja | No incluida | Diseño 3D propio (D12) |
 | Cable y cargador USB-C | Los tienes | Cable con datos |
 | Firmware | No escrito (D18) | Partir de `esp32-photoframe` o de Seeed GFX2 |

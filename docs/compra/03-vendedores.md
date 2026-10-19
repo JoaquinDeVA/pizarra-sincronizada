@@ -39,7 +39,7 @@ No pude consultar Amazon.es ni eBay (mis herramientas reciben error 403 y 503). 
 - **Batería:** Mouser **no puede vender** en España la batería de Adafruit (2000 mAh, 485-2011): "por normativa del gobierno". Hay que comprarla en otro sitio.
 - Pendiente de confirmar en el carrito: envío (los sitios de Mouser de otros países marcan envío gratis por encima de 50 € sin IVA; no hay cifra para España), y el plazo (ambas piezas están sin stock y el plazo de fábrica es "solicitar presupuesto"). Mouser dice ofrecer DDP en los países de la UE ([foro EEVblog](https://eevblog.com/forum/chat/customs-taxes-on-orders-from-mouser-to-eu)).
 
-### Batería LiPo 3,7 V, conector JST-PH 2,0 mm, con protección (consultado 2026-10-27)
+### Batería LiPo de 1S (3,7 V), JST-PH 2,0 mm, con protección (D39: pospuesta; consultado 2026-10-27)
 
 | Vendedor | Producto | Precio | Notas |
 |---|---|---|---|
