@@ -2,7 +2,7 @@
 
 Táctica: **cómo** se materializan las decisiones de [decisiones-de-diseno.md](decisiones-de-diseno.md) (se citan como D1…, A1…). Aquí no se discute el porqué.
 
-Fecha: 2026-10-21
+Fecha: 2026-10-22
 
 > Precios: capturas de octubre de 2026. Cambian a menudo; confirma antes de comprar. *(estimación)* = cifra mía, sin fuente.
 
@@ -21,7 +21,7 @@ Fecha: 2026-10-21
                        └─────────────┘
 ```
 
-**Estructura del repo (D16):** dos partes, firmware de las pizarras y servidor. El lápiz (D11) y la carcasa (D12) son piezas aparte. Los directorios se crearán al empezar a escribir código.
+**Estructura del repo (D16):** dos directorios, `firmware/` (pizarras) y `server/`, cada uno con su `.env` fuera del repo. El lápiz (D11) y la carcasa (D12) son piezas aparte.
 
 ---
 
@@ -64,24 +64,24 @@ USB-C constante, cargador de ≥2 A. Sin batería: no hay cargador ni polaridade
 
 ---
 
-## 4. Conexión wifi (D2, D4, A1)
+## 4. Conexión wifi (D2, D4, D25)
 
-El aparato no lleva wifi precargado y se conecta al de donde esté. Dos opciones, abiertas:
-
-**(a) Bluetooth desde el móvil.** Espressif ofrece *Unified Provisioning* ([documentación](https://docs.espressif.com/projects/esp-idf/en/v5.2.1/esp32s3/api-reference/provisioning/provisioning.html)): el móvil envía la red y la contraseña por BLE, cifradas.
-- *Security 1:* intercambio de claves Curve25519 y cifrado AES-256-CTR, con una clave de autorización opcional (PoP).
-- *Security 2:* SRP6a y AES-256-GCM; las credenciales se generan antes y se pueden dar con una pegatina QR.
-- Hace falta una app en el móvil. Existe una de Espressif, pero no he verificado su disponibilidad actual ni la licencia.
-
-**(b) Portal cautivo.** El aparato crea su **propia red wifi** (no es la de tu router). El usuario se conecta desde el móvil y se abre el menú para elegir su wifi; si no salta solo, se abre una dirección en el navegador (por defecto 192.168.4.1 *(verificar)*). La contraseña viaja cifrada si la red del aparato es WPA2.
-
-Ventaja común: la pantalla puede mostrar el nombre de red y un código (incluso un QR) y demostrar presencia física. Se guardan varias redes.
+El aparato no lleva wifi precargado. El menú de ajustes lista las redes visibles; el usuario elige una y escribe la contraseña con un teclado en la propia pantalla. Se guardan varias redes y el aparato intenta las conocidas al encender.
 
 ---
 
-## 5. Servidor (D14, A3)
+## 5. Servidor (D14, D20–D24)
 
-Programa en Node.js con [`ws`](https://github.com/websockets/ws) (MIT), un solo archivo, en el servidor de casa del usuario. Coste 0 €.
+Programa en Node.js con [`ws`](https://github.com/websockets/ws) (MIT), en el servidor de casa del usuario. Coste 0 €.
+
+**Estructura:** un módulo escucha en un puerto de forma pasiva; cada conexión nueva se entrega a un módulo de sesión y el listener vuelve a escuchar (D21).
+
+**Acceso (D22):**
+- La pantalla envía el secreto como primer mensaje. El servidor compara su hash con el de su `.env` (comparación en tiempo constante). La pantalla lleva el mismo secreto en su `.env`.
+- Conexión sin autenticar en pocos segundos: se cierra. Intentos fallidos limitados por IP.
+- Ambos `.env` se quedan fuera del repo; el repo lleva un `.env.example` sin valores.
+
+**Sala (D23, D24):** una sola sala. Dos pantallas autenticadas como máximo. El servidor guarda en memoria el registro de trazos y lo reenvía al reconectar. Si una pantalla vuelve mientras queda abierta una conexión antigua, la antigua se sustituye.
 
 **Cómo llega internet al servidor de casa (A3), pendiente de verificar:**
 - Redirección de puertos en el router + DNS dinámico + proxy con TLS (p. ej. Caddy). Falla si el proveedor usa CGNAT.

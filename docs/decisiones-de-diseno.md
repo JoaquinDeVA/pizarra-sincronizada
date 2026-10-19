@@ -2,7 +2,7 @@
 
 Estrategia: **qué** queremos y **por qué**. Cómo se lleva a la realidad (hardware, compras, protocolo, firmware) vive en [documentacion-tecnica.md](documentacion-tecnica.md), que cita estas decisiones por su código (D1, D2…).
 
-Fecha: 2026-10-21
+Fecha: 2026-10-22
 
 Estados: **Decidida** (la tomó el usuario; absoluta salvo que se argumente un error) · **Abierta** (sin decidir; se listan las opciones, no una propuesta).
 
@@ -37,6 +37,14 @@ Dos aparatos, cada uno en una casa. Una persona dibuja o borra y la otra lo ve a
 | D17 | **Modelo de placa: Waveshare ESP32-S3-Touch-LCD-7** (7" 800×480, GT911, 16 MB flash, 8 MB PSRAM) | Mejor documentación, pin INT del táctil conectado, una sola revisión ([guía de compra](compra/README.md)) |
 | D18 | **Se empieza por el software, sin hardware** | Medir antes de comprar |
 | D19 | **Las dos placas se compran a la vez, cuando todo esté medido** | Evita comprar con datos a medias |
+| D20 | **Servidor en Node.js,** en el servidor de casa del usuario | Un archivo pequeño y librería WebSocket madura |
+| D21 | **El servidor escucha de forma pasiva en un puerto;** al llegar una conexión la delega a otro módulo y vuelve a escuchar | Separa la recepción de la gestión de sesiones |
+| D22 | **Solo entra quien tiene la contraseña:** el servidor guarda su hash en su `.env`; las pantallas llevan el mismo secreto en el suyo. Ambos `.env` quedan sin subir al repo | Solo nuestro software opera ahí; el secreto se fija al desplegar |
+| D23 | **Una sola sala fija:** las dos pantallas autenticadas se emparejan solas; el servidor es su punto de reunión | Es un único par de pizarras |
+| D24 | **El servidor guarda el dibujo en memoria** y lo reenvía al reconectar; se pierde si el servidor se reinicia | Basta para el uso previsto |
+| D25 | **Menú de ajustes en la pantalla:** wifi (lista de redes con teclado en pantalla), brillo, estado de la conexión y del servidor, y apagado de pantalla por inactividad | Cubre lo necesario sin móvil |
+| D26 | **Pizarra con fondo blanco, cuadrícula o negro, local a cada pantalla,** y menú desplegable de colores; los trazos conservan su color en ambas pantallas | El fondo es una preferencia visual |
+| D27 | **La latencia táctil se prueba simulando el táctil con ratón en PC;** el táctil real se valida al recibir las placas, asumiendo ese riesgo | No se compra hardware antes de medir lo medible |
 
 ## 3. Fuera de alcance
 
@@ -54,8 +62,7 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 
 | Cód. | Pregunta | Opciones |
 |---|---|---|
-| A1 | **Cómo se da el wifi al aparato** (D4) | (a) Bluetooth desde el móvil con cifrado; (b) portal cautivo: el aparato crea su propia red y el menú se abre desde el móvil; (c) ambas |
 | A2 | **Librería gráfica y táctil** (D15) | LovyanGFX o LVGL; se decide midiendo la latencia en el prototipo |
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
-| A4 | **Funciones de dibujo** | Colores, grosores, goma por trazo o por píxel, deshacer |
+| A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, y qué paleta de colores |
 | A6 | **Mismo modelo en ambas casas o modelos distintos** | Mismo modelo; distintos con bandas negras |
