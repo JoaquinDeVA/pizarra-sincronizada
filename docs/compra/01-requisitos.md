@@ -22,6 +22,13 @@ Consultado: 2026-10-24. Resumen en [README.md](README.md). Derivados de las deci
 - **Sin refresco parcial.** Refresco completo: 12 s en la ficha de Waveshare, 25 s en su manual, 15–20 s en Seeed ([Waveshare 7,3" HAT (E)](https://www.waveshare.com/wiki/7.3inch_e-Paper_HAT_%28E%29_Manual), [Seeed](https://wiki.seeedstudio.com/reterminal_e10xx_main_page/)).
 - Recomendaciones del manual de Waveshare: ≥180 s entre refrescos y uno completo al menos cada 24 h. Potencia al refrescar <70 mW típica; en reposo mantiene la imagen sin alimentación.
 
+## Cuidados del panel (Seeed)
+
+- Refrescar **al menos una vez al día**, aunque la imagen no cambie; no dejar la misma imagen más de un día (retención de imagen).
+- Limpiar la pantalla si lleva mucho tiempo parada.
+- Evitar refrescos rápidos y prolongados: acortan la vida del panel.
+- Fuente: [datasheet del panel](https://www.mouser.es/datasheet/3/1361/1/100064541.pdf). El manual de Waveshare para otro panel Spectra 6 da la misma pauta de uno cada 24 h como mínimo.
+
 ## Memoria
 
 | Concepto | Tamaño | Nota |

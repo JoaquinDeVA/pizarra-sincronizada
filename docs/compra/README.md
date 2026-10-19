@@ -13,28 +13,29 @@ Actualizado: 2026-10-27. Este fichero es el resumen; los demás son el registro 
 
 | Pieza | Producto | Precio de referencia |
 |---|---|---|
-| Placa | Seeed XIAO ePaper Display Board **EE04** (SKU 100075670), 81×44×7 mm | **8,51 € en Mouser** · 11,50–12,83 € con IVA en Openelab |
-| Panel | Seeed 7,3" **Spectra 6**, 800×480 (SKU 100064541), 170,2×111,2×0,9 mm | **38,70 € en Mouser** · 58,14 € con IVA en Openelab |
+| Placa | Seeed XIAO ePaper Display Board **EE04** (SKU 100075670), 81×44×7 mm; **incluye antena y cables FFC** | **8,51 € sin IVA en Mouser** · 11,50–12,83 € con IVA en Openelab |
+| Panel | Seeed 7,3" **Spectra 6**, 800×480 (SKU 100064541), 170,2×111,2×0,9 mm, zona activa 160×96 mm | **38,70 € sin IVA en Mouser** · 58,14 € con IVA en Openelab |
 | Alternativa | **Kit DIY** de Openelab (placa + panel + antena) | 67,15 € (otro resultado: 70,35 €), preventa |
-| Batería | LiPo 3,7 V con conector JST 2,0 mm | 5–10 € *(estimación)* |
+| Batería | LiPo 3,7 V, JST-PH 2,0 mm, con protección. **Mouser no la vende en España** | ~8–19 € según tienda (ver [03-vendedores.md](03-vendedores.md)) |
 | Caja | Impresa en 3D (D12) | 1–3 € de filamento *(estimación)* |
 
-**Placa + panel en Mouser: 47,21 €** (8,51 + 38,70), unos 23 € menos que en Openelab. Con batería (5–10 €) y filamento (1–3 €) *(estimaciones)* salen **~55–60 €**, más el envío y el IVA si los precios no lo llevan (con IVA del 21 %: ~65–70 €). Ambas piezas están **sin stock** en Mouser ("Non-Stocked", plazo "solicitar presupuesto"). Falta confirmar en el carrito: IVA, envío, plazo y antena.
+**Placa + panel en Mouser: 47,21 € sin IVA, ~57 € con el 21 %** (8,51 + 38,70), unos 13 € menos que en Openelab con IVA. Con batería (~8–19 €) y filamento (1–3 € *(estimación)*) salen **~66–79 €**, más envíos (Mouser y la batería irán por separado). Ambas piezas están **sin stock** en Mouser ("Non-Stocked", plazo "solicitar presupuesto"). Falta confirmar en el carrito: envío y plazo.
 
 ## Lo que falta para completar el producto
 
 1. **Batería:** LiPo de 3,7 V, conector JST 2,0 mm, con protección. Seeed anuncia ~3 meses con la configuración por defecto sin decir la capacidad. Comprobar la polaridad con la placa (un comprador la recibió invertida).
-2. **Antena:** el kit DIY incluye una antena FPC de 2,4 GHz; la ficha de la placa suelta no la lista. Confirmarlo.
-3. **Caja:** diseño 3D propio. Hay modelo 3D de la placa, esquema y medidas (placa 81×44×7 mm, panel 170,2×111,2×0,9 mm); faltan los agujeros de montaje.
+2. **Antena: resuelta.** La hoja de datos de la placa la incluye (FPC de 2,4 GHz, 2,9 dBi), con los adaptadores y cables FFC de 24 y 50 pines. El panel trae otro adaptador y cable de 50 pines.
+3. **Caja:** diseño 3D propio. Hay modelo 3D de la placa (GrabCAD), esquema y medidas (placa 81×44×7 mm, panel 170,2×111,2×0,9 mm, zona activa 160×96 mm); faltan los agujeros de montaje. No hay caja ya hecha para esta combinación; el modelo más cercano es un [marco de MakerWorld para el panel de Waveshare de 7,3"](https://makerworld.com/models/1924771), con el mismo contorno de 170,2×111,2 mm, pensado para otra placa.
 4. **Cable USB-C con datos** y cargador (ya los tienes).
 5. **Firmware y servidor:** vienen después (D18); hay base abierta (Seeed GFX2, `esp32-photoframe`).
+6. **Cuidado del panel:** refrescar al menos una vez al día y no dejar la misma imagen más de un día (datasheet de Seeed).
 
 ## La realidad
 
 - **Spectra 6, 7,3", color y ESP32, por menos de 100 €:** solo esta combinación. La PhotoPainter (~100–120 €) y la E1002 (~115–150 €) cuestan más; la E1004 y la EE02 de 13,3" son ~220–304 €.
 - **El color es de 6 tintas** (negro, blanco, rojo, amarillo, verde y azul), con tramado. Refresco de 12–25 s sin parcial; ≥180 s entre refrescos como mínimo recomendado.
 - **No hay ejemplo de 7,3" en la ruta que cita la wiki de la EE04** (sí de 7,5" monocromo). `esp32-photoframe` soporta la EE04.
-- **Antes de comprar:** precio con IVA, envío, plazo y antena incluida, en el carrito de Mouser.
+- **Antes de comprar:** envío y plazo en el carrito de Mouser; los precios de Mouser **no llevan IVA**.
 - **Mouser solo se deja leer con el navegador integrado;** las herramientas normales reciben "acceso denegado". **No pude consultar Amazon.es ni eBay.**
 
 ## Alternativas descartadas por precio o diseño (detalle en [02-modelos.md](02-modelos.md))

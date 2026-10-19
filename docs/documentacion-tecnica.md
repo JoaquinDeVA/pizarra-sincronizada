@@ -30,8 +30,8 @@ Fecha: 2026-10-27
 |---|---|---|
 | Placa | Seeed **XIAO ePaper Display Board EE04** (SKU 100075670) | XIAO ESP32-S3 Plus; conector de batería JST 2,0 mm con interruptor de encendido y cargador integrado (carga por USB-C); 1 botón de reset y 3 de usuario (KEY0 GPIO2, KEY1 GPIO3, KEY2 GPIO5, activos en bajo); USB-C para alimentar y flashear (el cable debe llevar datos); conectores FPC de 24 y 50 pines de 0,5 mm, elegidos con un puente |
 | Panel | Seeed **7,3" Spectra 6** (SKU 100064541) | 800×480, seis colores, FPC de 50 pines |
-| Antena | FPC 2,4 GHz de 2,9 dBi | Incluida en el kit DIY de Openelab; la ficha de la placa suelta no la lista |
-| Batería | LiPo de 3,7 V con conector JST 2,0 mm | No incluida; ver §10 |
+| Antena | FPC 2,4 GHz de 2,9 dBi | Incluida con la placa (hoja de datos de Seeed), junto con adaptadores y cables FFC de 24 y 50 pines |
+| Batería | LiPo de 3,7 V, JST-PH 2,0 mm, con protección | No incluida; Mouser no la vende en España; ver §10 |
 | Caja | Impresa en 3D (D12) | Ver §8 |
 
 Fuentes: [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04) · [Openelab: placa](https://openelab.io/products/seeed-studio-xiao-epaper-ee04) · [kit DIY](https://openelab.io/products/seeed-studio-xiao-epaper-7-3-inch-diy-kit).
@@ -126,8 +126,8 @@ Datos de cada uno en [04-software-existente.md](compra/04-software-existente.md)
 Soporte impreso en 3D con ventana para el panel, alojamiento para la placa y la batería, y acceso al USB-C, al interruptor de batería y a los botones. Diseño paramétrico (OpenSCAD o CadQuery) en el repo, con los STL.
 
 - **Datos disponibles:** modelo 3D de la placa en GrabCAD, esquema en PDF y zip de PCB, enlazados desde la [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04).
-- **Medidas (Mouser):** placa 81 × 44 × 7 mm; módulo del panel 170,2 × 111,2 × 0,9 mm.
-- **No encontrados:** posición de agujeros de montaje y zona visible exacta del panel (≈165×99 mm, calculada con píxeles cuadrados).
+- **Medidas (hojas de datos de Seeed):** placa 81 × 44 × 7 mm; módulo del panel 170,2 × 111,2 × 0,9 mm; zona activa 160 × 96 mm; paso de píxel 0,2 mm.
+- **No encontrados:** posición de agujeros de montaje de la placa. No hay caja para esta combinación; el modelo más cercano es un [marco de MakerWorld para el panel de Waveshare de 7,3"](https://makerworld.com/models/1924771) (mismo contorno), pensado para otra placa.
 - Hay que proteger el cable FPC del panel y apoyar el panel sin presionarlo.
 
 ---
@@ -138,6 +138,7 @@ Soporte impreso en 3D con ventana para el panel, alojamiento para la placa y la 
 |---|---|
 | Autonomía distinta de la anunciada (10 µA frente a ≤1 mA) | Medir el consumo en la placa real |
 | Calidad del color: seis tintas y tramado | Probar imágenes y dibujos antes de decidir el contenido |
+| Retención de imagen si la misma imagen dura más de un día | Refrescar al menos una vez al día, aunque no cambie (datasheet de Seeed) |
 | Refresco lento y límite de ≥180 s entre refrescos | Intervalo ≥ 3 min; actualizar solo si cambió la imagen |
 | Falta de ejemplo de código para el 7,3" en la wiki | Partir de `esp32-photoframe`, que soporta la EE04, o de los ejemplos de Seeed GFX2 |
 | Batería con la polaridad invertida respecto a la placa (reportado por un comprador) | Comprobar la polaridad con la placa antes de conectar |
@@ -152,8 +153,8 @@ Soporte impreso en 3D con ventana para el panel, alojamiento para la placa y la 
 
 | Pieza | Estado | Qué hace falta |
 |---|---|---|
-| Batería | No incluida | LiPo de 3,7 V, conector JST 2,0 mm, con protección; capacidad: Seeed anuncia ~3 meses y los kits similares llevan 2000 mAh; polaridad comprobada con la placa |
-| Antena | En el kit DIY; no listada en la placa suelta | FPC 2,4 GHz; confirmar que viene o comprarla |
+| Batería | No incluida | LiPo de 3,7 V, JST-PH 2,0 mm, con protección; capacidad: Seeed anuncia ~3 meses sin decir cuál y los kits similares llevan 2000 mAh; hay que comprobar la polaridad con la serigrafía de la placa (el pinout no está en la hoja de datos); comprarla fuera de Mouser |
+| Antena | Incluida con la placa | Nada |
 | Caja | No incluida | Diseño 3D propio (D12) |
 | Cable y cargador USB-C | Los tienes | Cable con datos |
 | Firmware | No escrito (D18) | Partir de `esp32-photoframe` o de Seeed GFX2 |

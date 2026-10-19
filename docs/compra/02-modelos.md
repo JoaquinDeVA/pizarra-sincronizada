@@ -51,7 +51,18 @@ Criterios: e-ink a color, ≥5", ESP32, batería, acceso de desarrollo (D5, D7, 
 
 **Elegida (D38).** Placa EE04 (SKU 100075670) + panel de 7,3" (SKU 100064541), por separado o como kit.
 
-**Medidas (ficha de Mouser):** placa 81 × 44 × 7 mm; módulo del panel 170,2 × 111,2 × 0,9 mm. Panel: colores negro, azul, verde, rojo, blanco y amarillo, interfaz SPI. [Placa](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100075670?qs=LnCj936TGbUcG%252BSC0UjQfA%3D%3D) · [panel](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100064541?qs=LnCj936TGbWpKU2QkZU7aw%3D%3D).
+**Medidas (ficha de Mouser):** placa 81 × 44 × 7 mm; módulo del panel 170,2 × 111,2 × 0,9 mm. [Placa](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100075670?qs=LnCj936TGbUcG%252BSC0UjQfA%3D%3D) · [panel](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100064541?qs=LnCj936TGbWpKU2QkZU7aw%3D%3D).
+
+**Hojas de datos de Seeed (leídas el 2026-10-27 en las fichas de Mouser):** [placa](https://www.mouser.es/datasheet/3/1361/1/100075670.pdf) y [panel](https://www.mouser.es/datasheet/3/1361/1/100064541.pdf) (8 y 7 páginas).
+
+| | Placa EE04 (100075670) | Panel 7,3" (100064541) |
+|---|---|---|
+| **Contenido de la caja** | Placa, adaptador de 24 pines con cable FFC, **adaptador de 50 pines con cable FFC** y **antena FPC de 2,4 GHz (2,9 dBi)** | Panel, **adaptador de 50 pines y cable FFC de 50 pines** |
+| Precio de lista (sin IVA) | US$9,90 | US$45,00 |
+| Datos técnicos | XIAO ESP32-S3 Plus; FPC de 24 y 50 pines (0,5 mm); batería JST 2,0 mm con interruptor; 3,7 V LiPo o USB-C; 1 reset y 3 botones | Zona activa 160 × 96 mm; 800×480; paso de píxel 0,2 mm; SPI; FPC de 50 pines (0,5 mm); acepta XIAO, Arduino y MicroPython; peso 33 g |
+| Origen y código aduanero | China; HS UE 8543709099 | China; HS UE 8471707000 |
+
+**Cuidados del panel (datasheet de Seeed):** evitar dejar la misma imagen más de un día (retención de imagen); refrescar al menos una vez al día; limpiar la pantalla si lleva mucho tiempo parada; refrescar lo menos posible al depurar, porque refrescar a gran velocidad durante mucho tiempo acorta la vida de la pantalla.
 
 **Datos de la [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04):** conectores FPC de 24 y 50 pines con puente (el 7,3" Spectra 6 va por el de 50); botones KEY0 GPIO2, KEY1 GPIO3 y KEY2 GPIO5, activos en bajo; USB-C para alimentar y flashear (el cable debe llevar datos); icono de batería baja por debajo del 20 %; ~3 meses con la configuración por defecto (capacidad de batería no indicada); no admite NFC; esquema PDF y zip de PCB; modelo 3D en GrabCAD; sin dimensiones ni agujeros de montaje.
 

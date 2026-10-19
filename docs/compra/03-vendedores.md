@@ -32,9 +32,29 @@ No pude consultar Amazon.es ni eBay (mis herramientas reciben error 403 y 503). 
 | Panel 7,3" Spectra 6 | [Mouser España](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100064541?qs=LnCj936TGbWpKU2QkZU7aw%3D%3D) (Mouser nº 713-100064541) | **38,70 €** | **No hay stock**; plazo de fábrica por presupuesto |
 | Kit DIY (placa + panel + antena) | [Openelab](https://openelab.io/products/seeed-studio-xiao-epaper-7-3-inch-diy-kit) | 67,15 € con IVA (otro resultado: 70,35 €) | Preventa; la suma de las dos piezas por separado en Openelab es ~69,6–71 € |
 
-**Mouser, placa + panel: 8,51 € + 38,70 € = 47,21 €** (visto en el navegador integrado el 2026-10-27; las herramientas de lectura reciben "acceso denegado"). Es ~23 € menos que Openelab. Pendiente de confirmar en el carrito: si los precios llevan IVA, el envío (los sitios de Mouser de otros países marcan envío gratis por encima de 50 €; no hay cifra para España), el plazo (ambas piezas están sin stock) y si la placa incluye antena. Mouser dice ofrecer DDP en los países de la UE ([foro EEVblog](https://eevblog.com/forum/chat/customs-taxes-on-orders-from-mouser-to-eu)).
+**Mouser, placa + panel: 8,51 € + 38,70 € = 47,21 €** (visto en el navegador integrado el 2026-10-27; las herramientas de lectura reciben "acceso denegado"). Es ~23 € menos que Openelab.
 
-Batería LiPo de 3,7 V con JST 2,0 mm: sin vendedor consultado (5–10 € *(estimación)*).
+- **Los precios de Mouser no llevan IVA:** las hojas de datos de Seeed dan US$9,90 y US$45,00 "sin IVA", y 8,51 € y 38,70 € son la misma cifra en euros (cambio de ~0,86). Con el 21 %: **~57,12 €**.
+- **Antena incluida:** la hoja de datos de la placa la lista (antena FPC de 2,4 GHz, 2,9 dBi), junto con los adaptadores y cables FFC de 24 y 50 pines. El panel trae otro adaptador y cable de 50 pines.
+- **Batería:** Mouser **no puede vender** en España la batería de Adafruit (2000 mAh, 485-2011): "por normativa del gobierno". Hay que comprarla en otro sitio.
+- Pendiente de confirmar en el carrito: envío (los sitios de Mouser de otros países marcan envío gratis por encima de 50 € sin IVA; no hay cifra para España), y el plazo (ambas piezas están sin stock y el plazo de fábrica es "solicitar presupuesto"). Mouser dice ofrecer DDP en los países de la UE ([foro EEVblog](https://eevblog.com/forum/chat/customs-taxes-on-orders-from-mouser-to-eu)).
+
+### Batería LiPo 3,7 V, conector JST-PH 2,0 mm, con protección (consultado 2026-10-27)
+
+| Vendedor | Producto | Precio | Notas |
+|---|---|---|---|
+| Mouser España | Adafruit 2000 mAh (485-2011) | — | **No se vende en España** |
+| [Adafruit](https://www.adafruit.com/product/2011) | 2000 mAh con JST-PH y protección | US$12,50 | EE. UU.; envío de baterías de litio sujeto a restricciones |
+| [The Pi Hut](https://thepihut.com/products/2000mah-3-7v-lipo-battery) | 2000 mAh con JST-PH de 2 mm | £10 | Solo se envía dentro de Inglaterra y Gales |
+| [Electrokit](https://www.electrokit.com/produkt/batteri-lipo-3-7v-2000mah) | 2000 mAh con protección (PCM), 50×40×8 mm, 32,9 g, cable de 50 mm | 169 SEK con IVA | Suecia |
+| Melopero | 2000 mAh, compatible JST PH 2,0 | 7,30 € | Agotada; no dice si lleva protección |
+| [Openelab](https://openelab.io/collections/batteries-lithium-ion-batteries) | Celdas de polímero con JST 2,0 (p. ej. 3000 mAh a 18,65 €) | desde 18,65 € | UE, DDP; las de 2000 mAh que vi son cilíndricas 18650 sin conector |
+
+Ningún resultado fue de una tienda española; no verifiqué Bricogeek, Electan ni Cetronic.
+
+- **Polaridad:** no hay estándar en los conectores JST; una tienda neerlandesa avisa de que puede variar de un lote a otro, y un comprador de la EE04 recibió una batería con la polaridad invertida ([Openelab](https://openelab.io/products/seeed-studio-xiao-epaper-ee04)). La hoja de datos de la placa **no trae el pinout del conector**; hay que mirar la serigrafía de la placa.
+- **Carga:** Adafruit recomienda cargar a 2 A o menos (lo mejor, 500 mA).
+- **Envío:** las baterías de litio se envían con restricciones y a veces solo por correo postal.
 
 ### Otras opciones de color (consultado 2026-10-26)
 
@@ -58,6 +78,7 @@ Fórmula: `precio + envío + IVA (21 %, si no incluido) + 3 € (derecho aduaner
 
 | Opción | Cuentas | Total |
 |---|---|---|
+| **B. EE04 en Mouser** (D38) | 8,51 € + 38,70 € = 47,21 € sin IVA; ×1,21 = 57,12 € (antena y cables incluidos) + batería ~8–19 € + filamento 1–3 € + envíos | **~66–79 €** más envíos |
 | **B. EE04 en Openelab** | 67,15 € + 7,95 € de envío = 75,10 €; + batería LiPo con conector JST 2,0 mm (~5–10 € *(estimación)*) + 1–3 € de filamento para la caja | **~82–88 €** |
 | A. PhotoPainter en Waveshare | US$83 ≈ 72–77 € ; ×1,21 de IVA = 87–94 €; + 3 €; + envío 10–25 € *(estimación)* | **~100–120 €** (la variante con batería puede costar más; sin verificar) |
 | C. E1002 en Seeed (MSRP US$99) | US$99 ≈ 86–91 €; ×1,21 = 104–110 €; + 3 €; + envío | **~115–140 €** |
