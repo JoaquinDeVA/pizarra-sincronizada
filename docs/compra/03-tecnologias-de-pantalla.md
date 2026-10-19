@@ -51,3 +51,22 @@ Convención: *(estimación)* = mía. "Fuente" = enlace de donde sale el dato. Si
 ## Lo no investigado
 
 Tinta "magnética" electrónica real (no la de juguete), pantallas OLED de 7", paneles reflectivos de color, ni precios actuales de e-paper táctiles en tiendas UE.
+
+## E-paper de 5" o más para un cuadro sin táctil (consultado 2026-10-23)
+
+Medidas calculadas con píxeles cuadrados (±5 %). Precios sin envío ni impuestos de importación salvo que se diga. "Sin verificar" = resultado de búsqueda.
+
+| Opción | Pantalla | ESP32 | Refresco | Precio | Notas |
+|---|---|---|---|---|---|
+| **Seeed reTerminal E1001** | 7,5" B/N 800×480 (163×98 mm), 4 grises | ESP32-S3, 8 MB PSRAM, 32 MB flash; ya montada, con soporte (176×120×53 mm) | Parcial: sí. "2–5 s" en una sola fila, sin separar parcial y completo | MSRP US$69; ¥14.425 en Switch Science (Japón) | USB-C 5 V/1 A, batería 2000 mAh, microSD, sensores. Firmware propio: Arduino, ESP-IDF, PlatformIO. [Wiki](https://wiki.seeedstudio.com/reterminal_e10xx_main_page/) · [CNX](https://www.cnx-software.com/2025/09/06/reterminal-e1001-e10) |
+| Seeed reTerminal E1002 | 7,3" color Spectra 6 800×480 | ESP32-S3 | **Sin parcial**, 15–20 s | US$99 | Demasiado lento para un trazo en vivo |
+| Seeed reTerminal E1003 | 10,3" B/N 1404×1872 (157×209 mm, vertical), 16 grises | ESP32-S3 | Parcial: sí; 2–3 s | US$159,90 | Táctil solo con el firmware de Seeed |
+| **Waveshare 7,5" e-Paper + placa ESP32** | 7,5" B/N 800×480, 4 grises | Placa ESP32 aparte (conexión FPC, sin soldar) | 0,4 s parcial · 1,5 s rápido · 4 s completo ([Waveshare](https://www.waveshare.com/7.5inch-e-Paper.htm)) | Pantalla 55 € con IVA en [Tinytronics](https://www.tinytronics.nl/shop/en/display/e-ink/waveshare-7.5-inch-e-ink-e-paper-display) (sin stock, 2–4 semanas) + placa ESP32 ~18,5–19 € ([BerryBase](https://www.ebay.de/p/9039625136), [Elektronicavoorjou](https://elektronicavoorjou.nl/en/?p=39175529)) | Son dos piezas que se enchufan; sin caja ni soporte. Choca con D7 ("no se monta hardware propio") si se cuenta como montaje |
+| **Elecrow CrowPanel 5,79"** | 5,79" B/N **272×792** (139×48 mm: franja de 2,9:1) | ESP32-S3; ya montada | Parcial y rápido, según Elecrow; tiempos no publicados | US$31,90 (Elecrow); 39,95 € ([Openelab](https://openelab.io/a/s/products/elecrow-crowpanel-esp32-5-79inch-e-paper-hmi-display-272x792), "sold out") | Conector de batería. La proporción hace pequeño el lienzo si es tipo 16:10 |
+| Good Display GDEY075T7 | 7,5" B/N 800×480, 4 grises | Placa ESP32 de Good Display (GD02002) con adaptador GD09003 | 0,34 s parcial · 1,5 s rápido · 3,5 s completo ([eckstein-shop](https://eckstein-shop.de/ESP32_1__75_10)) | No localizado | Compatibilidad del adaptador sin confirmar |
+| Soldered Inkplate 10 | 9,7" B/N 1200×825 (203×140 mm), 4 grises | ESP32 WROVER, 8 MB PSRAM | 0,62 s parcial · 1,61 s completo ([CNX](https://cnx-software.com/?p=84501)) | 151,96 € (oferta caducada) / 189,95 € ([Soldered](https://soldered.com/products/inkplate-10)) | Empresa croata (UE). Plazo de stock ~6 semanas |
+
+**Notas**
+- Los tiempos son de las hojas de datos o de comparativas; no están medidos con nuestro software.
+- Para solo mirar, un parcial de 0,4–1,5 s por actualización es aceptable si se agrupan los trazos, y hace falta un refresco completo periódico para limpiar la imagen residual.
+- No investigados: TRMNL, Waveshare 5,83" y 5,65", LilyGo T5 de 7,5".
