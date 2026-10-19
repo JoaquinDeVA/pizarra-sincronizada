@@ -1,6 +1,6 @@
 # Guía de compra — resumen
 
-Actualizado: 2026-10-22. Este fichero es el resumen; los demás son el registro de datos. Apoya A5 (tecnología de pantalla) y la elección de modelo ([decisiones](../decisiones-de-diseno.md)).
+Actualizado: 2026-10-23. Este fichero es el resumen; los demás son el registro de datos. Apoya A5 (tecnología de pantalla) y la elección de modelo ([decisiones](../decisiones-de-diseno.md)).
 
 | Registro | Contenido |
 |---|---|
@@ -9,6 +9,14 @@ Actualizado: 2026-10-22. Este fichero es el resumen; los demás son el registro 
 | [02-vendedores.md](02-vendedores.md) | Ofertas por tienda, coste total en España, impuestos y envío, lista de comprobación |
 | [03-tecnologias-de-pantalla.md](03-tecnologias-de-pantalla.md) | LCD frente a e-paper y otras, con consumo y refresco |
 | [plantilla-tamanos.pdf](plantilla-tamanos.pdf) | Tamaños reales para imprimir al 100 %: 3,5", 4,3", 5", 7", teléfono, iPad mini y tarjeta |
+
+## Replanteo (2026-10-23)
+
+El cuadro ya no necesita táctil ni se compran dos (D28, D30): una persona dibuja desde el móvil y la otra mira un solo cuadro. Lo que sigue en este fichero se investigó para **dos placas táctiles**, así que:
+
+- **Vigente:** requisitos de memoria, consumo, impuestos y envío, tecnologías de pantalla (e-paper pasa a ser viable al solo mirar).
+- **Desfasado:** el precio de ~75–120 € (era para dos) y la opción A/B (placas táctiles). Una placa de 7" sin táctil cuesta como mucho unos 5 US$ menos *(estimación)*.
+- **Pendiente de investigar:** pantallas sin táctil para ESP32 (LCD y e-paper, 4,3"–10") con precio de una unidad entregada en España.
 
 ## La realidad
 

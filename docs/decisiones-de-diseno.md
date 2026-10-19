@@ -1,71 +1,67 @@
 # Decisiones de diseño — Pizarra sincronizada
 
-Estrategia: **qué** queremos y **por qué**. Cómo se lleva a la realidad (hardware, compras, protocolo, firmware) vive en [documentacion-tecnica.md](documentacion-tecnica.md), que cita estas decisiones por su código (D1, D2…).
+Estrategia: **qué** queremos y **por qué**. Cómo se lleva a la realidad vive en [documentacion-tecnica.md](documentacion-tecnica.md) y la guía de compra en [compra/](compra/README.md). Se citan por código (D1, A1…).
 
-Fecha: 2026-10-22
+Fecha: 2026-10-23
 
-Estados: **Decidida** (la tomó el usuario; absoluta salvo que se argumente un error) · **Abierta** (sin decidir; se listan las opciones, no una propuesta).
+Estados: **Decidida** (la tomó el usuario; absoluta salvo que se argumente un error) · **Abierta** (sin decidir; se listan opciones, sin recomendar).
 
 ---
 
 ## 1. Propósito
 
-Dos aparatos, cada uno en una casa. Una persona dibuja o borra y la otra lo ve al instante. Nada más.
-
-**El proyecto está centrado en la calidad de la experiencia táctil.** No cumple ninguna otra función, así que lo único que importa es que dibujar se sienta bien.
+Una persona dibuja desde su móvil y la otra lo ve al instante en un cuadro dedicado, sobre su escritorio, en otra casa. El cuadro es un objeto nuevo y separado del móvil: la separación entre el móvil y estas notas es intencional.
 
 ## 2. Decisiones tomadas
 
 | Cód. | Decisión | Por qué |
 |---|---|---|
-| D1 | **Uso remoto:** cada aparato en una casa distinta, conectados por internet | Es el caso de uso |
-| D2 | **Para personas poco técnicas:** se enciende y funciona; lo único que se configura es el wifi | El usuario final no es técnico |
-| D3 | **Se mueve de sitio pero no es robusto:** uso en casa u oficina, sin resistencia al agua ni entornos agresivos | Uso doméstico |
-| D4 | **Conexión wifi modificable:** el aparato se conecta al wifi del sitio donde esté, sin precargar ninguna red | No se sabe dónde estará en el futuro |
+| D1 | **Uso remoto:** una persona dibuja desde el móvil y la otra mira en el cuadro, en casas distintas, conectadas por internet | Es el caso de uso |
+| D2 | **El cuadro es para una persona poco técnica:** se enciende y funciona; lo único que se configura es el wifi | El usuario final no es técnico |
+| D3 | **El cuadro se mueve de sitio pero no es robusto:** uso en casa u oficina, sin resistencia al agua ni entornos agresivos | Uso doméstico |
+| D4 | **Conexión wifi modificable:** el cuadro se conecta al wifi del sitio donde esté, sin precargar ninguna red | No se sabe dónde estará en el futuro |
 | D5 | **Alimentación por USB-C constante, sin batería** | Ahorra coste y complejidad |
-| D6 | **Presupuesto: ~50 € en total para los dos aparatos, "o algo más"** | Proyecto barato |
-| D7 | **Placas ya montadas con ESP32 y pantalla integrados**, compradas hechas; no se monta hardware propio | Menos riesgo y trabajo; el esfuerzo va al software |
+| D6 | **Presupuesto: ~50 € en total, "o algo más"** | Proyecto barato |
+| D7 | **Plataforma ESP32,** con pantalla ya montada y comprada hecha; no se monta hardware propio | Menos riesgo; el esfuerzo va al software |
 | D8 | **Sin software de pago ni que pueda pasar a serlo;** el código lo escribimos nosotros | Evitar licencias o cuotas futuras |
 | D9 | **Proyecto compartible:** repositorio en GitHub, licencia MIT | El usuario quiere compartirlo |
-| D10 | **Pantalla táctil capacitiva de 7,0"** | Es el tamaño deseado por el usuario |
-| D11 | **El lápiz es un módulo independiente:** se compra aparte y puede ignorarse en el desarrollo | Reduce el alcance |
-| D12 | **Caja impresa en 3D, dentro del alcance** (el usuario tiene impresora) | Abarata y adapta la caja |
+| D12 | **Caja o soporte impreso en 3D, dentro del alcance** (el usuario tiene impresora) | Es el objeto de escritorio |
 | D13 | **Compra desde dos fuentes:** AliExpress/eBay (barato, lento) y tiendas UE (rápido, más caro) | Elegir según precio y plazo |
-| D14 | **Servidor intermedio entre los dos aparatos, en el servidor que el usuario ya tiene en casa** | Evita servidor de pago y conexión directa entre aparatos |
-| D15 | **La calidad táctil es el criterio principal** de cualquier elección técnica | Es la única función del proyecto |
-| D16 | **El repo tiene dos partes:** el código de las pizarras (firmware) y el del servidor, en dos directorios distintos, cada uno con su `.env` sin subir al repo para comunicarse entre ellos | Son dos programas distintos |
-| D17 | **Modelo de placa: Waveshare ESP32-S3-Touch-LCD-7** (7" 800×480, GT911, 16 MB flash, 8 MB PSRAM) | Mejor documentación, pin INT del táctil conectado, una sola revisión ([guía de compra](compra/README.md)) |
+| D14 | **Servidor intermedio entre el móvil y el cuadro, en el servidor de casa del usuario** | Evita servidor de pago y conexión directa |
+| D15 | **Criterio principal: la calidad de la experiencia de dibujo** en el móvil y la fluidez con que se ve en el cuadro | Es la única función del proyecto |
+| D16 | **El repo tiene tres partes en directorios distintos:** `server/`, `web/` (cliente de dibujo para el móvil) y `firmware/` (cuadro). `server/` y `firmware/` llevan su `.env` fuera del repo | Son programas distintos |
 | D18 | **Se empieza por el software, sin hardware** | Medir antes de comprar |
-| D19 | **Las dos placas se compran a la vez, cuando todo esté medido** | Evita comprar con datos a medias |
-| D20 | **Servidor en Node.js,** en el servidor de casa del usuario | Un archivo pequeño y librería WebSocket madura |
+| D19 | **El cuadro se compra cuando el software esté medido** | Evita comprar con datos a medias |
+| D20 | **Servidor en Node.js,** en el servidor de casa | Un archivo pequeño y librería WebSocket madura |
 | D21 | **El servidor escucha de forma pasiva en un puerto;** al llegar una conexión la delega a otro módulo y vuelve a escuchar | Separa la recepción de la gestión de sesiones |
-| D22 | **Solo entra quien tiene la contraseña:** el servidor guarda su hash en su `.env`; las pantallas llevan el mismo secreto en el suyo. Ambos `.env` quedan sin subir al repo | Solo nuestro software opera ahí; el secreto se fija al desplegar |
-| D23 | **Una sola sala fija:** las dos pantallas autenticadas se emparejan solas; el servidor es su punto de reunión | Es un único par de pizarras |
+| D22 | **Solo entra quien tiene la contraseña:** el servidor guarda su hash en su `.env`; el cuadro y el cliente de dibujo llevan el mismo secreto. Los `.env` quedan sin subir al repo | Solo nuestro software opera ahí; el secreto se fija al desplegar |
+| D23 | **Una sola sala fija** con dos roles: el que dibuja y el que mira. El servidor es su punto de reunión | Es un único par |
 | D24 | **El servidor guarda el dibujo en memoria** y lo reenvía al reconectar; se pierde si el servidor se reinicia | Basta para el uso previsto |
-| D25 | **Menú de ajustes en la pantalla:** wifi (lista de redes con teclado en pantalla), brillo, estado de la conexión y del servidor, y apagado de pantalla por inactividad | Cubre lo necesario sin móvil |
-| D26 | **Pizarra con fondo blanco, cuadrícula o negro, local a cada pantalla,** y menú desplegable de colores; los trazos conservan su color en ambas pantallas | El fondo es una preferencia visual |
-| D27 | **La latencia táctil se prueba simulando el táctil con ratón en PC;** el táctil real se valida al recibir las placas, asumiendo ese riesgo | No se compra hardware antes de medir lo medible |
+| D26 | **Fondo blanco, cuadrícula o negro, y colores en menú desplegable,** en el cliente de dibujo | Cubre lo pedido para el dibujo |
+| D28 | **Roles fijos:** una persona solo dibuja y la otra solo mira. Se compra **un solo cuadro** | Es el uso previsto |
+| D29 | **El cuadro es un objeto nuevo y dedicado,** no un dispositivo ya existente (tablet, tele, Raspberry) | Separación mental entre el móvil y estas notas |
+| D30 | **El cuadro no tiene táctil ni menús:** solo muestra. Sus ajustes (wifi, brillo, apagado) se hacen desde el móvil | El dibujo ocurre en el móvil |
 
 ## 3. Fuera de alcance
 
-Vídeo o voz, cuentas de usuario, historial de dibujos, más de 2 aparatos, imágenes importadas, resistencia al agua, batería, 4G, montaje de hardware propio, lápiz con presión o rechazo de palma.
+Vídeo o voz, cuentas de usuario, historial de dibujos, más de 2 personas, imágenes importadas, resistencia al agua, batería, 4G, montaje de hardware propio, dibujar desde el cuadro, más de un cuadro.
 
 ## 4. Anti-objetivos (fracasaría aunque funcione)
 
-- Que dibujar se note con retraso, a saltos o impreciso.
-- Que exija configuración técnica para el uso diario.
+- Que dibujar en el móvil se note con retraso, a saltos o impreciso.
+- Que exija configuración técnica a quien mira el cuadro.
 - Que dependa de un servicio que pueda empezar a cobrar o cambiar sus condiciones.
 
 ## 5. Decisiones abiertas
 
-Cada una lista opciones, sin recomendar una; los datos están en la documentación técnica.
+Cada una lista opciones, sin recomendar una; los datos están en la documentación técnica y en la guía de compra.
 
 | Cód. | Pregunta | Opciones |
 |---|---|---|
-| A2 | **Librería gráfica y táctil** (D15) | LovyanGFX o LVGL; se decide midiendo la latencia en el prototipo |
+| A1 | **Cómo se da el wifi al cuadro desde el móvil** (D4, D30) | (a) Bluetooth con cifrado; (b) portal cautivo: el cuadro crea su red y el menú se abre en el navegador del móvil |
+| A2 | **Cliente de dibujo en el móvil** | (a) Web (PWA) servida por el servidor, sin tienda de apps; (b) app nativa |
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
-| A5 | **Tecnología de pantalla** (D10, D15, D17) | LCD 7" con brillo bajo y apagado automático (actual); o e-paper (sin brillo, menos consumo, pero refresco de 0,4–1,5 s y sin 7" táctil verificado). Detalle en [compra/](compra/README.md) |
-| A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, y qué paleta de colores |
-| A7 | **Lienzo en pantallas pequeñas** | (a) Lienzo fijo del tamaño de la pantalla; (b) lienzo virtual mayor con desplazamiento con dos dedos y zoom (pellizco), indicador de trazos fuera de la vista; (c) varias páginas |
-| A8 | **Texto en la pizarra** | (a) Sin texto, solo dibujo; (b) herramienta de texto con el teclado en pantalla (el de D25), color y tamaño, enviado al otro como objeto; (c) letrero escrito a mano |
-| A6 | **Mismo modelo en ambas casas o modelos distintos** | Mismo modelo; distintos con bandas negras |
+| A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, paleta de colores, texto |
+| A5 | **Tecnología y tamaño del cuadro** (D7, D15, D30) | LCD sin táctil (brillante, refresco rápido); e-paper (sin luz, casi sin consumo, refresco de 0,4–1,5 s: aceptable al solo mirar); tamaño por decidir. Detalle en [compra/](compra/README.md) |
+| A6 | **Fondo:** ¿lo elige quien dibuja y se ve igual en el cuadro, o es un ajuste del cuadro desde el móvil? (D26) | Compartido; propio del cuadro |
+| A7 | **Forma del lienzo** | Misma proporción que la pantalla del cuadro, con bandas si el móvil difiere; o lienzo mayor que se ve entero escalado |
