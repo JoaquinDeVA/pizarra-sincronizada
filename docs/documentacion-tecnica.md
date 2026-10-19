@@ -2,7 +2,7 @@
 
 Táctica: **cómo** se materializan las decisiones de [decisiones-de-diseno.md](decisiones-de-diseno.md) (se citan como D1…, A1…). Aquí no se discute el porqué.
 
-Fecha: 2026-10-20
+Fecha: 2026-10-21
 
 > Precios: capturas de octubre de 2026. Cambian a menudo; confirma antes de comprar. *(estimación)* = cifra mía, sin fuente.
 
@@ -25,26 +25,26 @@ Fecha: 2026-10-20
 
 ---
 
-## 2. Hardware (D7, D10)
+## 2. Hardware (D7, D10, D17)
 
-Placa con ESP32-S3, pantalla táctil capacitiva de 7,0" y wifi, ya montada y comprada hecha. Candidato conocido: **Sunton ESP32-8048S070C**.
+Placa ya montada **Waveshare ESP32-S3-Touch-LCD-7**, versión *Touch*. La comparación con otras placas vive en [compra/](compra/README.md).
 
-| | 7" Sunton ESP32-8048S070C |
+| Dato | Valor |
 |---|---|
-| Pantalla | 800×480 IPS RGB, GT911 capacitivo |
-| SoC | ESP32-S3: 16 MB flash, 8 MB PSRAM |
-| Conectividad | Wifi, BLE 5, USB-C, ranura SD, altavoz |
-| Batería | Sin conector (coherente con D5) |
-| Precio calle (AliExpress/eBay) | ~US$21–28 |
-| Precio tienda UE | 37,25 € (Tinytronics, agotado) · 52,95 € (Hobbyelectronica) |
-| Pegas | Revisiones v1.1 y v1.3 con init distinto; puede parpadear con wifi activo; el pin INT del GT911 viene sin conectar |
-| Referencia | [Atomic14](https://www.atomic14.com/esp32/boards/sunton-esp32-8048s070/) · [ESP3D](https://esp3d.io/esp3d-tft/version_1x/hardware/esp32-s3/sunton-70-8048/) |
-
-Tiendas UE: [Tinytronics](https://www.tinytronics.nl/nl/development-boards/microcontroller-boards/met-wi-fi/jingcai-esp32-8048s070c-7-inch-tft-lcd-display-800*480-pixels-met-touchscreen-esp32-s3), [Hobbyelectronica](https://www.hobbyelectronica.nl/en/product-categorie/platformen/esp32-display/).
+| Pantalla | 7" IPS RGB 800×480, controlador ST7262 |
+| Táctil | GT911 de 5 puntos; INT en GPIO4, SDA GPIO8, SCL GPIO9, RST por el expansor CH422G (EXIO1) |
+| SoC | ESP32-S3-WROOM-1 N16R8: 16 MB flash, 8 MB PSRAM, 512 KB SRAM |
+| Conectividad | Wifi 2,4 GHz, BLE 5 |
+| Alimentación | USB-C a 5 V, 450 mA según la wiki |
+| Batería | Conector PH2.0 con cargador, sin usar (D5) |
+| Tamaño | 192,96 × 110,76 mm con táctil |
+| Documentación | [Wiki](https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-7) · [esquema](https://files.waveshare.com/wiki/ESP32-S3-Touch-LCD-7/ESP32-S3-Touch-LCD-7-Sch.pdf) · [GT911](https://files.waveshare.com/wiki/common/GT911_EN_Datasheet.pdf) · [ST7262](https://files.waveshare.com/wiki/common/ST7262.pdf) |
 
 Notas para D15 (calidad táctil):
-- El pin INT del GT911 no llega a ningún GPIO por defecto; sin él el procesador pasa del 80 % de uso al sondear el táctil. Se arregla con un puente en R17 (0 Ω) que lo une a GPIO18 ([ESP3D](https://esp3d.io/esp3d-tft/version_1x/hardware/esp32-s3/sunton-70-8048/)). Hay que confirmarlo en la revisión que llegue.
-- A 800×480, Espressif da ~23 fps medios de LVGL en RGB, con framebuffers en PSRAM ([FAQ de Espressif](https://docs.espressif.com/projects/esp-faq/en/latest/software-framework/peripherals/lcd.html)).
+- Flash y PSRAM comparten SPI1: una escritura en flash puede detener el panel y causar jitter ([Atomic14](https://www.atomic14.com/esp32/boards/waveshare-esp32-s3-touch-lcd-7/)). Mitigación: PSRAM octal a 120 MHz con XIP-from-PSRAM, o ESP-IDF, y no escribir en flash mientras se dibuja.
+- Quedan ~4 GPIO libres; el resto pasa por el CH422G.
+- A 800×480, Espressif da ~23 fps medios de LVGL en RGB ([FAQ](https://docs.espressif.com/projects/esp-faq/en/latest/software-framework/peripherals/lcd.html)).
+- La wiki da 16 MB de flash en un apartado y 8 MB en otro: confirmar en la placa recibida.
 
 ### Compra (D13)
 
@@ -54,7 +54,7 @@ Notas para D15 (calidad táctil):
 
 ### Coste (D6)
 
-Dos aparatos: ~42–56 € en AliExpress/eBay; ~75–106 € en tienda UE. Más ~1–3 € de filamento por caja *(estimación)*. Cable USB-C y cargador ≥2 A ya los tienes.
+Dos aparatos: ~75–120 € entregados en España según la [guía de compra](compra/02-vendedores.md). Más ~1–3 € de filamento por caja *(estimación)*. Cable USB-C y cargador ≥2 A ya los tienes.
 
 ---
 
@@ -151,7 +151,7 @@ Módulo aparte, ignorable en el desarrollo. Los táctiles capacitivos aceptan cu
 | Riesgo | Mitigación |
 |---|---|
 | Latencia táctil visible | Medir antes de elegir librería; interrupción, interpolación |
-| Parpadeo con wifi y INT del táctil sin conectar | Ajustes de LVGL/LovyanGFX; puente R17 |
+| Jitter por escrituras en flash | XIP-from-PSRAM; no escribir en flash mientras se dibuja |
 | Revisión de placa distinta a la esperada | Anotar revisión al comprar; probar una unidad primero |
 | Servidor de casa inaccesible desde fuera (CGNAT) | Túnel |
 | Cambian precios o stock | Dos fuentes de compra; confirmar antes de pedir |
@@ -160,7 +160,5 @@ Módulo aparte, ignorable en el desarrollo. Los táctiles capacitivos aceptan cu
 
 ## Fuentes (octubre de 2026)
 
-- [Atomic14 — Sunton 8048S070](https://www.atomic14.com/esp32/boards/sunton-esp32-8048s070/)
-- [ESP3D — nota sobre el INT del GT911](https://esp3d.io/esp3d-tft/version_1x/hardware/esp32-s3/sunton-70-8048/)
+- [Atomic14 — Waveshare ESP32-S3-Touch-LCD-7](https://www.atomic14.com/esp32/boards/waveshare-esp32-s3-touch-lcd-7/) · [Waveshare wiki](https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-7)
 - [Espressif — FAQ de interfaces LCD](https://docs.espressif.com/projects/esp-faq/en/latest/software-framework/peripherals/lcd.html) · [Unified Provisioning](https://docs.espressif.com/projects/esp-idf/en/v5.2.1/esp32s3/api-reference/provisioning/provisioning.html)
-- [Tinytronics](https://www.tinytronics.nl/nl/development-boards/microcontroller-boards/met-wi-fi/jingcai-esp32-8048s070c-7-inch-tft-lcd-display-800*480-pixels-met-touchscreen-esp32-s3) · [Hobbyelectronica](https://www.hobbyelectronica.nl/en/product-categorie/platformen/esp32-display/)

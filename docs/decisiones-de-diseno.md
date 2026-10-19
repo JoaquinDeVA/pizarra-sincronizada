@@ -2,7 +2,7 @@
 
 Estrategia: **qué** queremos y **por qué**. Cómo se lleva a la realidad (hardware, compras, protocolo, firmware) vive en [documentacion-tecnica.md](documentacion-tecnica.md), que cita estas decisiones por su código (D1, D2…).
 
-Fecha: 2026-10-20
+Fecha: 2026-10-21
 
 Estados: **Decidida** (la tomó el usuario; absoluta salvo que se argumente un error) · **Abierta** (sin decidir; se listan las opciones, no una propuesta).
 
@@ -33,7 +33,10 @@ Dos aparatos, cada uno en una casa. Una persona dibuja o borra y la otra lo ve a
 | D13 | **Compra desde dos fuentes:** AliExpress/eBay (barato, lento) y tiendas UE (rápido, más caro) | Elegir según precio y plazo |
 | D14 | **Servidor intermedio entre los dos aparatos, en el servidor que el usuario ya tiene en casa** | Evita servidor de pago y conexión directa entre aparatos |
 | D15 | **La calidad táctil es el criterio principal** de cualquier elección técnica | Es la única función del proyecto |
-| D16 | **El repo tiene dos partes:** el código de las pizarras (firmware) y el del servidor | Son dos programas distintos |
+| D16 | **El repo tiene dos partes:** el código de las pizarras (firmware) y el del servidor, en dos directorios distintos, cada uno con su `.env` sin subir al repo para comunicarse entre ellos | Son dos programas distintos |
+| D17 | **Modelo de placa: Waveshare ESP32-S3-Touch-LCD-7** (7" 800×480, GT911, 16 MB flash, 8 MB PSRAM) | Mejor documentación, pin INT del táctil conectado, una sola revisión ([guía de compra](compra/README.md)) |
+| D18 | **Se empieza por el software, sin hardware** | Medir antes de comprar |
+| D19 | **Las dos placas se compran a la vez, cuando todo esté medido** | Evita comprar con datos a medias |
 
 ## 3. Fuera de alcance
 
@@ -55,6 +58,4 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 | A2 | **Librería gráfica y táctil** (D15) | LovyanGFX o LVGL; se decide midiendo la latencia en el prototipo |
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
 | A4 | **Funciones de dibujo** | Colores, grosores, goma por trazo o por píxel, deshacer |
-| A5 | **Modelo de placa de 7,0"** (D10) | Se decide con la guía de compra (`docs/compra/`) |
 | A6 | **Mismo modelo en ambas casas o modelos distintos** | Mismo modelo; distintos con bandas negras |
-| A7 | **Orden de trabajo** | (a) Escribir primero servidor, protocolo y cliente web de prueba sin hardware y comprar después; (b) comprar una placa ya para empezar a medir |
