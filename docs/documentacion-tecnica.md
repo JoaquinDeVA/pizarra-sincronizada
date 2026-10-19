@@ -126,7 +126,8 @@ Datos de cada uno en [04-software-existente.md](compra/04-software-existente.md)
 Soporte impreso en 3D con ventana para el panel, alojamiento para la placa y la batería, y acceso al USB-C, al interruptor de batería y a los botones. Diseño paramétrico (OpenSCAD o CadQuery) en el repo, con los STL.
 
 - **Datos disponibles:** modelo 3D de la placa en GrabCAD, esquema en PDF y zip de PCB, enlazados desde la [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04).
-- **No encontrados:** dimensiones de la placa, posición de agujeros de montaje y medidas del panel de 7,3" (≈165×99 mm de zona visible, calculado con píxeles cuadrados).
+- **Medidas (Mouser):** placa 81 × 44 × 7 mm; módulo del panel 170,2 × 111,2 × 0,9 mm.
+- **No encontrados:** posición de agujeros de montaje y zona visible exacta del panel (≈165×99 mm, calculada con píxeles cuadrados).
 - Hay que proteger el cable FPC del panel y apoyar el panel sin presionarlo.
 
 ---

@@ -51,6 +51,8 @@ Criterios: e-ink a color, ≥5", ESP32, batería, acceso de desarrollo (D5, D7, 
 
 **Elegida (D38).** Placa EE04 (SKU 100075670) + panel de 7,3" (SKU 100064541), por separado o como kit.
 
+**Medidas (ficha de Mouser):** placa 81 × 44 × 7 mm; módulo del panel 170,2 × 111,2 × 0,9 mm. Panel: colores negro, azul, verde, rojo, blanco y amarillo, interfaz SPI. [Placa](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100075670?qs=LnCj936TGbUcG%252BSC0UjQfA%3D%3D) · [panel](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100064541?qs=LnCj936TGbWpKU2QkZU7aw%3D%3D).
+
 **Datos de la [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04):** conectores FPC de 24 y 50 pines con puente (el 7,3" Spectra 6 va por el de 50); botones KEY0 GPIO2, KEY1 GPIO3 y KEY2 GPIO5, activos en bajo; USB-C para alimentar y flashear (el cable debe llevar datos); icono de batería baja por debajo del 20 %; ~3 meses con la configuración por defecto (capacidad de batería no indicada); no admite NFC; esquema PDF y zip de PCB; modelo 3D en GrabCAD; sin dimensiones ni agujeros de montaje.
 
 **Apertura:**

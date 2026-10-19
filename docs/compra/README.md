@@ -13,13 +13,13 @@ Actualizado: 2026-10-27. Este fichero es el resumen; los demás son el registro 
 
 | Pieza | Producto | Precio de referencia |
 |---|---|---|
-| Placa | Seeed XIAO ePaper Display Board **EE04** (SKU 100075670) | 11,50–12,83 € con IVA en Openelab |
-| Panel | Seeed 7,3" **Spectra 6**, 800×480 (SKU 100064541) | 58,14 € con IVA en Openelab |
+| Placa | Seeed XIAO ePaper Display Board **EE04** (SKU 100075670), 81×44×7 mm | **8,51 € en Mouser** · 11,50–12,83 € con IVA en Openelab |
+| Panel | Seeed 7,3" **Spectra 6**, 800×480 (SKU 100064541), 170,2×111,2×0,9 mm | **38,70 € en Mouser** · 58,14 € con IVA en Openelab |
 | Alternativa | **Kit DIY** de Openelab (placa + panel + antena) | 67,15 € (otro resultado: 70,35 €), preventa |
 | Batería | LiPo 3,7 V con conector JST 2,0 mm | 5–10 € *(estimación)* |
 | Caja | Impresa en 3D (D12) | 1–3 € de filamento *(estimación)* |
 
-**Coste total estimado entregado en España: ~82–88 €** (mismas cuentas que la EE04 en [03-vendedores.md](03-vendedores.md)), dentro de los ~100 € de D6. Los enlaces de Mouser España que pasaste **no pude abrirlos** (se agota el tiempo); su precio y envío hay que confirmarlos.
+**Placa + panel en Mouser: 47,21 €** (8,51 + 38,70), unos 23 € menos que en Openelab. Con batería (5–10 €) y filamento (1–3 €) *(estimaciones)* salen **~55–60 €**, más el envío y el IVA si los precios no lo llevan (con IVA del 21 %: ~65–70 €). Ambas piezas están **sin stock** en Mouser ("Non-Stocked", plazo "solicitar presupuesto"). Falta confirmar en el carrito: IVA, envío, plazo y antena.
 
 ## Lo que falta para completar el producto
 
@@ -34,8 +34,8 @@ Actualizado: 2026-10-27. Este fichero es el resumen; los demás son el registro 
 - **Spectra 6, 7,3", color y ESP32, por menos de 100 €:** solo esta combinación. La PhotoPainter (~100–120 €) y la E1002 (~115–150 €) cuestan más; la E1004 y la EE02 de 13,3" son ~220–304 €.
 - **El color es de 6 tintas** (negro, blanco, rojo, amarillo, verde y azul), con tramado. Refresco de 12–25 s sin parcial; ≥180 s entre refrescos como mínimo recomendado.
 - **No hay ejemplo de 7,3" en la ruta que cita la wiki de la EE04** (sí de 7,5" monocromo). `esp32-photoframe` soporta la EE04.
-- **Antes de comprar:** precio y stock reales en el carrito, y antena incluida.
-- **No pude consultar Amazon.es, eBay ni Mouser.**
+- **Antes de comprar:** precio con IVA, envío, plazo y antena incluida, en el carrito de Mouser.
+- **Mouser solo se deja leer con el navegador integrado;** las herramientas normales reciben "acceso denegado". **No pude consultar Amazon.es ni eBay.**
 
 ## Alternativas descartadas por precio o diseño (detalle en [02-modelos.md](02-modelos.md))
 

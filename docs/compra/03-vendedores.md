@@ -27,10 +27,12 @@ No pude consultar Amazon.es ni eBay (mis herramientas reciben error 403 y 503). 
 |---|---|---|---|
 | Placa EE04 (SKU 100075670) | [Openelab](https://openelab.io/products/seeed-studio-xiao-epaper-ee04) | 11,50 € con IVA (regular 13,60 €); otra captura 12,83 € | No lista antena, panel ni batería; stock sin confirmar |
 | Placa EE04 | Pakronics (AU) | A$19,87 con GST | 478 unidades |
-| Placa EE04 | Mouser España ([enlace del usuario](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100075670?qs=LnCj936TGbUcG%252BSC0UjQfA%3D%3D)) | **No pude abrirla** (se agota el tiempo) | Precio, stock, plazo y envío por confirmar |
+| Placa EE04 | [Mouser España](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100075670?qs=LnCj936TGbUcG%252BSC0UjQfA%3D%3D) (Mouser nº 713-100075670) | **8,51 €** (precio unitario en la ficha; si incluye IVA no lo indica) | **No hay stock** ("Non-Stocked"); plazo de fábrica: "solicitar presupuesto de entrega" |
 | Panel 7,3" Spectra 6 (SKU 100064541) | [Openelab](https://openelab.io/products/seeed-studio-7-3-epaper) | 58,14 € con IVA | — |
-| Panel 7,3" Spectra 6 | Mouser España ([enlace del usuario](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100064541?qs=LnCj936TGbWpKU2QkZU7aw%3D%3D)) | **No pude abrirla** | Precio, stock, plazo y envío por confirmar |
+| Panel 7,3" Spectra 6 | [Mouser España](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100064541?qs=LnCj936TGbWpKU2QkZU7aw%3D%3D) (Mouser nº 713-100064541) | **38,70 €** | **No hay stock**; plazo de fábrica por presupuesto |
 | Kit DIY (placa + panel + antena) | [Openelab](https://openelab.io/products/seeed-studio-xiao-epaper-7-3-inch-diy-kit) | 67,15 € con IVA (otro resultado: 70,35 €) | Preventa; la suma de las dos piezas por separado en Openelab es ~69,6–71 € |
+
+**Mouser, placa + panel: 8,51 € + 38,70 € = 47,21 €** (visto en el navegador integrado el 2026-10-27; las herramientas de lectura reciben "acceso denegado"). Es ~23 € menos que Openelab. Pendiente de confirmar en el carrito: si los precios llevan IVA, el envío (los sitios de Mouser de otros países marcan envío gratis por encima de 50 €; no hay cifra para España), el plazo (ambas piezas están sin stock) y si la placa incluye antena. Mouser dice ofrecer DDP en los países de la UE ([foro EEVblog](https://eevblog.com/forum/chat/customs-taxes-on-orders-from-mouser-to-eu)).
 
 Batería LiPo de 3,7 V con JST 2,0 mm: sin vendedor consultado (5–10 € *(estimación)*).
 
