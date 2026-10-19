@@ -1,6 +1,6 @@
 # Vendedores y ofertas
 
-Consultado: 2026-10-20. Parte de la [guía de compra](README.md). Modelos: [01-modelos.md](01-modelos.md). Envío e impuestos: [03-envio-y-aduanas.md](03-envio-y-aduanas.md).
+Consultado: 2026-10-20 (actualizado 2026-10-22). Parte de la [guía de compra](README.md). Modelos: [01-modelos.md](01-modelos.md). Envío e impuestos: sección final de este fichero.
 
 > **Cómo leer los datos.** "Verificado" = visto en la ficha de la tienda el 2026-10-20. "Resultado de búsqueda" = leído en un fragmento sin abrir la ficha. *(estimación)* = mía. Donde la ficha no da plazo ni coste de envío a España, se dice: casi ninguna ficha lo muestra antes del carrito.
 
@@ -63,14 +63,14 @@ Búsquedas sugeridas, sin verificar que los resultados coincidan:
 Qué comprobar en cada anuncio:
 - El título dice **C** (capacitivo) o *Touch*, y el módulo es **N16R8** (16 MB de flash, 8 MB de PSRAM), con panel **IPS**.
 - **Origen del envío** (España/UE evita aduana) y plazo estimado.
-- Si el precio incluye IVA y quién cobra el derecho de 3 € ([envío y aduanas](03-envio-y-aduanas.md)).
+- Si el precio incluye IVA y quién cobra el derecho de 3 € (ver [Impuestos y envío](#impuestos-y-envío-por-país-de-origen)).
 - Revisión de la placa (v0.1, v1.1, v1.3, v1.4) y fotos del esquema; el vendedor debería indicarla.
 - Valoración del vendedor y política de devolución.
 - Desconfiar de anuncios "tipo" ESP32 genérico sin código de modelo.
 
 ## Coste total estimado de dos unidades, entregadas en España
 
-Fórmula: `total = 2 × precio + envío + IVA (si no está incluido) + 3 € (derecho aduanero, un solo pedido con las dos placas iguales)`. El derecho solo aplica a mercancía que entra desde fuera de la UE (ver [envío y aduanas](03-envio-y-aduanas.md)); el IVA es el 21 % en España *(general, no verificado en esta pasada)*. Convertir dólares a euros es aproximado: no tengo cotización verificada.
+Fórmula: `total = 2 × precio + envío + IVA (si no está incluido) + 3 € (derecho aduanero, un solo pedido con las dos placas iguales)`. El derecho solo aplica a mercancía que entra desde fuera de la UE (ver [Impuestos y envío](#impuestos-y-envío-por-país-de-origen)); el IVA es el 21 % en España *(general, no verificado en esta pasada)*. Convertir dólares a euros es aproximado: no tengo cotización verificada.
 
 | Opción | Precio de 2 uds. | Qué falta por conocer | Total estimado |
 |---|---|---|---|
@@ -83,3 +83,32 @@ Fórmula: `total = 2 × precio + envío + IVA (si no está incluido) + 3 € (de
 | Elecrow Advance en Openelab | 99,90 € | Agotada | — |
 
 **Lectura:** con los precios actuales, **dos placas de 7" nuevas cuestan unos 75–120 € entregadas**, no los ~50 € del objetivo. Los ~21–28 € por unidad que citan las guías no aparecen hoy en las tiendas consultadas.
+
+## Impuestos y envío por país de origen
+
+Entrega en España peninsular. Plazos de guías y foros, no de las tiendas: casi ninguna ficha los muestra antes del carrito.
+
+| Concepto | Dato | Fuente |
+|---|---|---|
+| IVA | Desde el 1-jul-2021 se cobra IVA a toda importación comercial, sin mínimo; la exención de 22 € desapareció | [ShippyPro](https://www.shippypro.com/blog/es/ioss-y-oss-guía-del-iva-para-e-commerce-transfronterizo-en-2026) · [AEAT IOSS](https://www3.agenciatributaria.gob.es/static_files/Sede/Tema/Aduanas/Compra_internet_ecomm/FolletoIOSSgral.pdf) |
+| IOSS | Hasta 150 €: si el vendedor está registrado, cobra el IVA al pagar; si no, se cobra al recibir, a veces con gastos del transportista | ídem |
+| Derecho aduanero | Desde 1-jul-2026, 3 € por código arancelario (no por cantidad) en envíos de hasta 150 €; dos placas iguales en un pedido = 3 €. Fin: otras fuentes dicen julio de 2028; la Comisión no da fecha. No menciona IOSS | [Comisión Europea](https://commission.europa.eu/news-and-media/news/ensuring-fairness-and-safety-eur3-customs-duty-low-value-parcels-2026-06-29_en) |
+| Tasa de gestión | 2 € desde nov-2026: propuesta, no aprobada | una fuente |
+
+| Origen | Tiendas | Plazo a España | Impuestos | Notas |
+|---|---|---|---|---|
+| China | Waveshare, SpotPear, Elecrow, AliExpress/eBay | 5–15 días *(fuente secundaria)*; retenciones de semanas ([Banda Ancha](https://bandaancha.eu/foros/pago-aduanas-1734972)) | IVA + 3 € | Correos entrega China Post; el seguimiento cambia al pasar la aduana ([Packlink](https://www.packlink.com/eu-ES/blog/china-post-servicios-envios-seguimiento/)) |
+| AliExpress con almacén en España | vendedores locales | 3–7 días ([Alimarket](https://www.alimarket.es/logistica/noticia/324880/aliexpress-mejora-su-logistica-en-espana-para-acortar-los-tiempos-de-entrega)) | ya nacionalizado | la opción más rápida de AliExpress |
+| Países Bajos | Tinytronics, Hobbyelectronica | no consta | intra-UE; IVA incluido en Tinytronics | Hobbyelectronica no indica IVA ni envío |
+| Grecia | Grobotronics | producto 30–60 días | intra-UE | envío gratis desde 85 € |
+| EE. UU. | RobotShop | no consta | IVA + 3 € | su precio incluye aranceles de EE. UU., no de la UE |
+| Reino Unido | The Pi Hut | no consta | IVA + 3 € (fuera de la UE) | el IVA británico no es el español |
+
+Antes de comprar: llegar al carrito para ver envío, plazo e IVA; preferir vendedor con IOSS o con almacén en la UE; guardar capturas del precio y la revisión recibida.
+
+## Lista de comprobación antes de comprar
+
+- Sufijo **C** (capacitivo) y pin INT del táctil conectado (Waveshare: GPIO4; Sunton: puente en R17).
+- Revisión, flash (16 MB) y panel (IPS, no TN) confirmados por escrito con el vendedor.
+- Coste de envío, plazo e impuestos vistos en el carrito.
+- Anotar la revisión recibida en la documentación técnica.

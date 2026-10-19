@@ -64,5 +64,6 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 |---|---|---|
 | A2 | **Librería gráfica y táctil** (D15) | LovyanGFX o LVGL; se decide midiendo la latencia en el prototipo |
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
+| A5 | **Tecnología de pantalla** (D10, D15, D17) | LCD 7" con brillo bajo y apagado automático (actual); o e-paper (sin brillo, menos consumo, pero refresco de 0,4–1,5 s y sin 7" táctil verificado). Detalle en [compra/](compra/README.md) |
 | A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, y qué paleta de colores |
 | A6 | **Mismo modelo en ambas casas o modelos distintos** | Mismo modelo; distintos con bandas negras |
