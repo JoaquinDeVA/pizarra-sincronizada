@@ -95,6 +95,7 @@ No encontré una reseña independiente de su calidad de imagen; lo que hay es le
 | Waveshare 7,3" HAT (E) | Versión para Raspberry Pi, AU$139,95 | No es ESP32 |
 | Good Display GDEP073E01 | Panel de 7,3" Spectra 6; precio y placa no localizados | Sin datos |
 | Seeed reTerminal E1001/E1003 | Monocromo | No es color |
+| Seeed TRMNL 7,5" (OG) DIY Kit | 7,5" **monocromo** 800×480, XIAO ESP32-S3 Plus, batería de 2000 mAh incluida, sin caja; 51,40 € con IVA en [Openelab](https://openelab.io/products/seeed-studio-trmnl-diy-kit) (preventa). Soporta Arduino y ESPHome. La ficha dice que una licencia TRMNL BYOD de US$50 desbloquea los plugins del servicio TRMNL (no se necesita con firmware propio; sin verificar) | No es color (D32) |
 | Tricolor negro/blanco/rojo | Waveshare 7,5" (B), 46,95–50,57 € más placa ESP32 | Se asume que "a color" excluye los tricolor |
 
 ## Otras tecnologías de color (por qué Spectra 6)
