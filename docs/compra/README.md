@@ -4,7 +4,8 @@ Consultado: 2026-10-20. Apoya la decisión A5 de [decisiones-de-diseno.md](../de
 
 | Fichero | Contenido |
 |---|---|
-| [01-modelos.md](01-modelos.md) | Cinco modelos de 7": especificaciones, encaje con el proyecto, problemas de rendimiento |
+| [00-requisitos.md](00-requisitos.md) | Dimensionamiento: cuánta memoria, flash y procesador necesita el programa |
+| [01-modelos.md](01-modelos.md) | Seis modelos de 7": especificaciones, hojas de datos, encaje con el proyecto, problemas de rendimiento |
 | [02-vendedores.md](02-vendedores.md) | Ofertas por tienda: precio, país de envío, stock, y coste total estimado en España |
 | [03-envio-y-aduanas.md](03-envio-y-aduanas.md) | IVA, derecho aduanero de 3 € y plazos por país de origen |
 
@@ -24,6 +25,7 @@ Consultado: 2026-10-20. Apoya la decisión A5 de [decisiones-de-diseno.md](../de
 | C. Elecrow CrowPanel Advance 7" | 800×480 | 49,95 € (agotada) | Encaja; sobran funciones | Poco stock en la UE |
 | D. Guition JC1060P470C (P4) | 1024×600 | US$34,9 (descatalogada en SpotPear) | Sobra potencia | Software inmaduro, wifi vía coprocesador |
 | E. Waveshare 7B | 1024×600 | 65,84 € | Fuera de presupuesto | Precio |
+| F. Makerfabs MaTouch 7" | 800×480 / 1024×600 | 59,95 € (Elektor) | Fuera de presupuesto | Precio; sin hoja de datos enlazada |
 
 ## Opciones por escenario (sin decidir por ti)
 

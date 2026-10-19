@@ -57,3 +57,4 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 | A4 | **Funciones de dibujo** | Colores, grosores, goma por trazo o por píxel, deshacer |
 | A5 | **Modelo de placa de 7,0"** (D10) | Se decide con la guía de compra (`docs/compra/`) |
 | A6 | **Mismo modelo en ambas casas o modelos distintos** | Mismo modelo; distintos con bandas negras |
+| A7 | **Orden de trabajo** | (a) Escribir primero servidor, protocolo y cliente web de prueba sin hardware y comprar después; (b) comprar una placa ya para empezar a medir |
