@@ -15,6 +15,9 @@ Consultado: 2026-10-20. Apoya la decisión A5 de [decisiones-de-diseno.md](../de
 2. **Desde el 1 de julio de 2026 hay un derecho de 3 € por código arancelario** en importaciones de hasta 150 € (un solo derecho por las dos placas iguales en un pedido), además del IVA. Quien compre fuera de la UE paga más de lo que muestra el anuncio.
 3. **Los datos de envío casi nunca salen en la ficha.** Hay que llegar al carrito para ver plazo, coste e impuestos.
 4. **La misma placa tiene revisiones distintas** (v0.1, v1.1, v1.3, v1.4) con código de inicio y táctil distintos. Confirmar sufijo **C** (capacitivo) y revisión con el vendedor.
+5. **La memoria no limita:** con ~2 MB de PSRAM basta y las placas de 7" traen 8 MB. Lo que acota es la interfaz de pantalla y la RAM interna (ver [00-requisitos.md](00-requisitos.md)).
+6. **eBay y Amazon no se han podido consultar** desde aquí; hay búsquedas y una lista de comprobación en [02-vendedores.md](02-vendedores.md).
+7. **Orden de trabajo (A7):** parte del programa se puede escribir antes de comprar. Si se decide así, la compra se retrasa hasta saber qué mide la aplicación real.
 
 ## Modelos de un vistazo
 
@@ -44,7 +47,7 @@ Con los datos de hoy no se logra con producto nuevo de 7". Opciones que no he ve
 
 ## Antes de pulsar comprar
 
-- [ ] Sufijo **C** (capacitivo) en el título.
+- [ ] Sufijo **C** (capacitivo) en el título y pin de interrupción del táctil conectado (en la Waveshare está en GPIO4; en la Sunton hay que puentear R17).
 - [ ] Revisión, flash (16 MB) y tipo de panel (IPS, no TN) confirmados por escrito con el vendedor.
 - [ ] Coste de envío, plazo e impuestos vistos en el carrito.
 - [ ] Vendedor con IOSS o almacén en la UE.

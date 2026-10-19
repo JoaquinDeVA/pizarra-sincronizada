@@ -50,9 +50,23 @@ Consultado: 2026-10-20. Parte de la [guía de compra](README.md). Modelos: [01-m
 
 ## Dónde no he podido mirar
 
-- **Amazon.es:** no se pudo consultar. Si aparece un vendedor con envío desde España, sería la opción más rápida.
+- **Amazon.es y eBay:** mis herramientas reciben error 403 (eBay) y 503 (Amazon), así que **no puedo listar anuncios de ninguna de las dos**. Hay que mirarlas a mano (ver abajo). Un vendedor con envío desde España, o un anuncio de Amazon cumplido por Amazon, sería la opción más rápida.
 - **Anuncios concretos de AliExpress y eBay:** el listado de AliExpress no da nombre de tienda, origen ni plazos; hay que abrir cada anuncio.
 - **Tiendas españolas:** no localicé ninguna con el modelo exacto y precio con IVA. Openelab y RobotShop tienen interfaz en español pero no son tiendas españolas.
+
+## Cómo buscar en eBay y Amazon (a mano)
+
+Búsquedas sugeridas, sin verificar que los resultados coincidan:
+- [eBay.es: ESP32-8048S070C](https://www.ebay.es/sch/i.html?_nkw=ESP32-8048S070C) · [eBay.es: ESP32-S3-Touch-LCD-7](https://www.ebay.es/sch/i.html?_nkw=ESP32-S3-Touch-LCD-7)
+- [Amazon.es: ESP32-S3 7 pulgadas 800x480](https://www.amazon.es/s?k=ESP32-S3+7+pulgadas+800x480)
+
+Qué comprobar en cada anuncio:
+- El título dice **C** (capacitivo) o *Touch*, y el módulo es **N16R8** (16 MB de flash, 8 MB de PSRAM), con panel **IPS**.
+- **Origen del envío** (España/UE evita aduana) y plazo estimado.
+- Si el precio incluye IVA y quién cobra el derecho de 3 € ([envío y aduanas](03-envio-y-aduanas.md)).
+- Revisión de la placa (v0.1, v1.1, v1.3, v1.4) y fotos del esquema; el vendedor debería indicarla.
+- Valoración del vendedor y política de devolución.
+- Desconfiar de anuncios "tipo" ESP32 genérico sin código de modelo.
 
 ## Coste total estimado de dos unidades, entregadas en España
 
