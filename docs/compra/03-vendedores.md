@@ -21,6 +21,19 @@ Entrega en España peninsular. "Visto" = ficha abierta; "sin verificar" = fragme
 
 No pude consultar Amazon.es ni eBay (mis herramientas reciben error 403 y 503). Búsquedas a mano, sin verificar que coincidan: [eBay.es: PhotoPainter](https://www.ebay.es/sch/i.html?_nkw=ESP32-S3-PhotoPainter) · [Amazon.es: e-paper 7.3 Spectra 6 ESP32](https://www.amazon.es/s?k=ESP32+e-paper+7.3+Spectra+6).
 
+### Piezas de D38 por separado (consultado 2026-10-27)
+
+| Pieza | Vendedor | Precio | Notas |
+|---|---|---|---|
+| Placa EE04 (SKU 100075670) | [Openelab](https://openelab.io/products/seeed-studio-xiao-epaper-ee04) | 11,50 € con IVA (regular 13,60 €); otra captura 12,83 € | No lista antena, panel ni batería; stock sin confirmar |
+| Placa EE04 | Pakronics (AU) | A$19,87 con GST | 478 unidades |
+| Placa EE04 | Mouser España ([enlace del usuario](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100075670?qs=LnCj936TGbUcG%252BSC0UjQfA%3D%3D)) | **No pude abrirla** (se agota el tiempo) | Precio, stock, plazo y envío por confirmar |
+| Panel 7,3" Spectra 6 (SKU 100064541) | [Openelab](https://openelab.io/products/seeed-studio-7-3-epaper) | 58,14 € con IVA | — |
+| Panel 7,3" Spectra 6 | Mouser España ([enlace del usuario](https://www.mouser.es/en/ProductDetail/Seeed-Studio/100064541?qs=LnCj936TGbWpKU2QkZU7aw%3D%3D)) | **No pude abrirla** | Precio, stock, plazo y envío por confirmar |
+| Kit DIY (placa + panel + antena) | [Openelab](https://openelab.io/products/seeed-studio-xiao-epaper-7-3-inch-diy-kit) | 67,15 € con IVA (otro resultado: 70,35 €) | Preventa; la suma de las dos piezas por separado en Openelab es ~69,6–71 € |
+
+Batería LiPo de 3,7 V con JST 2,0 mm: sin vendedor consultado (5–10 € *(estimación)*).
+
 ### Otras opciones de color (consultado 2026-10-26)
 
 | Opción | Vendedor | Precio | Notas |

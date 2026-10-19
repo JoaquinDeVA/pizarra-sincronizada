@@ -2,7 +2,7 @@
 
 Táctica: **cómo** se materializan las decisiones de [decisiones-de-diseno.md](decisiones-de-diseno.md) (se citan como D1…, A1…). Aquí no se discute el porqué.
 
-Fecha: 2026-10-24
+Fecha: 2026-10-27
 
 > Precios y plazos de la [guía de compra](compra/README.md). *(estimación)* = cifra mía, sin fuente.
 
@@ -24,20 +24,29 @@ Fecha: 2026-10-24
 
 ---
 
-## 2. Cuadro: hardware (D5, D7, D30, D32, A5)
+## 2. Cuadro: hardware (D5, D7, D30, D32, D38)
 
-Pantalla e-ink a color de 7,3" (Spectra 6, 800×480), ESP32-S3, con batería, sin táctil, y con acceso de programación. Tres kits candidatos en [compra/02-modelos.md](compra/02-modelos.md): Waveshare PhotoPainter, Seeed XIAO EE04 y Seeed reTerminal E1002.
+| Pieza | Producto | Datos |
+|---|---|---|
+| Placa | Seeed **XIAO ePaper Display Board EE04** (SKU 100075670) | XIAO ESP32-S3 Plus; conector de batería JST 2,0 mm con interruptor de encendido y cargador integrado (carga por USB-C); 1 botón de reset y 3 de usuario (KEY0 GPIO2, KEY1 GPIO3, KEY2 GPIO5, activos en bajo); USB-C para alimentar y flashear (el cable debe llevar datos); conectores FPC de 24 y 50 pines de 0,5 mm, elegidos con un puente |
+| Panel | Seeed **7,3" Spectra 6** (SKU 100064541) | 800×480, seis colores, FPC de 50 pines |
+| Antena | FPC 2,4 GHz de 2,9 dBi | Incluida en el kit DIY de Openelab; la ficha de la placa suelta no la lista |
+| Batería | LiPo de 3,7 V con conector JST 2,0 mm | No incluida; ver §10 |
+| Caja | Impresa en 3D (D12) | Ver §8 |
 
-| Requisito | Valor |
+Fuentes: [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04) · [Openelab: placa](https://openelab.io/products/seeed-studio-xiao-epaper-ee04) · [kit DIY](https://openelab.io/products/seeed-studio-xiao-epaper-7-3-inch-diy-kit).
+
+| Requisito del cuadro | Valor |
 |---|---|
 | Imagen | 800×480 a seis colores: negro, blanco, rojo, amarillo, verde y azul |
 | Refresco | 12–25 s, sin parcial; ≥180 s entre refrescos y uno completo cada 24 h como mínimo ([manual Waveshare](https://www.waveshare.com/wiki/7.3inch_e-Paper_HAT_%28E%29_Manual)) |
-| Energía | Batería de 3,7 V con cargador integrado; sueño profundo; despertar por RTC |
-| Memoria | Imagen a 4 bits = 192 KB; las placas traen 8 MB de PSRAM (ver [requisitos](compra/01-requisitos.md)) |
+| Memoria | Imagen a 4 bits = 192 KB; PSRAM del XIAO ESP32-S3 Plus (hay que activarla en el Arduino) |
+
+**Software de la placa (según la wiki):** Arduino con la biblioteca Seeed GFX2 y la placa "XIAO ESP32S3 Plus"; SenseCraft HMI, ESPHome, Home Assistant, PlatformIO y EEZ Studio. No hay ejemplo de 7,3" en la ruta que cita la wiki (sí de 7,5" monocromo). El firmware abierto `esp32-photoframe` soporta la EE04 ([software existente](compra/04-software-existente.md)).
 
 ---
 
-## 3. Energía (D5, D33, A6)
+## 3. Energía (D5, D33, D34, D35)
 
 El cuadro duerme y despierta cada X minutos: conecta al wifi, consulta al servidor, y solo si la imagen cambió refresca la pantalla; después vuelve a dormir. El servidor no puede empujar nada: espera a que el cuadro despierte.
 
@@ -114,7 +123,11 @@ Datos de cada uno en [04-software-existente.md](compra/04-software-existente.md)
 
 ## 8. Caja (D12, D3)
 
-Si el kit no trae caja (EE04): soporte impreso en 3D con hueco para el USB-C, la batería y los botones. Diseño paramétrico (OpenSCAD o CadQuery) en el repo, con los STL. Pendiente: medidas de la placa elegida.
+Soporte impreso en 3D con ventana para el panel, alojamiento para la placa y la batería, y acceso al USB-C, al interruptor de batería y a los botones. Diseño paramétrico (OpenSCAD o CadQuery) en el repo, con los STL.
+
+- **Datos disponibles:** modelo 3D de la placa en GrabCAD, esquema en PDF y zip de PCB, enlazados desde la [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04).
+- **No encontrados:** dimensiones de la placa, posición de agujeros de montaje y medidas del panel de 7,3" (≈165×99 mm de zona visible, calculado con píxeles cuadrados).
+- Hay que proteger el cable FPC del panel y apoyar el panel sin presionarlo.
 
 ---
 
@@ -125,10 +138,26 @@ Si el kit no trae caja (EE04): soporte impreso en 3D con hueco para el USB-C, la
 | Autonomía distinta de la anunciada (10 µA frente a ≤1 mA) | Medir el consumo en la placa real |
 | Calidad del color: seis tintas y tramado | Probar imágenes y dibujos antes de decidir el contenido |
 | Refresco lento y límite de ≥180 s entre refrescos | Intervalo ≥ 3 min; actualizar solo si cambió la imagen |
-| Kit con firmware cerrado o difícil de reflashear | Comprobar el USB-C y el modo de descarga al recibir la placa |
-| EE04 en preventa sin ejemplo oficial para el 7,3" | Partir de `esp32-photoframe`, que la soporta |
+| Falta de ejemplo de código para el 7,3" en la wiki | Partir de `esp32-photoframe`, que soporta la EE04, o de los ejemplos de Seeed GFX2 |
+| Batería con la polaridad invertida respecto a la placa (reportado por un comprador) | Comprobar la polaridad con la placa antes de conectar |
 | Servidor de casa inaccesible (CGNAT) | Túnel |
 | Cambian precios o stock | Dos fuentes de compra; confirmar antes de pedir |
+
+---
+
+---
+
+## 10. Qué falta para completar el cuadro
+
+| Pieza | Estado | Qué hace falta |
+|---|---|---|
+| Batería | No incluida | LiPo de 3,7 V, conector JST 2,0 mm, con protección; capacidad: Seeed anuncia ~3 meses y los kits similares llevan 2000 mAh; polaridad comprobada con la placa |
+| Antena | En el kit DIY; no listada en la placa suelta | FPC 2,4 GHz; confirmar que viene o comprarla |
+| Caja | No incluida | Diseño 3D propio (D12) |
+| Cable y cargador USB-C | Los tienes | Cable con datos |
+| Firmware | No escrito (D18) | Partir de `esp32-photoframe` o de Seeed GFX2 |
+| Wifi sin táctil | Abierto (A1) | Tres botones de usuario, portal cautivo, BLE |
+| Servidor y fuentes | Plan 4 en pausa | Se retoma después de la compra |
 
 ---
 
@@ -137,3 +166,5 @@ Si el kit no trae caja (EE04): soporte impreso en 3D con hueco para el USB-C, la
 - [Guía de compra](compra/README.md) y sus registros.
 - [Espressif — Unified Provisioning](https://docs.espressif.com/projects/esp-idf/en/v5.2.1/esp32s3/api-reference/provisioning/provisioning.html)
 - [Waveshare — manual 7,3" HAT (E)](https://www.waveshare.com/wiki/7.3inch_e-Paper_HAT_%28E%29_Manual)
+
+---

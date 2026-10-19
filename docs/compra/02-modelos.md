@@ -49,11 +49,16 @@ Criterios: e-ink a color, ≥5", ESP32, batería, acceso de desarrollo (D5, D7, 
 | Precio | 67,15 € en Openelab (preventa) |
 | Fuentes | [Openelab](https://openelab.io/products/seeed-studio-xiao-epaper-7-3-inch-diy-kit) · [CNX Software](https://www.cnx-software.com/?p=161052) |
 
+**Elegida (D38).** Placa EE04 (SKU 100075670) + panel de 7,3" (SKU 100064541), por separado o como kit.
+
+**Datos de la [wiki de la EE04](https://wiki.seeedstudio.com/epaper_ee04):** conectores FPC de 24 y 50 pines con puente (el 7,3" Spectra 6 va por el de 50); botones KEY0 GPIO2, KEY1 GPIO3 y KEY2 GPIO5, activos en bajo; USB-C para alimentar y flashear (el cable debe llevar datos); icono de batería baja por debajo del 20 %; ~3 meses con la configuración por defecto (capacidad de batería no indicada); no admite NFC; esquema PDF y zip de PCB; modelo 3D en GrabCAD; sin dimensiones ni agujeros de montaje.
+
 **Apertura:**
 - Es un kit de desarrollo por diseño: placa XIAO, botones y conector de batería.
-- Hay ejemplos de [ESPHome](https://wiki.seeedstudio.com/EE04_with_esphome_advanced/) (ESP-IDF o Arduino), pero para una pantalla de 2,9", no la de 7,3".
+- Arduino con la biblioteca Seeed GFX2 y la placa "XIAO ESP32S3 Plus" (PSRAM activada); la wiki no cita un ejemplo de 7,3". También SenseCraft HMI, ESPHome, Home Assistant, PlatformIO y EEZ Studio.
+- Hay ejemplos de [ESPHome](https://wiki.seeedstudio.com/EE04_with_esphome_advanced/) (ESP-IDF o Arduino), pero para una pantalla de 2,9".
 - Soportado por [esp32-photoframe](https://github.com/aitjcize/esp32-photoframe).
-- **No encontré** un ejemplo oficial de Arduino o ESP-IDF para el panel de 7,3".
+- Un comprador reportó una LiPo con la polaridad invertida respecto a la placa: comprobarla antes de conectar.
 
 ## C. Seeed reTerminal E1002
 

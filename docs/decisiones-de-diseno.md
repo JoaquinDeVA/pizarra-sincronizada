@@ -2,7 +2,7 @@
 
 Estrategia: **qué** queremos y **por qué**. Cómo se lleva a la realidad vive en [documentacion-tecnica.md](documentacion-tecnica.md) y la guía de compra en [compra/](compra/README.md). Se citan por código (D1, A1…).
 
-Fecha: 2026-10-25
+Fecha: 2026-10-27
 
 Estados: **Decidida** (la tomó el usuario; absoluta salvo que se argumente un error) · **Abierta** (sin decidir; se listan opciones, sin recomendar).
 
@@ -43,6 +43,7 @@ Una pantalla e-ink a color sobre el escritorio que solo muestra lo que ocurre en
 | D35 | **Autonomía: una carga a la semana basta;** más es mejor | Es el uso previsto |
 | D36 | **Se acepta el color de seis tintas** (negro, blanco, rojo, amarillo, verde y azul), con imágenes tramadas | Es lo que ofrece el e-ink de color |
 | D37 | **Criterio principal: la mejor pantalla posible** | El software puede adaptarse después |
+| D38 | **Hardware: placa Seeed XIAO ePaper Display Board EE04** (SKU 100075670, XIAO ESP32-S3 Plus) **más panel Seeed de 7,3" Spectra 6, 800×480** (SKU 100064541), comprados por separado o como el kit DIY, por precio. Se completa con batería, antena y caja | Es la opción que cumple color, 7,3", ESP32, apertura de desarrollo y presupuesto (D6) |
 
 ## 3. Fuera de alcance (por ahora)
 
@@ -64,6 +65,6 @@ Cada una lista opciones, sin recomendar una; los datos están en la documentaci�
 | A2 | **Cliente de dibujo en el móvil** | (a) Web (PWA) servida por el servidor; (b) app nativa |
 | A3 | **Cómo llega internet al servidor de casa** (D14) | Redirección de puertos + DNS dinámico, o túnel |
 | A4 | **Herramientas de dibujo** | Grosores, goma, borrar todo, deshacer, paleta de colores, texto |
-| A5 | **Modelo de hardware** (D6, D7, D32, D37) | Seeed reTerminal E1002 (7,3"); Seeed reTerminal E1004 (13,3"); Waveshare PhotoPainter (7,3", con marco); Seeed XIAO EE04 (7,3", sin caja ni batería). Detalle en [compra/](compra/README.md). El presupuesto de D6 (~100 €) puede cambiar con D37 |
+| A5 | **Tienda y piezas de D38** | Mouser (SKU de Seeed), Openelab (UE) u otras; kit DIY (placa + panel + antena) o piezas sueltas; batería y antena concretas |
 | A7 | **Firmware** (D8) | (a) Usar tal cual el firmware abierto existente (`esp32-photoframe`, MIT); (b) partir de él y modificarlo; (c) escribir uno propio mínimo |
 | A8 | **Paleta de la app de dibujo con 6 tintas** (D26, D36) | Paleta de la app limitada a negro, blanco, rojo, amarillo, verde y azul; o libre, con el servidor reduciendo cada color al más cercano |

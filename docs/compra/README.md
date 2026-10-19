@@ -1,42 +1,42 @@
 # Guía de compra — resumen
 
-Actualizado: 2026-10-25. Este fichero es el resumen; los demás son el registro de datos. Apoya A5 (modelo de hardware) en [decisiones](../decisiones-de-diseno.md). Describe opciones; **no decide**.
+Actualizado: 2026-10-27. Este fichero es el resumen; los demás son el registro de datos. Hardware elegido en D38 ([decisiones](../decisiones-de-diseno.md)); queda abierta la tienda y las piezas (A5).
 
 | Registro | Contenido |
 |---|---|
 | [01-requisitos.md](01-requisitos.md) | Qué necesita el cuadro: pantalla, energía, wifi sin táctil, memoria |
-| [02-modelos.md](02-modelos.md) | Fichas de los modelos de e-ink a color, con la apertura de cada uno |
+| [02-modelos.md](02-modelos.md) | Fichas de la placa elegida y de las alternativas |
 | [03-vendedores.md](03-vendedores.md) | Ofertas, coste total en España, impuestos y envío |
 | [04-software-existente.md](04-software-existente.md) | Firmware abierto que se puede reutilizar |
 
+## Qué se compra (D38)
+
+| Pieza | Producto | Precio de referencia |
+|---|---|---|
+| Placa | Seeed XIAO ePaper Display Board **EE04** (SKU 100075670) | 11,50–12,83 € con IVA en Openelab |
+| Panel | Seeed 7,3" **Spectra 6**, 800×480 (SKU 100064541) | 58,14 € con IVA en Openelab |
+| Alternativa | **Kit DIY** de Openelab (placa + panel + antena) | 67,15 € (otro resultado: 70,35 €), preventa |
+| Batería | LiPo 3,7 V con conector JST 2,0 mm | 5–10 € *(estimación)* |
+| Caja | Impresa en 3D (D12) | 1–3 € de filamento *(estimación)* |
+
+**Coste total estimado entregado en España: ~82–88 €** (mismas cuentas que la EE04 en [03-vendedores.md](03-vendedores.md)), dentro de los ~100 € de D6. Los enlaces de Mouser España que pasaste **no pude abrirlos** (se agota el tiempo); su precio y envío hay que confirmarlos.
+
+## Lo que falta para completar el producto
+
+1. **Batería:** LiPo de 3,7 V, conector JST 2,0 mm, con protección. Seeed anuncia ~3 meses con la configuración por defecto sin decir la capacidad. Comprobar la polaridad con la placa (un comprador la recibió invertida).
+2. **Antena:** el kit DIY incluye una antena FPC de 2,4 GHz; la ficha de la placa suelta no la lista. Confirmarlo.
+3. **Caja:** diseño 3D propio. Hay modelo 3D de la placa y esquema, pero no dimensiones, agujeros de montaje ni medidas del panel.
+4. **Cable USB-C con datos** y cargador (ya los tienes).
+5. **Firmware y servidor:** vienen después (D18); hay base abierta (Seeed GFX2, `esp32-photoframe`).
+
 ## La realidad
 
-- **Encontré 3 kits de e-ink de color de 7,3" que cumplen** ESP32, batería y acceso de desarrollo: PhotoPainter, XIAO EE04 y reTerminal E1002. Los de color con otro tamaño que vi son más caros (13,3" a US$279,90; 5,8" a 209,95 €) o no son ESP32. No he recorrido todo el mercado.
-- **Hay firmware abierto casi hecho.** `esp32-photoframe` (MIT) soporta las tres, duerme entre consultas y descarga una imagen de una URL con una programación. Es justo el modelo de D5 y D33. Falta comprobar su mantenimiento y si admite la autenticación de D22.
-- **El color es de 6 tintas** (negro, blanco, rojo, amarillo, verde y azul). Las imágenes salen tramadas y una app de dibujo solo muestra esos seis colores.
-- **Refresco de 12–25 s sin parcial,** con un mínimo recomendado de ≥180 s entre refrescos.
-- **Dos datos de autonomía se contradicen:** el firmware dice ~10 µA durmiendo y la wiki de Waveshare, ≤1 mA. Hay que medirlo.
-- **Presupuesto (D6, ~100 €):** solo la EE04 entra claramente (~82–88 €). La PhotoPainter roza (~100–120 €) y la E1002 se pasa (~115–140 €). Estimaciones mías con conversión de dólares sin verificar.
-- **Para "la mejor pantalla", la tecnología es Spectra 6:** es el color e-ink más cercano al papel con placas ESP32 disponibles. Gallery 3 y Kaleido 3 tienen peor color o blancos más oscuros, y no encontré placas ESP32 con ellos.
-- **El precio real de la E1002 supera su MSRP de US$99:** RobotShop la vende a US$127,25 y Pakronics a A$193,60; una oferta de AliExpress de agosto de 2026 la daba a ~US$91 y no sé si sigue.
-- **La E1004 de 13,3" cuesta 304,45 € en Openelab** (preventa, reposición estimada el 30-nov-2026, envío y aduana incluidos en la UE): es el "mejor posible" en tamaño y nitidez, pero ~3× el precio.
-- **De 5 a 6" no hay kit ESP32 de color asequible.** Lo que ronda 70–80 € es el panel 5,65" ACeP en bruto (69,95 € en Elektor; más ~19 € de placa ESP32 de compatibilidad sin confirmar) o la Pimoroni Inky Frame 5,7" (£67,83–79,80), que no es ESP32 (Pico W). Es una tecnología de color anterior (7 colores, ~30 s) y 600×448. La EE04 de 7,3" Spectra 6 sale más barata (~82–88 €).
-- **Otras opciones de color que encontré:** el kit XIAO EE02 de 13,3" (219,95 € en Openelab, más barato que la E1004 pero sin caja), una placa de 13,3" de Waveshare (US$254–260) y la M5Stack PaperColor de 4" (£81,60, solo envío en el Reino Unido). Los demás e-ink de ESP32 que vi son monocromos.
-- **No pude consultar Amazon.es ni eBay** desde aquí.
+- **Spectra 6, 7,3", color y ESP32, por menos de 100 €:** solo esta combinación. La PhotoPainter (~100–120 €) y la E1002 (~115–150 €) cuestan más; la E1004 y la EE02 de 13,3" son ~220–304 €.
+- **El color es de 6 tintas** (negro, blanco, rojo, amarillo, verde y azul), con tramado. Refresco de 12–25 s sin parcial; ≥180 s entre refrescos como mínimo recomendado.
+- **No hay ejemplo de 7,3" en la ruta que cita la wiki de la EE04** (sí de 7,5" monocromo). `esp32-photoframe` soporta la EE04.
+- **Antes de comprar:** precio y stock reales en el carrito, y antena incluida.
+- **No pude consultar Amazon.es, eBay ni Mouser.**
 
-## Opciones
+## Alternativas descartadas por precio o diseño (detalle en [02-modelos.md](02-modelos.md))
 
-| Opción | Pantalla | Batería | Caja | Apertura | Total en España *(estimación)* | Riesgo principal |
-|---|---|---|---|---|---|---|
-| **A. Waveshare PhotoPainter** | 7,3" 6 colores | Opcional | Marco de madera | ESP-IDF, GitHub, esquema; sin soporte | ~100–120 € | Marco "terminado": sin verificar que el USB-C quede accesible; precio con la batería sin confirmar |
-| **B. Seeed XIAO EE04 (DIY Kit)** | 7,3" 6 colores | **No incluida** (conector) | **No** | Kit de desarrollo; soporte de terceros | ~82–88 € | Preventa; sin ejemplo oficial para el panel de 7,3"; hay que comprar batería y hacer la caja |
-| **C. Seeed reTerminal E1002** | 7,3" 6 colores | 2000 mAh | Caja y soporte | Arduino, ESP-IDF, PlatformIO, ESPHome | ~115–150 € | Supera ~100 €; no encontré tienda de la UE con precio |
-| **D. Seeed reTerminal E1004** | 13,3" 6 colores, 1200×1600 | 5000 mAh | Caja y soporte (376×311 mm) | Igual que la C | ~304 € (Openelab) | Preventa hasta finales de noviembre; tamaño grande |
-
-## Qué decidir (A5)
-
-- **Ajustarse a ~100 €:** la B es la única que entra, con batería y caja por tu cuenta (D12 ya contempla la caja impresa en 3D).
-- **Menos trabajo:** la A trae marco, batería opcional y ejemplos, pero toca el límite y su "marco terminado" es la duda que planteaste.
-- **Más acabado:** la C trae todo y es abierta, pero se pasa de presupuesto.
-- **La mejor calidad con ESP32 abierto:** la D (13,3"), si el tamaño y ~304 € encajan.
-- La A, la B y la C comparten el firmware `esp32-photoframe`, aunque por D18 el software va después.
+PhotoPainter (Waveshare), reTerminal E1002 y E1004 (Seeed), XIAO EE02 de 13,3", Inkplate 6COLOR, M5Stack PaperColor (4"), Pimoroni Inky Frame (no es ESP32), tricolor y monocromos (no cumplen D32).
