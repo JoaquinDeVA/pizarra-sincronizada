@@ -25,7 +25,7 @@ Actualizado: 2026-10-27. Este fichero es el resumen; los demás son el registro 
 
 1. **Batería:** LiPo de 3,7 V, conector JST 2,0 mm, con protección. Seeed anuncia ~3 meses con la configuración por defecto sin decir la capacidad. Comprobar la polaridad con la placa (un comprador la recibió invertida).
 2. **Antena:** el kit DIY incluye una antena FPC de 2,4 GHz; la ficha de la placa suelta no la lista. Confirmarlo.
-3. **Caja:** diseño 3D propio. Hay modelo 3D de la placa y esquema, pero no dimensiones, agujeros de montaje ni medidas del panel.
+3. **Caja:** diseño 3D propio. Hay modelo 3D de la placa, esquema y medidas (placa 81×44×7 mm, panel 170,2×111,2×0,9 mm); faltan los agujeros de montaje.
 4. **Cable USB-C con datos** y cargador (ya los tienes).
 5. **Firmware y servidor:** vienen después (D18); hay base abierta (Seeed GFX2, `esp32-photoframe`).
 
