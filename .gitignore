@@ -1,6 +1,8 @@
 # Planes, informes e instrucciones personales de Claude Code
 CLAUDE.md
 .superpowers/
+vault/
+runs/
 PLAN.md
 CLAUDE.local.md
 .claude/settings.local.json
